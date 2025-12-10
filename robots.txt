@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://oneblock.co.kr/sitemap.xml
