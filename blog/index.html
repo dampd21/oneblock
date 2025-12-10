@@ -3,198 +3,510 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마케팅 팁 - 원블럭</title>
-    <meta name="description" content="소상공인을 위한 실전 마케팅 팁. 네이버 광고, 플레이스, 블로그 상위노출 노하우를 공유합니다.">
+    <title>블로그 - 원블럭 | 소상공인 마케팅 노하우</title>
+    <meta name="description" content="자영업 20년 경험에서 나온 실전 마케팅 노하우. 네이버 플레이스, 블로그 상위노출, 광고 효율화 팁을 무료로 공개합니다.">
     
-    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
-    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="../assets/css/common.css">
     
     <style>
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+        /* 블로그 페이지 스타일 */
+        .blog-hero {
+            padding: 140px 24px 60px;
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--white) 100%);
+            text-align: center;
         }
         
-        .blog-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-        }
-        
-        .blog-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .blog-thumb {
-            height: 160px;
-            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--accent-bg) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-        }
-        
-        .blog-content {
-            padding: 24px;
-        }
-        
-        .blog-category {
-            display: inline-block;
-            padding: 4px 10px;
-            background: var(--primary-bg);
-            color: var(--primary);
-            font-size: 0.75rem;
-            font-weight: 600;
-            border-radius: var(--radius-full);
-            margin-bottom: 12px;
-        }
-        
-        .blog-card h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--gray-900);
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
-        
-        .blog-card p {
-            font-size: 0.9rem;
-            color: var(--gray-500);
-            line-height: 1.6;
+        .blog-hero h1 {
+            font-size: 2.5rem;
             margin-bottom: 16px;
         }
         
-        .blog-meta {
+        .blog-hero p {
+            font-size: 1.15rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* 카테고리 필터 */
+        .blog-filter {
+            padding: 24px;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-100);
+            position: sticky;
+            top: 60px;
+            z-index: 100;
+        }
+        
+        .filter-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-full);
+            background: var(--white);
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .filter-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .filter-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: var(--white);
+        }
+        
+        /* 블로그 그리드 */
+        .blog-section {
+            padding: 60px 24px 100px;
+            background: var(--gray-50);
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* 블로그 카드 */
+        .blog-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .blog-card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        
+        .blog-card-image.accent {
+            background: linear-gradient(135deg, var(--accent) 0%, #059669 100%);
+        }
+        
+        .blog-card-image.orange {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+        
+        .blog-card-image.purple {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+        
+        .blog-card-image.red {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        }
+        
+        .blog-card-content {
+            padding: 24px;
+        }
+        
+        .blog-card-category {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--primary-bg);
+            color: var(--primary);
+            border-radius: var(--radius-full);
             font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .blog-card-category.place {
+            background: var(--accent-bg);
+            color: var(--accent);
+        }
+        
+        .blog-card-category.ads {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        
+        .blog-card-category.strategy {
+            background: #ede9fe;
+            color: #7c3aed;
+        }
+        
+        .blog-card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .blog-card-desc {
+            font-size: 0.95rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+        
+        .blog-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
             color: var(--gray-400);
         }
         
+        .blog-card-date {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .blog-card-read {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        /* 피처드 포스트 */
+        .featured-post {
+            max-width: 1200px;
+            margin: 0 auto 48px;
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+        }
+        
+        .featured-image {
+            background: linear-gradient(135deg, var(--gray-900) 0%, #1a365d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            min-height: 300px;
+        }
+        
+        .featured-content {
+            padding: 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .featured-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 600;
+            width: fit-content;
+            margin-bottom: 16px;
+        }
+        
+        .featured-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+        
+        .featured-desc {
+            font-size: 1.05rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+        
+        /* CTA */
+        .blog-cta {
+            padding: 80px 24px;
+            background: var(--gray-900);
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .blog-cta h2 {
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+        
+        .blog-cta p {
+            color: var(--gray-300);
+            margin-bottom: 32px;
+        }
+        
+        /* 반응형 */
+        @media (max-width: 900px) {
+            .featured-post {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-image {
+                min-height: 200px;
+            }
+            
+            .featured-content {
+                padding: 32px;
+            }
+            
+            .featured-title {
+                font-size: 1.5rem;
+            }
+        }
+        
         @media (max-width: 768px) {
+            .blog-hero h1 {
+                font-size: 1.8rem;
+            }
+            
             .blog-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .filter-container {
+                justify-content: flex-start;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                padding-bottom: 8px;
+            }
+            
+            .filter-btn {
+                flex-shrink: 0;
             }
         }
     </style>
 </head>
 <body>
+
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
-            <a href="../" class="nav-logo">
-                <img src="../assets/images/logo.svg" alt="원블럭" height="32">
-            </a>
+            <a href="../" class="nav-logo">ONE<span>BLOCK</span></a>
             
-            <button class="nav-toggle" aria-label="메뉴 열기">
+            <div class="nav-menu">
+                <a href="../about/" class="nav-link">소개</a>
+                <a href="../services/keyword.html" class="nav-link">서비스</a>
+                <a href="./" class="nav-link">블로그</a>
+                <a href="../pricing/" class="nav-link">요금</a>
+                <a href="../ebook/" class="nav-link">무료 전자책</a>
+                <a href="https://open.kakao.com/o/sL5miBAg" class="nav-cta" target="_blank">상담하기</a>
+            </div>
+            
+            <div class="nav-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
-            </button>
-            
-            <ul class="nav-menu">
-                <li class="nav-item has-dropdown">
-                    <a href="../services/keyword.html" class="nav-link">서비스</a>
-                    <ul class="nav-dropdown">
-                        <li><a href="../services/keyword.html">키워드 분석</a></li>
-                        <li><a href="../services/click-guard.html">부정클릭 방어</a></li>
-                        <li><a href="../services/competitor.html">경쟁사 분석</a></li>
-                        <li><a href="../services/blog-seo.html">블로그 상위노출</a></li>
-                        <li><a href="../services/place.html">플레이스 관리</a></li>
-                        <li><a href="../services/ads.html">광고 대행</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item"><a href="../pricing/" class="nav-link">요금</a></li>
-                <li class="nav-item"><a href="../ebook/" class="nav-link">무료 전자책</a></li>
-                <li class="nav-item"><a href="./" class="nav-link active">블로그</a></li>
-                <li class="nav-item"><a href="../about/" class="nav-link">소개</a></li>
-            </ul>
-            
-            <a href="../contact/" class="nav-cta btn btn-primary">무료 상담</a>
+            </div>
         </div>
     </nav>
 
     <!-- Hero -->
-    <section class="page-hero">
+    <section class="blog-hero">
         <div class="container">
-            <div class="page-hero-content fade-in-up">
-                <h1>마케팅 팁</h1>
-                <p>소상공인을 위한 실전 마케팅 노하우</p>
-            </div>
+            <span class="badge badge-primary mb-3">📝 마케팅 인사이트</span>
+            <h1>소상공인 마케팅 블로그</h1>
+            <p>자영업 20년 경험에서 나온 실전 노하우를<br>무료로 공개합니다</p>
         </div>
     </section>
 
-    <!-- Blog List -->
-    <section class="section">
+    <!-- Filter -->
+    <section class="blog-filter">
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">전체</button>
+            <button class="filter-btn" data-filter="place">플레이스</button>
+            <button class="filter-btn" data-filter="blog">블로그</button>
+            <button class="filter-btn" data-filter="ads">광고</button>
+            <button class="filter-btn" data-filter="strategy">전략</button>
+            <button class="filter-btn" data-filter="case">사례</button>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="blog-section">
         <div class="container">
+            
+            <!-- Featured Post -->
+            <a href="posts/place-ranking-secret.html" class="featured-post" style="text-decoration: none;">
+                <div class="featured-image">📍</div>
+                <div class="featured-content">
+                    <div class="featured-badge">⭐ 인기 글</div>
+                    <h2 class="featured-title">네이버 플레이스 순위 상승의 진짜 비밀</h2>
+                    <p class="featured-desc">
+                        대행사도 모르는 플레이스 알고리즘의 핵심 원리. 트래픽, 체류시간, 리뷰의 상관관계를 
+                        20년 실전 경험으로 풀어냅니다. 이것만 알아도 순위가 달라집니다.
+                    </p>
+                    <span class="btn btn-primary">자세히 읽기 →</span>
+                </div>
+            </a>
+            
+            <!-- Blog Grid -->
             <div class="blog-grid">
                 
-                <!-- 글 1 -->
-                <a href="naver-ads-guide.html" class="blog-card fade-in-up stagger-1">
-                    <div class="blog-thumb">📢</div>
-                    <div class="blog-content">
-                        <span class="blog-category">네이버 광고</span>
-                        <h3>네이버 검색광고, 이것만 알면 됩니다</h3>
-                        <p>처음 시작하는 분들을 위한 네이버 검색광고 완벽 가이드. 계정 생성부터 첫 광고까지.</p>
-                        <span class="blog-meta">2024.01.15</span>
+                <!-- Post 1 -->
+                <a href="posts/place-keyword-strategy.html" class="blog-card" data-category="place">
+                    <div class="blog-card-image accent">📍</div>
+                    <div class="blog-card-content">
+                        <span class="blog-card-category place">플레이스</span>
+                        <h3 class="blog-card-title">플레이스 대표 키워드, 이렇게 설정하세요</h3>
+                        <p class="blog-card-desc">대표 키워드 하나가 순위를 좌우합니다. 검색량과 경쟁강도를 분석해서 최적의 키워드를 찾는 방법을 알려드립니다.</p>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-date">📅 2024.01.15</span>
+                            <span class="blog-card-read">⏱ 8분</span>
+                        </div>
                     </div>
                 </a>
                 
-                <!-- 글 2 -->
-                <a href="place-ranking.html" class="blog-card fade-in-up stagger-2">
-                    <div class="blog-thumb">📍</div>
-                    <div class="blog-content">
-                        <span class="blog-category">플레이스</span>
-                        <h3>네이버 플레이스 순위 올리는 5가지 방법</h3>
-                        <p>플레이스 상위노출의 원리와 실제로 효과 있는 방법들을 정리했습니다.</p>
-                        <span class="blog-meta">2024.01.10</span>
+                <!-- Post 2 -->
+                <a href="posts/blog-seo-basics.html" class="blog-card" data-category="blog">
+                    <div class="blog-card-image">📝</div>
+                    <div class="blog-card-content">
+                        <span class="blog-card-category">블로그</span>
+                        <h3 class="blog-card-title">블로그 상위노출, 진짜 되는 방법</h3>
+                        <p class="blog-card-desc">글만 쓴다고 상위노출 되지 않습니다. 네이버 알고리즘이 좋아하는 글의 구조와 키워드 배치법을 공개합니다.</p>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-date">📅 2024.01.12</span>
+                            <span class="blog-card-read">⏱ 10분</span>
+                        </div>
                     </div>
                 </a>
                 
-                <!-- 글 3 -->
-                <a href="fraud-click.html" class="blog-card fade-in-up stagger-3">
-                    <div class="blog-thumb">🛡️</div>
-                    <div class="blog-content">
-                        <span class="blog-category">부정클릭</span>
-                        <h3>부정클릭, 내 광고비가 새고 있다면?</h3>
-                        <p>부정클릭이 뭔지, 어떻게 알 수 있는지, 방어는 어떻게 하는지 알려드립니다.</p>
-                        <span class="blog-meta">2024.01.05</span>
+                <!-- Post 3 -->
+                <a href="posts/click-fraud-truth.html" class="blog-card" data-category="ads">
+                    <div class="blog-card-image orange">🛡️</div>
+                    <div class="blog-card-content">
+                        <span class="blog-card-category ads">광고</span>
+                        <h3 class="blog-card-title">부정클릭, 진짜 우리 광고비 새고 있습니다</h3>
+                        <p class="blog-card-desc">경쟁사 부정클릭으로 광고비의 15~20%가 낭비됩니다. 감지하고 환불받는 방법을 알려드립니다.</p>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-date">📅 2024.01.10</span>
+                            <span class="blog-card-read">⏱ 7분</span>
+                        </div>
                     </div>
                 </a>
                 
-                <!-- 글 4 -->
-                <a href="keyword-selection.html" class="blog-card fade-in-up stagger-4">
-                    <div class="blog-thumb">🔑</div>
-                    <div class="blog-content">
-                        <span class="blog-category">키워드</span>
-                        <h3>광고 키워드, 어떻게 골라야 할까?</h3>
-                        <p>검색량만 보면 안 됩니다. 진짜 효과 있는 키워드 고르는 법.</p>
-                        <span class="blog-meta">2024.01.01</span>
+                <!-- Post 4 -->
+                <a href="posts/traffic-dwell-time.html" class="blog-card" data-category="place">
+                    <div class="blog-card-image accent">🚶</div>
+                    <div class="blog-card-content">
+                        <span class="blog-card-category place">플레이스</span>
+                        <h3 class="blog-card-title">트래픽과 체류시간, 순위 상승의 핵심 엔진</h3>
+                        <p class="blog-card-desc">네이버가 콘텐츠의 질을 평가하는 가장 강력한 기준. 내부/외부 트래픽의 차이와 활용법을 설명합니다.</p>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-date">📅 2024.01.08</span>
+                            <span class="blog-card-read">⏱ 12분</span>
+                        </div>
                     </div>
                 </a>
                 
-                <!-- 글 5 -->
-                <a href="blog-seo-basics.html" class="blog-card fade-in-up stagger-5">
-                    <div class="blog-thumb">📝</div>
-                    <div class="blog-content">
-                        <span class="blog-category">블로그</span>
-                        <h3>블로그 상위노출, 원리부터 이해하자</h3>
-                        <p>네이버 블로그 검색 알고리즘과 상위노출을 위한 기본 원칙.</p>
-                        <span class="blog-meta">2023.12.28</span>
+                <!-- Post 5 -->
+                <a href="posts/review-management.html" class="blog-card" data-category="place">
+                    <div class="blog-card-image purple">⭐</div>
+                    <div class="blog-card-content">
+                        <span class="blog-card-category place">플레이스</span>
+                        <h3 class="blog-card-title">블로그 리뷰, 제대로 활용하는 1%의 비법</h3>
+                        <p class="blog-card-desc">체험단만 돌리면 끝? 아닙니다. 리뷰 업로드 후 사장님이 해야 할 진짜 역할이 있습니다.</p>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-date">📅 2024.01.05</span>
+                            <span class="blog-card-read">⏱ 9분</span>
+                        </div>
                     </div>
                 </a>
                 
-                <!-- 글 6 -->
-                <a href="marketing-budget.html" class="blog-card fade-in-up stagger-6">
-                    <div class="blog-thumb">💰</div>
-                    <div class="blog-content">
-                        <span class="blog-category">예산</span>
-                        <h3>소상공인 마케팅, 얼마가 적정할까?</h3>
-                        <p>업종별, 규모별 적정 마케팅 예산과 효율적인 배분 방법.</p>
-                        <span class="blog-meta">2023.12.20</span>
+                <!-- Post 6 -->
+                <a href="posts/guerrilla-marketing.html" class="blog-card" data-category="strategy">
+                    <div class="blog-card-image red">🎯</div>
+                    <div class="blog-card-content">
+                        <span class="blog-card-category strategy">전략</span>
+                        <h3 class="blog-card-title">단돈 2만원의 기적, 게릴라 마케팅</h3>
+                        <p class="blog-card-desc">온라인만이 마케팅이 아닙니다. 배너, 현수막, DM까지 오프라인 게릴라 마케팅의 모든 것.</p>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-date">📅 2024.01.03</span>
+                            <span class="blog-card-read">⏱ 11분</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Post 7 -->
+                <a href="posts/reward-ad-truth.html" class="blog-card" data-category="ads">
+                    <div class="blog-card-image orange">💸</div>
+                    <div class="blog-card-content">
+                        <span class="blog-card-category ads">광고</span>
+                        <h3 class="blog-card-title">리워드 광고, 정말 효과 있을까요?</h3>
+                        <p class="blog-card-desc">소상공인이라면 꼭 알아야 할 리워드 광고의 불편한 진실. 왜 추천하지 않는지 솔직하게 말씀드립니다.</p>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-date">📅 2024.01.01</span>
+                            <span class="blog-card-read">⏱ 8분</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Post 8 -->
+                <a href="posts/local-tab-secret.html" class="blog-card" data-category="place">
+                    <div class="blog-card-image accent">🏘️</div>
+                    <div class="blog-card-content">
+                        <span class="blog-card-category place">플레이스</span>
+                        <h3 class="blog-card-title">대행사도 모르는 '우리동네' 탭의 비밀</h3>
+                        <p class="blog-card-desc">네이버 우리동네 탭을 활용한 히든 마케팅. 소식글과 구 단위 알림 노출 비법을 공개합니다.</p>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-date">📅 2023.12.28</span>
+                            <span class="blog-card-read">⏱ 10분</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Post 9 -->
+                <a href="posts/ranking-drop-recovery.html" class="blog-card" data-category="place">
+                    <div class="blog-card-image red">📉</div>
+                    <div class="blog-card-content">
+                        <span class="blog-card-category place">플레이스</span>
+                        <h3 class="blog-card-title">플레이스 순위 떨어졌을 때, 복구하는 방법</h3>
+                        <p class="blog-card-desc">네이버가 싫어하는 행동과 알고리즘의 감지 원리. 문제 해결을 위한 실전 액션 플랜을 알려드립니다.</p>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-date">📅 2023.12.25</span>
+                            <span class="blog-card-read">⏱ 13분</span>
+                        </div>
                     </div>
                 </a>
                 
@@ -203,69 +515,59 @@
     </section>
 
     <!-- CTA -->
-    <section class="section section-gray">
+    <section class="blog-cta">
         <div class="container">
-            <div class="cta-box fade-in-up">
-                <h2>더 자세한 내용이 필요하신가요?</h2>
-                <p>무료 전자책에서 60페이지 분량의 마케팅 가이드를 받아보세요</p>
-                <div class="cta-buttons">
-                    <a href="../ebook/" class="btn btn-primary btn-lg">무료 전자책 받기</a>
-                    <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-kakao btn-lg" target="_blank">1:1 상담하기</a>
-                </div>
+            <h2>더 많은 노하우가 필요하신가요?</h2>
+            <p>126페이지 마케팅 전자책을 무료로 받아보세요</p>
+            <div class="btn-group btn-group-center">
+                <a href="../ebook/" class="btn btn-primary btn-lg">
+                    📚 무료 전자책 받기
+                </a>
+                <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-outline-white" target="_blank">
+                    💬 1:1 상담하기
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="../" class="footer-logo">
-                        <img src="../assets/images/logo-white.svg" alt="원블럭" height="28">
-                    </a>
-                    <p>마케팅의 첫 블럭, 원블럭<br>모든 성공은 첫 번째 블럭부터</p>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>서비스</h4>
-                    <ul>
-                        <li><a href="../services/keyword.html">키워드 분석</a></li>
-                        <li><a href="../services/click-guard.html">부정클릭 방어</a></li>
-                        <li><a href="../services/competitor.html">경쟁사 분석</a></li>
-                        <li><a href="../services/blog-seo.html">블로그 상위노출</a></li>
-                        <li><a href="../services/place.html">플레이스 관리</a></li>
-                        <li><a href="../services/ads.html">광고 대행</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>정보</h4>
-                    <ul>
-                        <li><a href="../pricing/">요금표</a></li>
-                        <li><a href="../ebook/">무료 전자책</a></li>
-                        <li><a href="./">블로그</a></li>
-                        <li><a href="../about/">회사 소개</a></li>
-                        <li><a href="../contact/">문의하기</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-contact">
-                    <h4>문의</h4>
-                    <ul>
-                        <li><a href="http://pf.kakao.com/_ZGjYn" target="_blank">카카오 채널</a></li>
-                        <li><a href="https://open.kakao.com/o/sL5miBAg" target="_blank">1:1 상담</a></li>
-                        <li><a href="https://open.kakao.com/o/g56hVlTh" target="_blank">오픈채팅</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 원블럭. All rights reserved.</p>
-            </div>
+    <footer class="footer footer-simple">
+        <div class="footer-logo">ONE<span>BLOCK</span></div>
+        <div class="footer-simple-links">
+            <a href="../about/">소개</a>
+            <a href="../services/keyword.html">서비스</a>
+            <a href="./">블로그</a>
+            <a href="../pricing/">요금</a>
+            <a href="../ebook/">전자책</a>
         </div>
+        <p style="color: var(--gray-400); font-size: 0.9rem; margin-top: 16px;">
+            원블럭 | 대표: 안성훈 | 010-4012-4002
+        </p>
+        <p class="footer-copy">© <span class="current-year">2024</span> ONEBLOCK. All rights reserved.</p>
     </footer>
 
+    <!-- Scripts -->
     <script src="../assets/js/common.js"></script>
+    <script>
+        // 카테고리 필터
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // 버튼 활성화
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filter = this.dataset.filter;
+                
+                // 카드 필터링
+                document.querySelectorAll('.blog-card').forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
