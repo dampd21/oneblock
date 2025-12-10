@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="원블럭 문의하기 - 무료 플레이스 진단 신청, 마케팅 상담. 24시간 내 대표가 직접 연락드립니다.">
+    <meta name="keywords" content="마케팅 상담, 플레이스 진단, 무료 상담, 원블럭 문의">
+    <meta property="og:title" content="문의하기 - 원블럭">
+    <meta property="og:description" content="무료 진단 신청하고 24시간 내 연락받으세요">
+    <title>문의하기 - 원블럭(ONEBLOCK)</title>
+    
+    <!-- Pretendard 폰트 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    
+    <!-- 스타일시트 -->
+    <link rel="stylesheet" href="../assets/css/common.css">
+</head>
+<body>
+    <!-- ===================================
+         헤더 / 네비게이션
+         =================================== -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.html" class="logo">
+                    <span class="logo-text">ONEBLOCK</span>
+                    <span class="logo-sub">원블럭</span>
+                </a>
+
+                <ul class="nav-menu">
+                    <li><a href="../about/index.html">회사소개</a></li>
+                    <li><a href="../portfolio/index.html">포트폴리오</a></li>
+                    <li class="has-dropdown">
+                        <a href="../services/index.html">서비스</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../services/place.html">플레이스 순위관리</a></li>
+                            <li><a href="../services/adfraud.html">부정클릭 모니터링</a></li>
+                            <li><a href="../services/blog-review.html">블로그 체험단</a></li>
+                            <li><a href="../services/competitor.html">경쟁사 분석</a></li>
+                            <li><a href="../services/keyword.html">키워드 분석</a></li>
+                            <li><a href="../services/ads.html">광고대행</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../blog/index.html">블로그</a></li>
+                    <li class="active"><a href="../contact/index.html">문의하기</a></li>
+                </ul>
+
+                <a href="../contact/index.html" class="nav-cta btn btn-primary">무료 진단 신청</a>
+
+                <button class="hamburger" type="button" aria-label="메뉴 열기">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- ===================================
+             페이지 히어로
+             =================================== -->
+        <section class="page-hero">
+            <div class="container">
+                <div class="page-hero-content fade-in-up">
+                    <span class="page-hero-badge">Contact Us</span>
+                    <h1 class="page-hero-title">무료 진단 신청</h1>
+                    <p class="page-hero-desc">
+                        30초 만에 신청하고, 24시간 내 대표가 직접 연락드립니다
+                    </p>
+                </div>
+            </div>
+            <div class="page-hero-bg"></div>
+        </section>
+
+        <!-- ===================================
+             문의 폼 섹션
+             =================================== -->
+        <section class="contact-section section">
+            <div class="container">
+                <div class="contact-wrapper">
+                    <!-- 왼쪽: 문의 폼 -->
+                    <div class="contact-form-wrapper fade-in-up">
+                        <div class="form-header">
+                            <h2 class="form-title">무료 진단 신청서</h2>
+                            <p class="form-desc">
+                                아래 정보를 입력해주시면 현황을 분석하여 연락드립니다.<br>
+                                <strong>* 표시는 필수 입력 항목</strong>입니다.
+                            </p>
+                        </div>
+
+                        <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
+                            <!-- 상호명 -->
+                            <div class="form-group">
+                                <label for="businessName" class="form-label">
+                                    상호명 <span class="required">*</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="businessName" 
+                                    name="businessName" 
+                                    class="form-input" 
+                                    placeholder="예: 원블럭 카페"
+                                    required
+                                >
+                                <span class="form-error"></span>
+                            </div>
+
+                            <!-- 연락처 -->
+                            <div class="form-group">
+                                <label for="contact" class="form-label">
+                                    연락처 <span class="required">*</span>
+                                </label>
+                                <input 
+                                    type="tel" 
+                                    id="contact" 
+                                    name="phone" 
+                                    class="form-input" 
+                                    placeholder="예: 010-1234-5678 또는 카카오톡 ID"
+                                    required
+                                >
+                                <span class="form-hint">전화번호 또는 카카오톡 ID를 입력해주세요</span>
+                                <span class="form-error"></span>
+                            </div>
+
+                            <!-- 업종 -->
+                            <div class="form-group">
+                                <label for="industry" class="form-label">
+                                    업종 <span class="required">*</span>
+                                </label>
+                                <select id="industry" name="industry" class="form-select" required>
+                                    <option value="">업종을 선택해주세요</option>
+                                    <option value="restaurant">음식점/카페</option>
+                                    <option value="beauty">미용/뷰티</option>
+                                    <option value="medical">병원/의원</option>
+                                    <option value="fitness">피트니스/스포츠</option>
+                                    <option value="education">교육/학원</option>
+                                    <option value="retail">소매/판매</option>
+                                    <option value="service">서비스업</option>
+                                    <option value="ecommerce">온���인쇼핑몰</option>
+                                    <option value="other">기타</option>
+                                </select>
+                                <span class="form-error"></span>
+                            </div>
+
+                            <!-- 플레이스 URL -->
+                            <div class="form-group">
+                                <label for="placeUrl" class="form-label">
+                                    네이버 플레이스 URL
+                                </label>
+                                <input 
+                                    type="url" 
+                                    id="placeUrl" 
+                                    name="placeUrl" 
+                                    class="form-input" 
+                                    placeholder="예: https://naver.me/xxxxx"
+                                >
+                                <span class="form-hint">플레이스 링크가 있으시면 입력해주세요 (선택)</span>
+                                <span class="form-error"></span>
+                            </div>
+
+                            <!-- 관심 서비스 -->
+                            <div class="form-group">
+                                <label class="form-label">관심 서비스</label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="services" value="place">
+                                        <span class="checkbox-custom"></span>
+                                        <span class="checkbox-label">플레이스 순위관리</span>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="services" value="adfraud">
+                                        <span class="checkbox-custom"></span>
+                                        <span class="checkbox-label">부정클릭 모니터링</span>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="services" value="blog">
+                                        <span class="checkbox-custom"></span>
+                                        <span class="checkbox-label">블로그 체험단</span>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="services" value="competitor">
+                                        <span class="checkbox-custom"></span>
+                                        <span class="checkbox-label">경쟁사 분석</span>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="services" value="keyword">
+                                        <span class="checkbox-custom"></span>
+                                        <span class="checkbox-label">키워드 분석</span>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="services" value="ads">
+                                        <span class="checkbox-custom"></span>
+                                        <span class="checkbox-label">광고대행</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- 월 마케팅 예산 -->
+                            <div class="form-group">
+                                <label for="budget" class="form-label">월 마케팅 예산</label>
+                                <select id="budget" name="budget" class="form-select">
+                                    <option value="">선택해주세요 (선택사항)</option>
+                                    <option value="under50">50만원 미만</option>
+                                    <option value="50to100">50~100만원</option>
+                                    <option value="100to300">100~300만원</option>
+                                    <option value="300to500">300~500만원</option>
+                                    <option value="over500">500만원 이상</option>
+                                    <option value="undecided">미정</option>
+                                </select>
+                            </div>
+
+                            <!-- 문의 내용 -->
+                            <div class="form-group">
+                                <label for="message" class="form-label">문의 내용</label>
+                                <textarea 
+                                    id="message" 
+                                    name="message" 
+                                    class="form-textarea" 
+                                    rows="4"
+                                    placeholder="현재 고민이나 궁금한 점을 자유롭게 적어주세요"
+                                ></textarea>
+                            </div>
+
+                            <!-- 개인정보 동의 -->
+                            <div class="form-group">
+                                <label class="checkbox-item privacy">
+                                    <input type="checkbox" name="privacy" required>
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-label">
+                                        개인정보 수집 및 이용에 동의합니다 <span class="required">*</span>
+                                    </span>
+                                </label>
+                                <p class="privacy-text">
+                                    수집 항목: 상호명, 연락처, 업종 / 이용 목적: 상담 및 서비스 안내 / 보유 기간: 상담 완료 후 1년
+                                </p>
+                            </div>
+
+                            <!-- 제출 버튼 -->
+                            <button type="submit" class="btn btn-primary btn-lg btn-full">
+                                <span>무료 진단 신청하기</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+
+                            <!-- 성공 메시지 (숨김) -->
+                            <div class="form-success" style="display: none;">
+                                <div class="form-success__icon">✓</div>
+                                <div class="form-success__text">
+                                    <strong>신청이 완료되었습니다!</strong>
+                                    <p>24시간 내에 연락드리겠습니다.</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- 오른쪽: 연락처 정보 -->
+                    <div class="contact-info-wrapper fade-in-up">
+                        <div class="contact-info-card">
+                            <h3 class="contact-info-title">빠른 상담을 원하시면</h3>
+                            <p class="contact-info-desc">
+                                카카오톡으로 바로 문의하시면<br>
+                                더 빠르게 상담받으실 수 있습니다.
+                            </p>
+
+                            <div class="contact-channels">
+                                <a href="https://open.kakao.com/o/sL5miBAg" target="_blank" rel="noopener" class="channel-card primary">
+                                    <div class="channel-icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 3C6.48 3 2 6.58 2 11c0 2.8 1.8 5.27 4.5 6.7l-.9 3.38c-.1.32.26.58.54.4l4.05-2.72c.6.08 1.2.12 1.81.12 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="channel-content">
+                                        <span class="channel-name">1:1 카카오 상담</span>
+                                        <span class="channel-desc">대표와 직접 상담</span>
+                                    </div>
+                                    <span class="channel-arrow">→</span>
+                                </a>
+
+                                <a href="http://pf.kakao.com/_ZGjYn" target="_blank" rel="noopener" class="channel-card">
+                                    <div class="channel-icon kakao">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 3C6.48 3 2 6.58 2 11c0 2.8 1.8 5.27 4.5 6.7l-.9 3.38c-.1.32.26.58.54.4l4.05-2.72c.6.08 1.2.12 1.81.12 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="channel-content">
+                                        <span class="channel-name">카카오 채널</span>
+                                        <span class="channel-desc">채널 추가하고 소식 받기</span>
+                                    </div>
+                                    <span class="channel-arrow">→</span>
+                                </a>
+
+                                <a href="https://open.kakao.com/o/g56hVlTh" target="_blank" rel="noopener" class="channel-card">
+                                    <div class="channel-icon">
+                                        <span>👥</span>
+                                    </div>
+                                    <div class="channel-content">
+                                        <span class="channel-name">오픈채팅방</span>
+                                        <span class="channel-desc">다른 사장님들과 정보 공유</span>
+                                    </div>
+                                    <span class="channel-arrow">→</span>
+                                </a>
+
+                                <a href="https://blog.naver.com/kbml2024" target="_blank" rel="noopener" class="channel-card">
+                                    <div class="channel-icon naver">
+                                        <span>N</span>
+                                    </div>
+                                    <div class="channel-content">
+                                        <span class="channel-name">네이버 블로그</span>
+                                        <span class="channel-desc">마케팅 팁 & 인사이트</span>
+                                    </div>
+                                    <span class="channel-arrow">→</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 안내 사항 -->
+                        <div class="contact-notice">
+                            <h4 class="notice-title">📌 안내 사항</h4>
+                            <ul class="notice-list">
+                                <li>상담은 <strong>무료</strong>입니다.</li>
+                                <li>신청 후 <strong>24시간 내</strong> 연락드립니다.</li>
+                                <li><strong>대표가 직접</strong> 상담합니다.</li>
+                                <li>부담없이 문의해주세요!</li>
+                            </ul>
+                        </div>
+
+                        <!-- 무료 전자책 안내 -->
+                        <div class="ebook-banner">
+                            <div class="ebook-banner__icon">📚</div>
+                            <div class="ebook-banner__content">
+                                <h4>무료 전자책 받아가세요!</h4>
+                                <p>130페이지 마케팅 비법서</p>
+                            </div>
+                            <a href="../ebook/index.html" class="ebook-banner__btn">받기 →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================
+             FAQ 섹션
+             =================================== -->
+        <section class="contact-faq section section-gray">
+            <div class="container">
+                <div class="section-header fade-in-up">
+                    <h2 class="section-title">자주 묻는 질문</h2>
+                </div>
+
+                <div class="faq-list fade-in-up">
+                    <div class="faq-item">
+                        <button class="faq-item__question">
+                            상담 비용이 있나요?
+                        </button>
+                        <div class="faq-item__answer">
+                            <div class="faq-item__answer-inner">
+                                아니요, <strong>상담은 완전 무료</strong>입니다. 
+                                현황 분석과 맞춤 전략 제안까지 무료로 받아보실 수 있습니다.
+                                부담없이 신청해주세요.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-item__question">
+                            상담 후 꼭 계약해야 하나요?
+                        </button>
+                        <div class="faq-item__answer">
+                            <div class="faq-item__answer-inner">
+                                <strong>전혀 그렇지 않습니다.</strong> 상담만 받으시고 결정은 천천히 하셔도 됩니다.
+                                강요나 재촉 없이 사장님의 결정을 기다립니다.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-item__question">
+                            연락은 언제 오나요?
+                        </button>
+                        <div class="faq-item__answer">
+                            <div class="faq-item__answer-inner">
+                                신청 후 <strong>24시간 내</strong>에 연락드립니다.
+                                급하신 경우 카카오톡 1:1 상담을 이용해주시면 더 빠르게 상담 가능합니다.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-item__question">
+                            어떤 업종이든 상담 가능한가요?
+                        </button>
+                        <div class="faq-item__answer">
+                            <div class="faq-item__answer-inner">
+                                네, <strong>오프라인 매장부터 온라인 쇼핑몰까지</strong> 모든 업종 상담 가능합니다.
+                                업종별 특성에 맞는 맞춤 전략을 제안드립니다.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===================================
+         푸터
+         =================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="footer-logo">
+                        <span class="logo-text">ONEBLOCK</span>
+                    </a>
+                    <p class="footer-slogan">마케팅의 첫 블럭, 원블럭</p>
+                    <p class="footer-desc">
+                        소상공인의 든든한 마케팅 동반자<br>
+                        노출이 아닌, 매출 상승이 목표입니다.
+                    </p>
+                </div>
+
+                <div class="footer-menu">
+                    <h4 class="footer-menu-title">서비스</h4>
+                    <ul>
+                        <li><a href="../services/place.html">플레이스 순위관리</a></li>
+                        <li><a href="../services/adfraud.html">부정클릭 모니터링</a></li>
+                        <li><a href="../services/blog-review.html">블로그 체험단</a></li>
+                        <li><a href="../services/competitor.html">경쟁사 분석</a></li>
+                        <li><a href="../services/keyword.html">키워드 분석</a></li>
+                        <li><a href="../services/ads.html">광고대행</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-menu">
+                    <h4 class="footer-menu-title">회사</h4>
+                    <ul>
+                        <li><a href="../about/index.html">회사소개</a></li>
+                        <li><a href="../portfolio/index.html">포트폴리오</a></li>
+                        <li><a href="../blog/index.html">블로그</a></li>
+                        <li><a href="../ebook/index.html">무료 전자책</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4 class="footer-menu-title">문의하기</h4>
+                    <ul>
+                        <li><a href="https://open.kakao.com/o/sL5miBAg" target="_blank" rel="noopener">💬 1:1 카카오 상담</a></li>
+                        <li><a href="http://pf.kakao.com/_ZGjYn" target="_blank" rel="noopener">📢 카카오 채널</a></li>
+                        <li><a href="https://open.kakao.com/o/g56hVlTh" target="_blank" rel="noopener">👥 오픈채팅방</a></li>
+                        <li><a href="https://blog.naver.com/kbml2024" target="_blank" rel="noopener">📝 네이버 블로그</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">
+                    © <span class="current-year">2025</span> ONEBLOCK. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 카카오톡 플로팅 버튼 -->
+    <a href="https://open.kakao.com/o/sL5miBAg" target="_blank" rel="noopener" class="kakao-float" aria-label="카카오톡 상담">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3C6.48 3 2 6.58 2 11c0 2.8 1.8 5.27 4.5 6.7l-.9 3.38c-.1.32.26.58.54.4l4.05-2.72c.6.08 1.2.12 1.81.12 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/>
+        </svg>
+        <span class="kakao-float-text">상담하기</span>
+    </a>
+
+    <!-- 스크립트 -->
+    <script src="../assets/js/common.js"></script>
+</body>
+</html>
