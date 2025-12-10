@@ -3,741 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>무료 마케팅 전자책 - 원블럭</title>
-    <meta name="description" content="자영업 20년 노하우를 담은 100페이지 마케팅 전자책. 소상공인을 위한 실전 마케팅 가이드를 무료로 받아보세요.">
+    <title>무료 전자책 - 원블럭</title>
+    <meta name="description" content="소상공인을 위한 마케팅 가이드 전자책을 무료로 받아보세요.">
     
-    <!-- Open Graph -->
-    <meta property="og:title" content="무료 마케팅 전자책 - 원블럭">
-    <meta property="og:description" content="자영업 20년 노하우를 담은 100페이지 마케팅 가이드">
-    <meta property="og:type" content="website">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>">
-    
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="/assets/css/common.css">
-    
-    <style>
-        /* ===== Ebook Page Styles ===== */
-        
-        .ebook-hero {
-            padding: 140px 24px 80px;
-            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
-            color: var(--white);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .ebook-hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232563EB' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
-        }
-        
-        .ebook-hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .ebook-badge {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--white);
-            padding: 8px 20px;
-            border-radius: var(--radius-full);
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 24px;
-        }
-        
-        .ebook-hero h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            line-height: 1.3;
-            margin-bottom: 20px;
-            color: var(--white);
-        }
-        
-        .ebook-hero h1 span {
-            color: var(--primary-light);
-        }
-        
-        .ebook-hero p {
-            font-size: 1.15rem;
-            color: var(--gray-300);
-            margin-bottom: 32px;
-        }
-        
-        /* Book Preview */
-        .book-preview {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            margin-top: 48px;
-            flex-wrap: wrap;
-        }
-        
-        .book-cover {
-            width: 280px;
-            height: 380px;
-            background: linear-gradient(145deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: 8px 20px 20px 8px;
-            box-shadow: 
-                -5px 5px 15px rgba(0,0,0,0.3),
-                inset -2px 0 10px rgba(0,0,0,0.2);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 32px;
-            text-align: center;
-            position: relative;
-            transform: perspective(1000px) rotateY(-5deg);
-            transition: transform var(--transition-normal);
-        }
-        
-        .book-cover:hover {
-            transform: perspective(1000px) rotateY(0deg);
-        }
-        
-        .book-cover::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 15px;
-            background: linear-gradient(90deg, rgba(0,0,0,0.2) 0%, transparent 100%);
-            border-radius: 8px 0 0 8px;
-        }
-        
-        .book-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-        }
-        
-        .book-title {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--white);
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
-        
-        .book-subtitle {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 24px;
-        }
-        
-        .book-author {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.6);
-            padding-top: 16px;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            width: 100%;
-        }
-        
-        .book-info {
-            text-align: left;
-            max-width: 300px;
-        }
-        
-        .book-info-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--gray-700);
-            color: var(--gray-300);
-        }
-        
-        .book-info-item:last-child {
-            border-bottom: none;
-        }
-        
-        .book-info-item span:first-child {
-            font-size: 1.3rem;
-        }
-        
-        .book-info-item strong {
-            color: var(--white);
-        }
-        
-        /* Contents Section */
-        .contents-section {
-            padding: 80px 24px;
-            background: var(--white);
-        }
-        
-        .contents-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .contents-card {
-            background: var(--gray-50);
-            border-radius: var(--radius-lg);
-            padding: 28px;
-            border-left: 4px solid var(--primary);
-            transition: all var(--transition-normal);
-        }
-        
-        .contents-card:hover {
-            background: var(--white);
-            box-shadow: var(--shadow-lg);
-            transform: translateX(4px);
-        }
-        
-        .contents-card:nth-child(2) { border-left-color: var(--accent); }
-        .contents-card:nth-child(3) { border-left-color: #F59E0B; }
-        .contents-card:nth-child(4) { border-left-color: #8B5CF6; }
-        .contents-card:nth-child(5) { border-left-color: #EC4899; }
-        .contents-card:nth-child(6) { border-left-color: #06B6D4; }
-        
-        .contents-chapter {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-        
-        .contents-card:nth-child(2) .contents-chapter { color: var(--accent); }
-        .contents-card:nth-child(3) .contents-chapter { color: #F59E0B; }
-        .contents-card:nth-child(4) .contents-chapter { color: #8B5CF6; }
-        .contents-card:nth-child(5) .contents-chapter { color: #EC4899; }
-        .contents-card:nth-child(6) .contents-chapter { color: #06B6D4; }
-        
-        .contents-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--gray-900);
-            margin-bottom: 12px;
-        }
-        
-        .contents-desc {
-            font-size: 0.9rem;
-            color: var(--gray-500);
-            line-height: 1.6;
-        }
-        
-        /* Benefits */
-        .benefits-section {
-            padding: 80px 24px;
-            background: var(--gray-100);
-        }
-        
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .benefit-card {
-            background: var(--white);
-            padding: 32px;
-            border-radius: var(--radius-lg);
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .benefit-icon {
-            width: 64px;
-            height: 64px;
-            background: var(--primary-bg);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            margin: 0 auto 16px;
-        }
-        
-        .benefit-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--gray-900);
-        }
-        
-        .benefit-desc {
-            font-size: 0.9rem;
-            color: var(--gray-500);
-        }
-        
-        /* Author */
-        .author-section {
-            padding: 80px 24px;
-            background: var(--white);
-        }
-        
-        .author-card {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            background: var(--gray-50);
-            border-radius: var(--radius-xl);
-            padding: 40px;
-        }
-        
-        .author-avatar {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            flex-shrink: 0;
-        }
-        
-        .author-info h3 {
-            font-size: 1.3rem;
-            margin-bottom: 8px;
-        }
-        
-        .author-title {
-            font-size: 0.95rem;
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-        
-        .author-bio {
-            color: var(--gray-600);
-            line-height: 1.7;
-        }
-        
-        .author-bio li {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 8px;
-        }
-        
-        .author-bio li::before {
-            content: "✓";
-            color: var(--primary);
-            font-weight: 700;
-        }
-        
-        /* Download CTA */
-        .download-section {
-            padding: 100px 24px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            text-align: center;
-            color: var(--white);
-        }
-        
-        .download-section h2 {
-            font-size: 2rem;
-            color: var(--white);
-            margin-bottom: 16px;
-        }
-        
-        .download-section p {
-            font-size: 1.1rem;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 32px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .download-box {
-            max-width: 500px;
-            margin: 0 auto;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius-xl);
-            padding: 40px;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .download-steps {
-            text-align: left;
-            margin-bottom: 32px;
-        }
-        
-        .download-step {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-        
-        .step-number {
-            width: 32px;
-            height: 32px;
-            background: var(--white);
-            color: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 0.9rem;
-            flex-shrink: 0;
-        }
-        
-        .step-content {
-            flex: 1;
-        }
-        
-        .step-title {
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-        
-        .step-desc {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .download-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        
-        .btn-download {
-            background: var(--white);
-            color: var(--primary);
-            font-size: 1.1rem;
-            padding: 18px 32px;
-        }
-        
-        .btn-download:hover {
-            background: var(--gray-100);
-            transform: translateY(-2px);
-        }
-        
-        .btn-community {
-            background: rgba(255,255,255,0.2);
-            color: var(--white);
-            border: 2px solid rgba(255,255,255,0.5);
-        }
-        
-        .btn-community:hover {
-            background: rgba(255,255,255,0.3);
-        }
-        
-        .download-note {
-            font-size: 0.85rem;
-            opacity: 0.7;
-            margin-top: 20px;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .ebook-hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .book-preview {
-                flex-direction: column;
-                gap: 32px;
-            }
-            
-            .book-cover {
-                transform: none;
-                width: 240px;
-                height: 320px;
-            }
-            
-            .book-info {
-                text-align: center;
-            }
-            
-            .book-info-item {
-                justify-content: center;
-            }
-            
-            .author-card {
-                flex-direction: column;
-                text-align: center;
-                padding: 32px 24px;
-            }
-            
-            .author-bio {
-                text-align: left;
-            }
-            
-            .download-box {
-                padding: 32px 24px;
-            }
-        }
-    </style>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/common.css">
 </head>
 <body>
-
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
-            <a href="/" class="nav-logo">ONE<span>BLOCK</span></a>
+            <a href="../" class="nav-logo">
+                <span class="logo-one">ONE</span><span class="logo-block">BLOCK</span>
+            </a>
             
-            <div class="nav-menu">
-                <a href="services/keyword.html" class="nav-link">서비스</a>
-                <a href="pricing/" class="nav-link">요금</a>
-                <a href="ebook/" class="nav-link">전자책</a>
-                <a href="about/" class="nav-link">소개</a>
-                <a href="https://open.kakao.com/o/sL5miBAg" class="nav-cta" target="_blank">1:1 상담</a>
-            </div>
+            <button class="nav-toggle" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             
-            <div class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <ul class="nav-menu">
+                <li class="nav-item has-dropdown">
+                    <a href="../services/keyword.html" class="nav-link">서비스</a>
+                    <ul class="nav-dropdown">
+                        <li><a href="../services/keyword.html">키워드 분석</a></li>
+                        <li><a href="../services/click-guard.html">부정클릭 방어</a></li>
+                        <li><a href="../services/competitor.html">경쟁사 분석</a></li>
+                        <li><a href="../services/blog-seo.html">블로그 상위노출</a></li>
+                        <li><a href="../services/place.html">플레이스 관리</a></li>
+                        <li><a href="../services/ads.html">광고 대행</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="../pricing/" class="nav-link">요금</a></li>
+                <li class="nav-item"><a href="./" class="nav-link active">무료 전자책</a></li>
+                <li class="nav-item"><a href="../about/" class="nav-link">소개</a></li>
+            </ul>
+            
+            <a href="../contact/" class="nav-cta btn btn-primary">무료 상담</a>
         </div>
     </nav>
 
     <!-- Hero -->
     <section class="ebook-hero">
-        <div class="ebook-hero-content">
-            <span class="ebook-badge">🎁 100% 무료</span>
-            <h1>
-                자영업 20년 노하우<br>
-                <span>마케팅 전자책</span>
-            </h1>
-            <p>
-                대행사에 맡기기 전에 꼭 알아야 할 것들<br>
-                100페이지에 모두 담았습니다
-            </p>
-            
-            <div class="book-preview">
-                <div class="book-cover">
-                    <div class="book-icon">📚</div>
-                    <div class="book-title">소상공인을 위한<br>마케팅 완전정복</div>
-                    <div class="book-subtitle">실전 가이드북</div>
-                    <div class="book-author">by 원블럭</div>
+        <div class="container">
+            <div class="ebook-hero-grid">
+                <div class="ebook-content fade-in-up">
+                    <span class="hero-badge">무료 배포</span>
+                    <h1>소상공인 마케팅<br>완벽 가이드</h1>
+                    <p class="ebook-desc">
+                        20년 자영업 경험과 마케팅 노하우를<br>
+                        60페이지에 담았습니다.
+                    </p>
+                    
+                    <ul class="ebook-features">
+                        <li>✅ 네이버 광고 시작하기</li>
+                        <li>✅ 플레이스 순위 올리는 법</li>
+                        <li>✅ 블로그 상위노출 전략</li>
+                        <li>✅ 부정클릭 방어하기</li>
+                        <li>✅ 월별 마케팅 체크리스트</li>
+                    </ul>
+                    
+                    <div class="ebook-cta">
+                        <a href="https://open.kakao.com/o/g56hVlTh" class="btn btn-kakao btn-lg" target="_blank">
+                            오픈채팅 입장 후 받기
+                        </a>
+                        <p class="ebook-note">오픈채팅에서 "전자책" 이라고 말씀해주세요</p>
+                    </div>
                 </div>
                 
-                <div class="book-info">
-                    <div class="book-info-item">
-                        <span>📄</span>
-                        <div><strong>100+ 페이지</strong> 분량</div>
-                    </div>
-                    <div class="book-info-item">
-                        <span>💰</span>
-                        <div>정가 <strong>99,000원</strong> 상당</div>
-                    </div>
-                    <div class="book-info-item">
-                        <span>🎯</span>
-                        <div><strong>실전 노하우</strong> 중심</div>
-                    </div>
-                    <div class="book-info-item">
-                        <span>✨</span>
-                        <div><strong>지금 무료</strong> 다운로드</div>
+                <div class="ebook-preview fade-in-up stagger-2">
+                    <div class="ebook-mockup">
+                        <div class="ebook-cover">
+                            <div class="cover-content">
+                                <span class="cover-badge">2024 Edition</span>
+                                <h2>소상공인<br>마케팅<br>완벽 가이드</h2>
+                                <p>원블럭</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contents -->
-    <section class="contents-section">
+    <!-- Table of Contents -->
+    <section class="section section-gray">
         <div class="container">
-            <h2 class="section-title">이런 내용이 담겨있어요</h2>
-            <p class="section-subtitle">바로 써먹을 수 있는 실전 노하우</p>
-            
-            <div class="contents-grid">
-                <div class="contents-card">
-                    <div class="contents-chapter">Chapter 1</div>
-                    <div class="contents-title">마케팅 기초 이해하기</div>
-                    <div class="contents-desc">마케팅이 뭔지도 모르고 시작하면 안 됩니다. 기본 개념부터 차근차근 알려드립니다.</div>
-                </div>
-                
-                <div class="contents-card">
-                    <div class="contents-chapter">Chapter 2</div>
-                    <div class="contents-title">네이버 플레이스 완전정복</div>
-                    <div class="contents-desc">순위 상승의 원리, 리뷰 관리법, 사진 최적화까지 플레이스의 모든 것.</div>
-                </div>
-                
-                <div class="contents-card">
-                    <div class="contents-chapter">Chapter 3</div>
-                    <div class="contents-title">블로그 상위노출 비법</div>
-                    <div class="contents-desc">검색에 잘 걸리는 글 쓰는 법, 키워드 선정, SEO 최적화 노하우.</div>
-                </div>
-                
-                <div class="contents-card">
-                    <div class="contents-chapter">Chapter 4</div>
-                    <div class="contents-title">광고비 아끼는 법</div>
-                    <div class="contents-desc">네이버 광고, 인스타 광고 효율 높이는 법. 부정클릭 대응까지.</div>
-                </div>
-                
-                <div class="contents-card">
-                    <div class="contents-chapter">Chapter 5</div>
-                    <div class="contents-title">경쟁사 분석하기</div>
-                    <div class="contents-desc">잘되는 가게는 뭐가 다른지, 어떻게 벤치마킹하는지 알려드립니다.</div>
-                </div>
-                
-                <div class="contents-card">
-                    <div class="contents-chapter">Chapter 6</div>
-                    <div class="contents-title">실전 마케팅 플랜</div>
-                    <div class="contents-desc">월별, 예산별 실행 계획. 바로 따라할 수 있는 체크리스트 제공.</div>
-                </div>
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">목차 미리보기</h2>
             </div>
-        </div>
-    </section>
-
-    <!-- Benefits -->
-    <section class="benefits-section">
-        <div class="container">
-            <h2 class="section-title">이 전자책이 특별한 이유</h2>
-            <p class="section-subtitle">다른 전자책과는 다릅니다</p>
             
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">🏪</div>
-                    <div class="benefit-title">진짜 사장님이 썼습니다</div>
-                    <div class="benefit-desc">자영업 20년 경험. 직접 장사해본 사람만 아는 현실적인 조언.</div>
+            <div class="toc-grid">
+                <div class="toc-card fade-in-up stagger-1">
+                    <span class="toc-chapter">Chapter 1</span>
+                    <h3>마케팅 기초</h3>
+                    <ul>
+                        <li>온라인 마케팅이란?</li>
+                        <li>소상공인에게 필요한 마케팅</li>
+                        <li>예산 설정하는 법</li>
+                    </ul>
                 </div>
                 
-                <div class="benefit-card">
-                    <div class="benefit-icon">🎯</div>
-                    <div class="benefit-title">이론 NO, 실전 YES</div>
-                    <div class="benefit-desc">뜬구름 잡는 얘기 없습니다. 내일 당장 써먹을 수 있는 것들만.</div>
+                <div class="toc-card fade-in-up stagger-2">
+                    <span class="toc-chapter">Chapter 2</span>
+                    <h3>네이버 광고</h3>
+                    <ul>
+                        <li>검색광고 시작하기</li>
+                        <li>키워드 선정 방법</li>
+                        <li>입찰가 전략</li>
+                    </ul>
                 </div>
                 
-                <div class="benefit-card">
-                    <div class="benefit-icon">💸</div>
-                    <div class="benefit-title">광고비 아끼는 법</div>
-                    <div class="benefit-desc">대행사에 속지 않는 법, 효율 높이는 법까지 솔직하게 알려드려요.</div>
+                <div class="toc-card fade-in-up stagger-3">
+                    <span class="toc-chapter">Chapter 3</span>
+                    <h3>플레이스 최적화</h3>
+                    <ul>
+                        <li>플레이스 순위 원리</li>
+                        <li>리뷰 관리하기</li>
+                        <li>사진 최적화</li>
+                    </ul>
                 </div>
                 
-                <div class="benefit-card">
-                    <div class="benefit-icon">📱</div>
-                    <div class="benefit-title">언제 어디서든</div>
-                    <div class="benefit-desc">PC, 모바일 어디서든 볼 수 있어요. PDF 다운로드도 가능합니다.</div>
+                <div class="toc-card fade-in-up stagger-4">
+                    <span class="toc-chapter">Chapter 4</span>
+                    <h3>블로그 SEO</h3>
+                    <ul>
+                        <li>상위노출 원리</li>
+                        <li>글쓰기 템플릿</li>
+                        <li>키워드 배치법</li>
+                    </ul>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Author -->
-    <section class="author-section">
-        <div class="container">
-            <h2 class="section-title">저자 소개</h2>
-            <p class="section-subtitle">자영업 20년차 마케터</p>
-            
-            <div class="author-card">
-                <div class="author-avatar">🧱</div>
-                <div class="author-info">
-                    <h3>원블럭 대표</h3>
-                    <div class="author-title">소상공인 마케팅 전문가</div>
-                    <ul class="author-bio">
-                        <li>자영업 20년 직접 운영 경험</li>
-                        <li>네이버 블로그 상위노출 다수 달성</li>
-                        <li>플레이스 순위 관리 전문</li>
-                        <li>광고 대행 및 컨설팅 경력</li>
-                        <li>100+ 소상공인 마케팅 지원</li>
+                
+                <div class="toc-card fade-in-up stagger-5">
+                    <span class="toc-chapter">Chapter 5</span>
+                    <h3>부정클릭 방어</h3>
+                    <ul>
+                        <li>부정클릭이란?</li>
+                        <li>감지하는 방법</li>
+                        <li>예방 전략</li>
+                    </ul>
+                </div>
+                
+                <div class="toc-card fade-in-up stagger-6">
+                    <span class="toc-chapter">부록</span>
+                    <h3>체크리스트</h3>
+                    <ul>
+                        <li>월별 마케팅 할 일</li>
+                        <li>성과 측정 방법</li>
+                        <li>유용한 도구 모음</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Download CTA -->
-    <section class="download-section">
+    <!-- CTA -->
+    <section class="section">
         <div class="container">
-            <h2>지금 바로 무료로 받아보세요</h2>
-            <p>어렵게 생각하지 마세요.<br>클릭 한 번이면 됩니다.</p>
-            
-            <div class="download-box">
-                <div class="download-steps">
-                    <div class="download-step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <div class="step-title">아래 버튼 클릭</div>
-                            <div class="step-desc">전자책 바로 열람 가능</div>
-                        </div>
-                    </div>
-                    <div class="download-step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <div class="step-title">오픈채팅 참여 (선택)</div>
-                            <div class="step-desc">사장님들과 정보 공유</div>
-                        </div>
-                    </div>
-                    <div class="download-step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <div class="step-title">마케팅 시작!</div>
-                            <div class="step-desc">읽고 바로 실행해보세요</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="download-buttons">
-                    <a href="https://docs.google.com/document/d/1sjJb8PVxoitTny_H2EYbpAK-590hG9_8eJJzpmj5amw/edit?usp=sharing" class="btn btn-download" target="_blank">
-                        📚 전자책 무료로 읽기
-                    </a>
-                    <a href="https://open.kakao.com/o/g56hVlTh" class="btn btn-community" target="_blank">
-                        👥 오픈채팅 참여하기
+            <div class="cta-box fade-in-up">
+                <h2>지금 무료로 받아보세요</h2>
+                <p>오픈채팅에 입장하면 전자책 링크를 바로 받을 수 있습니다</p>
+                <div class="cta-buttons">
+                    <a href="https://open.kakao.com/o/g56hVlTh" class="btn btn-kakao btn-lg" target="_blank">
+                        오픈채팅 입장하기
                     </a>
                 </div>
-                
-                <p class="download-note">
-                    ✓ 회원가입 없음 ✓ 이메일 입력 없음 ✓ 바로 열람
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- More Services -->
-    <section class="section bg-white">
-        <div class="container text-center">
-            <h2 class="section-title">더 많은 도움이 필요하신가요?</h2>
-            <p class="section-subtitle">원블럭이 함께합니다</p>
-            
-            <div class="btn-group btn-group-center mt-4">
-                <a href="/pricing/" class="btn btn-primary">
-                    서비스 요금 보기
-                </a>
-                <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-secondary" target="_blank">
-                    1:1 상담하기
-                </a>
+                <p class="cta-note">입장 후 "전자책" 이라고 채팅해주세요!</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer footer-simple">
-        <div class="footer-logo">ONE<span>BLOCK</span></div>
-        <div class="footer-simple-links">
-            <a href="/">홈</a>
-            <a href="/pricing/">요금</a>
-            <a href="/ebook/">전자책</a>
-            <a href="http://pf.kakao.com/_ZGjYn" target="_blank">카카오 채널</a>
-            <a href="https://open.kakao.com/o/sL5miBAg" target="_blank">1:1 상담</a>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../" class="footer-logo">
+                        <span class="logo-one">ONE</span><span class="logo-block">BLOCK</span>
+                    </a>
+                    <p>마케팅의 첫 블럭, 원블럭<br>모든 성공은 첫 번째 블럭부터</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>서비스</h4>
+                    <ul>
+                        <li><a href="../services/keyword.html">키워드 분석</a></li>
+                        <li><a href="../services/click-guard.html">부정클릭 방어</a></li>
+                        <li><a href="../services/competitor.html">경쟁사 분석</a></li>
+                        <li><a href="../services/blog-seo.html">블로그 상위노출</a></li>
+                        <li><a href="../services/place.html">플레이스 관리</a></li>
+                        <li><a href="../services/ads.html">광고 대행</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>정보</h4>
+                    <ul>
+                        <li><a href="../pricing/">요금표</a></li>
+                        <li><a href="./">무료 전자책</a></li>
+                        <li><a href="../about/">회사 소개</a></li>
+                        <li><a href="../contact/">문의하기</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>문의</h4>
+                    <ul>
+                        <li><a href="http://pf.kakao.com/_ZGjYn" target="_blank">카카오 채널</a></li>
+                        <li><a href="https://open.kakao.com/o/sL5miBAg" target="_blank">1:1 상담</a></li>
+                        <li><a href="https://open.kakao.com/o/g56hVlTh" target="_blank">오픈채팅</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 원블럭. All rights reserved.</p>
+            </div>
         </div>
-        <p class="footer-copy">© <span class="current-year">2024</span> ONEBLOCK. All rights reserved.</p>
     </footer>
 
-    <!-- Scripts -->
-    <script src="/assets/js/common.js"></script>
-
+    <script src="../assets/js/common.js"></script>
 </body>
 </html>
