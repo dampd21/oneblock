@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마케팅 팁 - 원블럭</title>
+    <meta name="description" content="소상공인을 위한 실전 마케팅 팁. 네이버 광고, 플레이스, 블로그 상위노출 노하우를 공유합니다.">
+    
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/common.css">
+    
+    <style>
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .blog-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .blog-thumb {
+            height: 160px;
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--accent-bg) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        
+        .blog-content {
+            padding: 24px;
+        }
+        
+        .blog-category {
+            display: inline-block;
+            padding: 4px 10px;
+            background: var(--primary-bg);
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: var(--radius-full);
+            margin-bottom: 12px;
+        }
+        
+        .blog-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        
+        .blog-card p {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        
+        .blog-meta {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+        
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="../" class="nav-logo">
+                <img src="../assets/images/logo.svg" alt="원블럭" height="32">
+            </a>
+            
+            <button class="nav-toggle" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-menu">
+                <li class="nav-item has-dropdown">
+                    <a href="../services/keyword.html" class="nav-link">서비스</a>
+                    <ul class="nav-dropdown">
+                        <li><a href="../services/keyword.html">키워드 분석</a></li>
+                        <li><a href="../services/click-guard.html">부정클릭 방어</a></li>
+                        <li><a href="../services/competitor.html">경쟁사 분석</a></li>
+                        <li><a href="../services/blog-seo.html">블로그 상위노출</a></li>
+                        <li><a href="../services/place.html">플레이스 관리</a></li>
+                        <li><a href="../services/ads.html">광고 대행</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="../pricing/" class="nav-link">요금</a></li>
+                <li class="nav-item"><a href="../ebook/" class="nav-link">무료 전자책</a></li>
+                <li class="nav-item"><a href="./" class="nav-link active">블로그</a></li>
+                <li class="nav-item"><a href="../about/" class="nav-link">소개</a></li>
+            </ul>
+            
+            <a href="../contact/" class="nav-cta btn btn-primary">무료 상담</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content fade-in-up">
+                <h1>마케팅 팁</h1>
+                <p>소상공인을 위한 실전 마케팅 노하우</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog List -->
+    <section class="section">
+        <div class="container">
+            <div class="blog-grid">
+                
+                <!-- 글 1 -->
+                <a href="naver-ads-guide.html" class="blog-card fade-in-up stagger-1">
+                    <div class="blog-thumb">📢</div>
+                    <div class="blog-content">
+                        <span class="blog-category">네이버 광고</span>
+                        <h3>네이버 검색광고, 이것만 알면 됩니다</h3>
+                        <p>처음 시작하는 분들을 위한 네이버 검색광고 완벽 가이드. 계정 생성부터 첫 광고까지.</p>
+                        <span class="blog-meta">2024.01.15</span>
+                    </div>
+                </a>
+                
+                <!-- 글 2 -->
+                <a href="place-ranking.html" class="blog-card fade-in-up stagger-2">
+                    <div class="blog-thumb">📍</div>
+                    <div class="blog-content">
+                        <span class="blog-category">플레이스</span>
+                        <h3>네이버 플레이스 순위 올리는 5가지 방법</h3>
+                        <p>플레이스 상위노출의 원리와 실제로 효과 있는 방법들을 정리했습니다.</p>
+                        <span class="blog-meta">2024.01.10</span>
+                    </div>
+                </a>
+                
+                <!-- 글 3 -->
+                <a href="fraud-click.html" class="blog-card fade-in-up stagger-3">
+                    <div class="blog-thumb">🛡️</div>
+                    <div class="blog-content">
+                        <span class="blog-category">부정클릭</span>
+                        <h3>부정클릭, 내 광고비가 새고 있다면?</h3>
+                        <p>부정클릭이 뭔지, 어떻게 알 수 있는지, 방어는 어떻게 하는지 알려드립니다.</p>
+                        <span class="blog-meta">2024.01.05</span>
+                    </div>
+                </a>
+                
+                <!-- 글 4 -->
+                <a href="keyword-selection.html" class="blog-card fade-in-up stagger-4">
+                    <div class="blog-thumb">🔑</div>
+                    <div class="blog-content">
+                        <span class="blog-category">키워드</span>
+                        <h3>광고 키워드, 어떻게 골라야 할까?</h3>
+                        <p>검색량만 보면 안 됩니다. 진짜 효과 있는 키워드 고르는 법.</p>
+                        <span class="blog-meta">2024.01.01</span>
+                    </div>
+                </a>
+                
+                <!-- 글 5 -->
+                <a href="blog-seo-basics.html" class="blog-card fade-in-up stagger-5">
+                    <div class="blog-thumb">📝</div>
+                    <div class="blog-content">
+                        <span class="blog-category">블로그</span>
+                        <h3>블로그 상위노출, 원리부터 이해하자</h3>
+                        <p>네이버 블로그 검색 알고리즘과 상위노출을 위한 기본 원칙.</p>
+                        <span class="blog-meta">2023.12.28</span>
+                    </div>
+                </a>
+                
+                <!-- 글 6 -->
+                <a href="marketing-budget.html" class="blog-card fade-in-up stagger-6">
+                    <div class="blog-thumb">💰</div>
+                    <div class="blog-content">
+                        <span class="blog-category">예산</span>
+                        <h3>소상공인 마케팅, 얼마가 적정할까?</h3>
+                        <p>업종별, 규모별 적정 마케팅 예산과 효율적인 배분 방법.</p>
+                        <span class="blog-meta">2023.12.20</span>
+                    </div>
+                </a>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section-gray">
+        <div class="container">
+            <div class="cta-box fade-in-up">
+                <h2>더 자세한 내용이 필요하신가요?</h2>
+                <p>무료 전자책에서 60페이지 분량의 마케팅 가이드를 받아보세요</p>
+                <div class="cta-buttons">
+                    <a href="../ebook/" class="btn btn-primary btn-lg">무료 전자책 받기</a>
+                    <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-kakao btn-lg" target="_blank">1:1 상담하기</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../" class="footer-logo">
+                        <img src="../assets/images/logo-white.svg" alt="원블럭" height="28">
+                    </a>
+                    <p>마케팅의 첫 블럭, 원블럭<br>모든 성공은 첫 번째 블럭부터</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>서비스</h4>
+                    <ul>
+                        <li><a href="../services/keyword.html">키워드 분석</a></li>
+                        <li><a href="../services/click-guard.html">부정클릭 방어</a></li>
+                        <li><a href="../services/competitor.html">경쟁사 분석</a></li>
+                        <li><a href="../services/blog-seo.html">블로그 상위노출</a></li>
+                        <li><a href="../services/place.html">플레이스 관리</a></li>
+                        <li><a href="../services/ads.html">광고 대행</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>정보</h4>
+                    <ul>
+                        <li><a href="../pricing/">요금표</a></li>
+                        <li><a href="../ebook/">무료 전자책</a></li>
+                        <li><a href="./">블로그</a></li>
+                        <li><a href="../about/">회사 소개</a></li>
+                        <li><a href="../contact/">문의하기</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>문의</h4>
+                    <ul>
+                        <li><a href="http://pf.kakao.com/_ZGjYn" target="_blank">카카오 채널</a></li>
+                        <li><a href="https://open.kakao.com/o/sL5miBAg" target="_blank">1:1 상담</a></li>
+                        <li><a href="https://open.kakao.com/o/g56hVlTh" target="_blank">오픈채팅</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 원블럭. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/common.js"></script>
+</body>
+</html>
