@@ -3,389 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>원블럭 - 소상공인 마케팅 파트너</title>
-    <meta name="description" content="자영업 20년 노하우로 만든 마케팅 솔루션. 키워드 분석, 부정클릭 모니터링, 플레이스 관리까지.">
+    <title>원블럭 - 마케팅의 첫 블럭</title>
+    <meta name="description" content="소상공인을 위한 마케팅 솔루션. 키워드 분석, 부정클릭 방어, 블로그·플레이스 관리까지.">
+    <meta name="keywords" content="소상공인 마케팅, 네이버 광고, 부정클릭, 플레이스 순위, 블로그 상위노출">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="원블럭 - 소상공인 마케팅 파트너">
-    <meta property="og:description" content="자영업 20년 노하우로 만든 마케팅 솔루션">
+    <meta property="og:title" content="원블럭 - 마케팅의 첫 블럭">
+    <meta property="og:description" content="소상공인을 위한 마케팅 솔루션">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://oneblock.co.kr">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
     
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
     
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/common.css">
-    
-    <style>
-        /* ===== Page Specific Styles ===== */
-        
-        /* Problem Section */
-        .problem-list {
-            display: grid;
-            gap: 16px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .problem-item {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 20px 24px;
-            background: var(--red-bg);
-            border-radius: var(--radius-md);
-            border-left: 4px solid var(--red);
-        }
-        
-        .problem-item span {
-            font-size: 1.5rem;
-        }
-        
-        .problem-item p {
-            font-size: 1rem;
-            color: var(--gray-700);
-            font-weight: 500;
-        }
-        
-        /* Why Section */
-        .why-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-        
-        .why-text h2 {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 24px;
-            line-height: 1.4;
-        }
-        
-        .why-list {
-            list-style: none;
-        }
-        
-        .why-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 20px;
-            font-size: 1.05rem;
-            color: var(--gray-700);
-        }
-        
-        .why-list li::before {
-            content: "✓";
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 24px;
-            height: 24px;
-            background: var(--primary);
-            color: var(--white);
-            border-radius: 50%;
-            font-size: 0.8rem;
-            font-weight: bold;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-        
-        .why-card {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            padding: 40px;
-            border-radius: var(--radius-xl);
-            color: var(--white);
-            text-align: center;
-        }
-        
-        .why-card-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-        }
-        
-        .why-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--white);
-        }
-        
-        .why-card p {
-            font-size: 1rem;
-            opacity: 0.9;
-            line-height: 1.7;
-            color: var(--white);
-        }
-        
-        /* Free Section */
-        .free-card .value {
-            display: inline-block;
-            margin-top: 16px;
-            padding: 8px 16px;
-            background: var(--yellow-bg);
-            border-radius: var(--radius-sm);
-            font-size: 0.85rem;
-            color: #92400E;
-            font-weight: 600;
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            padding: 100px 24px;
-            background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 100%);
-            text-align: center;
-        }
-        
-        .cta-section h2 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--white);
-            margin-bottom: 16px;
-        }
-        
-        .cta-section p {
-            font-size: 1.15rem;
-            color: var(--gray-300);
-            margin-bottom: 40px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        @media (max-width: 768px) {
-            .why-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .why-card {
-                order: -1;
-            }
-            
-            .cta-section h2 {
-                font-size: 1.6rem;
-            }
-        }
-    </style>
 </head>
 <body>
-
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">ONE<span>BLOCK</span></a>
+            <a href="./" class="nav-logo">
+                <span class="logo-one">ONE</span><span class="logo-block">BLOCK</span>
+            </a>
             
-            <div class="nav-menu">
-                <a href="services/keyword.html" class="nav-link">서비스</a>
-                <a href="pricing/" class="nav-link">요금</a>
-                <a href="ebook/" class="nav-link">전자책</a>
-                <a href="about/" class="nav-link">소개</a>
-                <a href="https://open.kakao.com/o/sL5miBAg" class="nav-cta" target="_blank">1:1 상담</a>
-            </div>
+            <button class="nav-toggle" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             
-            <div class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <ul class="nav-menu">
+                <li class="nav-item has-dropdown">
+                    <a href="services/keyword.html" class="nav-link">서비스</a>
+                    <ul class="nav-dropdown">
+                        <li><a href="services/keyword.html">키워드 분석</a></li>
+                        <li><a href="services/click-guard.html">부정클릭 방어</a></li>
+                        <li><a href="services/competitor.html">경쟁사 분석</a></li>
+                        <li><a href="services/blog-seo.html">블로그 상위노출</a></li>
+                        <li><a href="services/place.html">플레이스 관리</a></li>
+                        <li><a href="services/ads.html">광고 대행</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="pricing/" class="nav-link">요금</a></li>
+                <li class="nav-item"><a href="ebook/" class="nav-link">무료 전자책</a></li>
+                <li class="nav-item"><a href="about/" class="nav-link">소개</a></li>
+            </ul>
+            
+            <a href="contact/" class="nav-cta btn btn-primary">무료 상담</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-container animate-fadeInUp">
-            <span class="badge badge-primary mb-3">🧱 자영업 20년 노하우</span>
-            <h1>
-                광고비만 나가고<br>
-                <span class="highlight">효과 없으셨죠?</span>
-            </h1>
-            <p>
-                직접 장사해본 사람만 압니다.<br>
-                소상공인 마케팅, 이제 원블럭이 함께합니다.
-            </p>
-            <div class="btn-group btn-group-center">
-                <a href="http://pf.kakao.com/_ZGjYn" class="btn btn-primary" target="_blank">
-                    💬 카카오 채널 추가
-                </a>
-                <a href="https://open.kakao.com/o/g56hVlTh" class="btn btn-secondary" target="_blank">
-                    👥 오픈채팅 참여
-                </a>
+        <div class="container">
+            <div class="hero-content fade-in-up">
+                <span class="hero-badge">자영업 20년 노하우</span>
+                <h1 class="hero-title">
+                    마케팅의 첫 블럭,<br>
+                    <span class="highlight">원블럭</span>
+                </h1>
+                <p class="hero-desc">
+                    무작정 광고비만 쓰지 마세요.<br>
+                    데이터로 시작하고, 성과로 증명합니다.
+                </p>
+                <div class="hero-buttons">
+                    <a href="contact/" class="btn btn-primary btn-lg">무료 상담 받기</a>
+                    <a href="ebook/" class="btn btn-outline btn-lg">무료 전자책 받기</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">20년</span>
+                        <span class="stat-label">자영업 경험</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">상담 진행</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">30%↓</span>
+                        <span class="stat-label">평균 비용 절감</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Problem Section -->
-    <section class="section bg-white">
-        <div class="container container-narrow">
-            <h2 class="section-title">이런 고민 있으시죠?</h2>
-            <p class="section-subtitle">혼자 해결하기 어려운 마케팅 문제들</p>
+    <section class="section section-gray">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">이런 고민, 있으시죠?</h2>
+                <p class="section-desc">소상공인이라면 누구나 겪는 마케팅 고민들</p>
+            </div>
             
-            <div class="problem-list">
-                <div class="problem-item">
-                    <span>😤</span>
-                    <p>블로그 글 써도 검색에 안 나와요</p>
+            <div class="problem-grid">
+                <div class="problem-card fade-in-up stagger-1">
+                    <div class="problem-icon">💸</div>
+                    <h3>광고비는 나가는데<br>효과를 모르겠어요</h3>
                 </div>
-                <div class="problem-item">
-                    <span>💸</span>
-                    <p>광고비는 나가는데 문의가 없어요</p>
+                <div class="problem-card fade-in-up stagger-2">
+                    <div class="problem-icon">🔍</div>
+                    <h3>어떤 키워드가<br>좋은지 모르겠어요</h3>
                 </div>
-                <div class="problem-item">
-                    <span>😡</span>
-                    <p>경쟁사가 부정클릭 하는 것 같아요</p>
+                <div class="problem-card fade-in-up stagger-3">
+                    <div class="problem-icon">😤</div>
+                    <h3>경쟁업체가 뭘 하는지<br>궁금해요</h3>
                 </div>
-                <div class="problem-item">
-                    <span>🤷</span>
-                    <p>뭐부터 해야 할지 모르겠어요</p>
+                <div class="problem-card fade-in-up stagger-4">
+                    <div class="problem-icon">🤖</div>
+                    <h3>부정클릭 당하는 것<br>같아요</h3>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section class="section bg-gray">
+    <section class="section">
         <div class="container">
-            <h2 class="section-title">원블럭 서비스</h2>
-            <p class="section-subtitle">마케팅의 첫 블럭부터 함께 쌓아갑니다</p>
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">원블럭이 해결합니다</h2>
+                <p class="section-desc">복잡한 마케팅, 쉽고 투명하게</p>
+            </div>
             
-            <div class="card-grid stagger">
-                <div class="card">
-                    <div class="card-icon">🔍</div>
-                    <h3 class="card-title">키워드 분석</h3>
-                    <p class="card-text">검색량, 경쟁강도, 광고비용까지<br>카카오톡으로 바로 분석해드립니다.</p>
-                    <span class="card-tag">카카오 챗봇</span>
-                </div>
+            <div class="services-grid">
+                <a href="services/keyword.html" class="service-card fade-in-up stagger-1">
+                    <div class="service-icon">🔑</div>
+                    <h3>키워드 분석</h3>
+                    <p>검색량, 경쟁강도, 광고비를 한눈에. AI가 분석해드립니다.</p>
+                    <span class="service-price">무료 체험 가능</span>
+                </a>
                 
-                <div class="card">
-                    <div class="card-icon">🛡️</div>
-                    <h3 class="card-title">부정클릭 모니터링</h3>
-                    <p class="card-text">경쟁사 부정클릭 실시간 감지<br>환불 증거까지 자동 수집합니다.</p>
-                    <span class="card-tag">실시간 알림</span>
-                </div>
+                <a href="services/click-guard.html" class="service-card fade-in-up stagger-2">
+                    <div class="service-icon">🛡️</div>
+                    <h3>부정클릭 방어</h3>
+                    <p>의심스러운 클릭을 실시간 감지하고 즉시 알려드립니다.</p>
+                    <span class="service-price">월 19,900원~</span>
+                </a>
                 
-                <div class="card">
-                    <div class="card-icon">📊</div>
-                    <h3 class="card-title">경쟁사 분석</h3>
-                    <p class="card-text">경쟁 업체 리뷰, 키워드, 전략을<br>한눈에 파악할 수 있습니다.</p>
-                    <span class="card-tag">리포트 제공</span>
-                </div>
+                <a href="services/competitor.html" class="service-card fade-in-up stagger-3">
+                    <div class="service-icon">👀</div>
+                    <h3>경쟁사 분석</h3>
+                    <p>경쟁업체 리뷰와 키워드 전략을 분석해드립니다.</p>
+                    <span class="service-price">33,000원/회</span>
+                </a>
                 
-                <div class="card">
-                    <div class="card-icon accent">📝</div>
-                    <h3 class="card-title">블로그 상위노출</h3>
-                    <p class="card-text">검색 상위에 노출되는<br>블로그 포스팅 비법을 알려드립니다.</p>
-                    <span class="card-tag">노하우 전수</span>
-                </div>
+                <a href="services/blog-seo.html" class="service-card fade-in-up stagger-4">
+                    <div class="service-icon">📝</div>
+                    <h3>블로그 상위노출</h3>
+                    <p>원하는 키워드로 블로그 상위노출을 관리합니다.</p>
+                    <span class="service-price">월 200,000원~</span>
+                </a>
                 
-                <div class="card">
-                    <div class="card-icon accent">📍</div>
-                    <h3 class="card-title">플레이스 순위 관리</h3>
-                    <p class="card-text">네이버 플레이스 순위 상승<br>트래픽 관리까지 해드립니다.</p>
-                    <span class="card-tag">순위 상승</span>
-                </div>
+                <a href="services/place.html" class="service-card fade-in-up stagger-5">
+                    <div class="service-icon">📍</div>
+                    <h3>플레이스 관리</h3>
+                    <p>네이버 플레이스 순위를 올리고 유지합니다.</p>
+                    <span class="service-price">월 200,000원~</span>
+                </a>
                 
-                <div class="card">
-                    <div class="card-icon">📢</div>
-                    <h3 class="card-title">광고 대행</h3>
-                    <p class="card-text">네이버, 구글, 인스타그램<br>광고 세팅부터 관리까지.</p>
-                    <span class="card-tag">통합 관리</span>
-                </div>
+                <a href="services/ads.html" class="service-card fade-in-up stagger-6">
+                    <div class="service-icon">📢</div>
+                    <h3>광고 대행</h3>
+                    <p>네이버, 카카오 광고를 효율적으로 운영합니다.</p>
+                    <span class="service-price">광고비의 10~15%</span>
+                </a>
+            </div>
+            
+            <div class="section-cta fade-in-up">
+                <a href="pricing/" class="btn btn-primary btn-lg">전체 요금표 보기</a>
             </div>
         </div>
     </section>
 
     <!-- Why Section -->
-    <section class="section bg-white">
+    <section class="section section-primary">
         <div class="container">
-            <div class="why-content">
-                <div class="why-text">
-                    <h2>
-                        왜 <span class="text-primary">원블럭</span>인가요?
-                    </h2>
-                    <ul class="why-list">
-                        <li>자영업 20년, 직접 장사해본 경험</li>
-                        <li>대행사가 아닌, 사장님 입장에서 생각</li>
-                        <li>100페이지 마케팅 전자책 직접 집필</li>
-                        <li>광고비 아끼는 실전 노하우 보유</li>
-                        <li>카카오톡으로 편하게 소통</li>
-                    </ul>
-                </div>
-                <div class="why-card">
-                    <div class="why-card-icon">🧱</div>
-                    <h3>모든 성공은<br>첫 번째 블럭부터</h3>
-                    <p>
-                        화려한 마케팅 전에<br>
-                        기초부터 탄탄하게.<br>
-                        원블럭이 함께합니다.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Free Section -->
-    <section class="section bg-accent-light">
-        <div class="container container-narrow text-center">
-            <span class="badge badge-accent mb-3">🎁 무료 혜택</span>
-            <h2 class="section-title">지금 바로 받아가세요</h2>
-            <p class="section-subtitle">오픈채팅 참여하시면 무료로 드립니다</p>
-            
-            <div class="card-grid-2 mb-5">
-                <div class="card free-card text-center">
-                    <div style="font-size: 3rem; margin-bottom: 16px;">📚</div>
-                    <h3 class="card-title">마케팅 전자책</h3>
-                    <p class="card-text">100페이지 분량의<br>소상공인 마케팅 가이드</p>
-                    <span class="value">정가 99,000원 상당</span>
-                </div>
-                <div class="card free-card text-center">
-                    <div style="font-size: 3rem; margin-bottom: 16px;">👥</div>
-                    <h3 class="card-title">마케팅 커뮤니티</h3>
-                    <p class="card-text">사장님들과 함께하는<br>정보 공유 오픈채팅방</p>
-                    <span class="value">무료 참여</span>
-                </div>
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">왜 원블럭인가요?</h2>
             </div>
             
-            <a href="https://open.kakao.com/o/g56hVlTh" class="btn btn-accent" target="_blank">
-                👥 오픈채팅 참여하고 전자책 받기
-            </a>
+            <div class="why-grid">
+                <div class="why-card fade-in-up stagger-1">
+                    <div class="why-number">01</div>
+                    <h3>자영업 20년 경험</h3>
+                    <p>직접 장사해본 사람만 아는 현장의 고민을 압니다.</p>
+                </div>
+                <div class="why-card fade-in-up stagger-2">
+                    <div class="why-number">02</div>
+                    <h3>투명한 리포트</h3>
+                    <p>무슨 일을 했는지, 효과가 있는지 매주 보고드립니다.</p>
+                </div>
+                <div class="why-card fade-in-up stagger-3">
+                    <div class="why-number">03</div>
+                    <h3>합리적인 가격</h3>
+                    <p>대행사 마진 없이, 실제 효과에 집중합니다.</p>
+                </div>
+                <div class="why-card fade-in-up stagger-4">
+                    <div class="why-number">04</div>
+                    <h3>1:1 밀착 관리</h3>
+                    <p>담당자가 바뀌지 않습니다. 처음부터 끝까지 함께합니다.</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
+    <section class="section">
         <div class="container">
-            <h2>마케팅, 어디서부터 시작할지<br>막막하신가요?</h2>
-            <p>원블럭이 첫 블럭부터 함께 쌓아드립니다.<br>부담 없이 상담받아보세요.</p>
-            
-            <div class="btn-group btn-group-center">
-                <a href="http://pf.kakao.com/_ZGjYn" class="btn btn-primary" target="_blank">
-                    💬 카카오 채널 추가
-                </a>
-                <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-outline-white" target="_blank">
-                    🗣️ 1:1 상담하기
-                </a>
+            <div class="cta-box fade-in-up">
+                <h2>지금 바로 시작하세요</h2>
+                <p>무료 상담으로 현재 마케팅 상태를 점검받으세요</p>
+                <div class="cta-buttons">
+                    <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-kakao btn-lg" target="_blank">
+                        카카오톡 1:1 상담
+                    </a>
+                    <a href="ebook/" class="btn btn-outline btn-lg">
+                        무료 전자책 먼저 받기
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer footer-simple">
-        <div class="footer-logo">ONE<span>BLOCK</span></div>
-        <div class="footer-simple-links">
-            <a href="http://pf.kakao.com/_ZGjYn" target="_blank">카카오 채널</a>
-            <a href="https://open.kakao.com/o/g56hVlTh" target="_blank">오픈채팅</a>
-            <a href="https://open.kakao.com/o/sL5miBAg" target="_blank">1:1 상담</a>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="./" class="footer-logo">
+                        <span class="logo-one">ONE</span><span class="logo-block">BLOCK</span>
+                    </a>
+                    <p>마케팅의 첫 블럭, 원블럭<br>모든 성공은 첫 번째 블럭부터</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>서비스</h4>
+                    <ul>
+                        <li><a href="services/keyword.html">키워드 분석</a></li>
+                        <li><a href="services/click-guard.html">부정클릭 방어</a></li>
+                        <li><a href="services/competitor.html">경쟁사 분석</a></li>
+                        <li><a href="services/blog-seo.html">블로그 상위노출</a></li>
+                        <li><a href="services/place.html">플레이스 관리</a></li>
+                        <li><a href="services/ads.html">광고 대행</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>정보</h4>
+                    <ul>
+                        <li><a href="pricing/">요금표</a></li>
+                        <li><a href="ebook/">무료 전자책</a></li>
+                        <li><a href="about/">회사 소개</a></li>
+                        <li><a href="contact/">문의하기</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>문의</h4>
+                    <ul>
+                        <li>
+                            <a href="http://pf.kakao.com/_ZGjYn" target="_blank">카카오 채널</a>
+                        </li>
+                        <li>
+                            <a href="https://open.kakao.com/o/sL5miBAg" target="_blank">1:1 상담</a>
+                        </li>
+                        <li>
+                            <a href="https://open.kakao.com/o/g56hVlTh" target="_blank">오픈채팅</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 원블럭. All rights reserved.</p>
+            </div>
         </div>
-        <p class="footer-copy">© <span class="current-year">2024</span> ONEBLOCK. All rights reserved.</p>
     </footer>
 
-    <!-- Scripts -->
     <script src="assets/js/common.js"></script>
-
 </body>
 </html>
