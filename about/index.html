@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소개 - 원블럭</title>
+    <meta name="description" content="자영업 20년 경험을 바탕으로 소상공인 마케팅을 돕습니다. 원블럭을 소개합니다.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>">
+    
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/common.css">
+    
+    <style>
+        /* ===== About Page Styles ===== */
+        
+        /* Hero */
+        .about-hero {
+            padding: 140px 24px 80px;
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--white) 100%);
+            text-align: center;
+        }
+        
+        .about-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        
+        .about-hero h1 span {
+            color: var(--primary);
+        }
+        
+        .about-hero p {
+            font-size: 1.15rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Story Section */
+        .story-section {
+            padding: 80px 24px;
+            background: var(--white);
+        }
+        
+        .story-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .story-intro {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .story-intro .quote {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+        
+        .story-intro .quote span {
+            color: var(--primary);
+        }
+        
+        .story-content {
+            display: grid;
+            gap: 40px;
+        }
+        
+        .story-block {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+        
+        .story-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--primary-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .story-text h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--gray-900);
+        }
+        
+        .story-text p {
+            color: var(--gray-600);
+            line-height: 1.8;
+        }
+        
+        /* Brand Section */
+        .brand-section {
+            padding: 80px 24px;
+            background: var(--gray-900);
+            color: var(--white);
+        }
+        
+        .brand-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .brand-logo {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        
+        .brand-logo span {
+            color: var(--primary-light);
+        }
+        
+        .brand-tagline {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: var(--gray-300);
+        }
+        
+        .brand-meaning {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            text-align: center;
+        }
+        
+        .meaning-item {
+            padding: 24px;
+            background: rgba(255,255,255,0.05);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .meaning-word {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-light);
+            margin-bottom: 8px;
+        }
+        
+        .meaning-desc {
+            font-size: 0.95rem;
+            color: var(--gray-400);
+            line-height: 1.6;
+        }
+        
+        /* Values Section */
+        .values-section {
+            padding: 80px 24px;
+            background: var(--white);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .value-card {
+            padding: 32px;
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            transition: all var(--transition-normal);
+            border: 2px solid transparent;
+        }
+        
+        .value-card:hover {
+            background: var(--white);
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .value-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 20px;
+        }
+        
+        .value-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--gray-900);
+        }
+        
+        .value-desc {
+            font-size: 0.95rem;
+            color: var(--gray-500);
+            line-height: 1.7;
+        }
+        
+        /* Experience Section */
+        .experience-section {
+            padding: 80px 24px;
+            background: var(--gray-100);
+        }
+        
+        .experience-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+        
+        .exp-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .exp-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        
+        .exp-label {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+        }
+        
+        .experience-list {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .experience-list h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--gray-900);
+        }
+        
+        .exp-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+        }
+        
+        .exp-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+        }
+        
+        .exp-item::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .exp-item span {
+            color: var(--gray-700);
+            font-size: 0.95rem;
+        }
+        
+        /* Promise Section */
+        .promise-section {
+            padding: 80px 24px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .promise-section h2 {
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+        
+        .promise-section > .container > p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+        
+        .promise-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+        
+        .promise-item {
+            background: rgba(255,255,255,0.1);
+            padding: 24px;
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .promise-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--white);
+        }
+        
+        .promise-item p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        /* CTA */
+        .about-cta {
+            padding: 80px 24px;
+            background: var(--gray-100);
+            text-align: center;
+        }
+        
+        .about-cta h2 {
+            margin-bottom: 16px;
+        }
+        
+        .about-cta p {
+            color: var(--gray-600);
+            margin-bottom: 32px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .story-intro .quote {
+                font-size: 1.4rem;
+            }
+            
+            .story-block {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .story-icon {
+                margin: 0 auto;
+            }
+            
+            .brand-logo {
+                font-size: 2.5rem;
+            }
+            
+            .brand-tagline {
+                font-size: 1.2rem;
+            }
+            
+            .exp-number {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">ONE<span>BLOCK</span></a>
+            
+            <div class="nav-menu">
+                <a href="/services/keyword.html" class="nav-link">서비스</a>
+                <a href="/pricing/" class="nav-link">요금</a>
+                <a href="/ebook/" class="nav-link">전자책</a>
+                <a href="/about/" class="nav-link">소개</a>
+                <a href="https://open.kakao.com/o/sL5miBAg" class="nav-cta" target="_blank">1:1 상담</a>
+            </div>
+            
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>모든 성공은<br><span>첫 번째 블럭</span>부터</h1>
+            <p>자영업 20년, 직접 장사해본 사람이<br>소상공인 마케팅을 돕습니다.</p>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="story-container">
+            <div class="story-intro">
+                <p class="quote">
+                    "대행사에 맡겼는데<br>
+                    <span>왜 효과가 없을까요?</span>"
+                </p>
+                <p class="text-muted">
+                    20년간 직접 장사하면서 느꼈습니다.<br>
+                    사장님 입장을 모르면 마케팅도 못합니다.
+                </p>
+            </div>
+            
+            <div class="story-content">
+                <div class="story-block">
+                    <div class="story-icon">🏪</div>
+                    <div class="story-text">
+                        <h3>20년간 직접 운영했습니다</h3>
+                        <p>
+                            화려한 이론이 아닙니다. 직접 가게 문 열고, 손님 맞이하고, 
+                            월세 내면서 장사했습니다. 광고비 태우면서 속상했던 경험, 
+                            경쟁사에 손님 뺏기던 경험, 다 해봤습니다.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="story-block">
+                    <div class="story-icon">💡</div>
+                    <div class="story-text">
+                        <h3>그래서 시작했습니다</h3>
+                        <p>
+                            대행사에 맡겨도 효과 없고, 혼자 하려니 막막하고. 
+                            그런 사장님들 많이 봤습니다. 제가 20년간 터득한 노하우를 
+                            나누면 도움이 되겠다 싶었습니다.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="story-block">
+                    <div class="story-icon">🤝</div>
+                    <div class="story-text">
+                        <h3>사장님 편에서 생각합니다</h3>
+                        <p>
+                            비싼 패키지 팔려고 하지 않습니다. 꼭 필요한 것만 추천하고, 
+                            혼자 할 수 있는 건 방법을 알려드립니다. 
+                            사장님이 잘 되어야 저도 잘 됩니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Section -->
+    <section class="brand-section">
+        <div class="brand-container">
+            <div class="brand-logo">ONE<span>BLOCK</span></div>
+            <p class="brand-tagline">마케팅의 첫 블럭, 원블럭</p>
+            
+            <div class="brand-meaning">
+                <div class="meaning-item">
+                    <div class="meaning-word">ONE</div>
+                    <div class="meaning-desc">
+                        하나, 첫 번째<br>
+                        모든 시작은 1부터
+                    </div>
+                </div>
+                <div class="meaning-item">
+                    <div class="meaning-word">WIN</div>
+                    <div class="meaning-desc">
+                        이기다, 승리<br>
+                        사장님의 성공을 돕습니다
+                    </div>
+                </div>
+                <div class="meaning-item">
+                    <div class="meaning-word">₩</div>
+                    <div class="meaning-desc">
+                        원(원화)<br>
+                        광고비 아끼고 매출 올리고
+                    </div>
+                </div>
+                <div class="meaning-item">
+                    <div class="meaning-word">BLOCK</div>
+                    <div class="meaning-desc">
+                        블럭, 기초<br>
+                        차근차근 쌓아가는 마케팅
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title">원블럭이 중요하게 생각하는 것</h2>
+            <p class="section-subtitle">이 가치는 절대 타협하지 않습니다</p>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">💬</div>
+                    <div class="value-title">솔직함</div>
+                    <div class="value-desc">
+                        안 되는 건 안 된다고 말합니다.<br>
+                        가능성 없는 서비스 권하지 않습니다.<br>
+                        결과 없으면 솔직하게 인정합니다.
+                    </div>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">🎯</div>
+                    <div class="value-title">실용주의</div>
+                    <div class="value-desc">
+                        이론보다 실전입니다.<br>
+                        당장 써먹을 수 있는 것만 알려드립니다.<br>
+                        복잡한 건 쉽게 풀어드립니다.
+                    </div>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <div class="value-title">동반 성장</div>
+                    <div class="value-desc">
+                        한 번 팔고 끝이 아닙니다.<br>
+                        사장님이 잘 되어야 저도 잘 됩니다.<br>
+                        장기적 관계를 추구합니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience-section">
+        <div class="experience-container">
+            <h2 class="section-title">경험과 역량</h2>
+            <p class="section-subtitle">숫자로 보는 원블럭</p>
+            
+            <div class="experience-grid">
+                <div class="exp-card">
+                    <div class="exp-number">20+</div>
+                    <div class="exp-label">자영업 경력 (년)</div>
+                </div>
+                <div class="exp-card">
+                    <div class="exp-number">100+</div>
+                    <div class="exp-label">전자책 페이지</div>
+                </div>
+                <div class="exp-card">
+                    <div class="exp-number">6</div>
+                    <div class="exp-label">전문 서비스</div>
+                </div>
+                <div class="exp-card">
+                    <div class="exp-number">24/7</div>
+                    <div class="exp-label">카카오톡 상담</div>
+                </div>
+            </div>
+            
+            <div class="experience-list">
+                <h3>보유 역량</h3>
+                <div class="exp-items">
+                    <div class="exp-item">
+                        <span>네이버 블로그 상위노출</span>
+                    </div>
+                    <div class="exp-item">
+                        <span>네이버 플레이스 순위 관리</span>
+                    </div>
+                    <div class="exp-item">
+                        <span>키워드 분석 및 전략 수립</span>
+                    </div>
+                    <div class="exp-item">
+                        <span>부정클릭 모니터링 시스템</span>
+                    </div>
+                    <div class="exp-item">
+                        <span>경쟁사 분석 및 리포팅</span>
+                    </div>
+                    <div class="exp-item">
+                        <span>네이버/구글/인스타 광고 대행</span>
+                    </div>
+                    <div class="exp-item">
+                        <span>트래픽 관리 및 최적화</span>
+                    </div>
+                    <div class="exp-item">
+                        <span>마케팅 컨설팅 및 교육</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promise Section -->
+    <section class="promise-section">
+        <div class="container">
+            <h2 class="section-title">원블럭의 약속</h2>
+            <p>사장님께 드리는 약속입니다</p>
+            
+            <div class="promise-list">
+                <div class="promise-item">
+                    <h4>🙅 과장 광고 안 합니다</h4>
+                    <p>"무조건 1등 만들어드립니다" 같은 말 안 합니다. 현실적으로 가능한 목표를 세웁니다.</p>
+                </div>
+                <div class="promise-item">
+                    <h4>💰 불필요한 비용 안 받습니다</h4>
+                    <p>필요 없는 서비스 권하지 않습니다. 꼭 필요한 것만 추천합니다.</p>
+                </div>
+                <div class="promise-item">
+                    <h4>📞 연락 잘 됩니다</h4>
+                    <p>카카오톡 상담 빠르게 답변드립니다. 연락 두절? 절대 없습니다.</p>
+                </div>
+                <div class="promise-item">
+                    <h4>📊 결과로 보여드립니다</h4>
+                    <p>숫자로 증명합니다. 효과 없으면 솔직하게 말씀드리고 방향을 바꿉니다.</p>
+                </div>
+            </div>
+            
+            <a href="https://open.kakao.com/o/sL5miBAg" class="btn" style="background: white; color: var(--primary);" target="_blank">
+                1:1 상담하기
+            </a>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="about-cta">
+        <div class="container">
+            <h2>마케팅, 함께 시작해볼까요?</h2>
+            <p>첫 블럭부터 함께 쌓아가겠습니다.</p>
+            
+            <div class="btn-group btn-group-center">
+                <a href="http://pf.kakao.com/_ZGjYn" class="btn btn-primary" target="_blank">
+                    💬 카카오 채널 추가
+                </a>
+                <a href="https://open.kakao.com/o/g56hVlTh" class="btn btn-secondary" target="_blank">
+                    👥 오픈채팅 참여
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer footer-simple">
+        <div class="footer-logo">ONE<span>BLOCK</span></div>
+        <div class="footer-simple-links">
+            <a href="/">홈</a>
+            <a href="/pricing/">요금</a>
+            <a href="/ebook/">전자책</a>
+            <a href="http://pf.kakao.com/_ZGjYn" target="_blank">카카오 채널</a>
+            <a href="https://open.kakao.com/o/sL5miBAg" target="_blank">1:1 상담</a>
+        </div>
+        <p class="footer-copy">© <span class="current-year">2024</span> ONEBLOCK. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/common.js"></script>
+
+</body>
+</html>
