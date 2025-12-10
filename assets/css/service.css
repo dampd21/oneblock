@@ -1,0 +1,1099 @@
+/**
+ * 원블럭(ONEBLOCK) 서비스 상세 페이지 스타일
+ * 파일 위치: assets/css/service.css
+ * 
+ * 사용처:
+ * - services/place.html
+ * - services/adfraud.html
+ * - services/blog-review.html
+ * - services/competitor.html
+ * - services/keyword.html
+ * - services/ads.html
+ */
+
+/* ===================================
+   1. 서비스 히어로 섹션
+   =================================== */
+
+.service-hero {
+    padding: 120px 0 80px;
+    background: linear-gradient(135deg, var(--primary) 0%, #1d4ed8 100%);
+    color: var(--white);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+}
+
+.service-hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.service-hero__badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    backdrop-filter: blur(10px);
+}
+
+.service-hero__title {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.service-hero__subtitle {
+    font-size: 20px;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 32px;
+    line-height: 1.6;
+}
+
+.service-hero__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
+    background: var(--white);
+    color: var(--primary);
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-hero__cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ===================================
+   2. 문제 제기 섹션
+   =================================== */
+
+.service-problem {
+    padding: 100px 0;
+    background: var(--light);
+}
+
+.service-problem__header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.service-problem__title {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 16px;
+}
+
+.service-problem__title span {
+    color: var(--primary);
+}
+
+.service-problem__desc {
+    font-size: 18px;
+    color: var(--gray);
+}
+
+.problem-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.problem-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.problem-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.problem-item__icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fef2f2;
+    color: #ef4444;
+    border-radius: 12px;
+    font-size: 24px;
+}
+
+.problem-item__text {
+    font-size: 16px;
+    color: var(--dark);
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+/* ===================================
+   3. 솔루션 설명 섹션
+   =================================== */
+
+.service-solution {
+    padding: 100px 0;
+    background: var(--white);
+}
+
+.service-solution__header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.service-solution__title {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 16px;
+}
+
+.service-solution__title span {
+    color: var(--primary);
+}
+
+.service-solution__desc {
+    font-size: 18px;
+    color: var(--gray);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.solution-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.solution-image {
+    position: relative;
+}
+
+.solution-image img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.solution-image__badge {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    padding: 16px 24px;
+    background: var(--accent);
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(3, 199, 90, 0.3);
+}
+
+.solution-text h3 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 20px;
+}
+
+.solution-text p {
+    font-size: 17px;
+    color: var(--gray);
+    line-height: 1.8;
+    margin-bottom: 24px;
+}
+
+.solution-points {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.solution-points li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    font-size: 16px;
+    color: var(--dark);
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.solution-points li:last-child {
+    border-bottom: none;
+}
+
+.solution-points li::before {
+    content: '✓';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: #dcfce7;
+    color: #16a34a;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* ===================================
+   4. 특장점 섹션
+   =================================== */
+
+.service-features {
+    padding: 100px 0;
+    background: linear-gradient(180deg, var(--light) 0%, var(--white) 100%);
+}
+
+.service-features__header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.service-features__title {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 16px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* 4개 특장점일 때 2x2 그리드 */
+.features-grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    padding: 40px 32px;
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.feature-card:hover::before {
+    transform: scaleX(1);
+}
+
+.feature-card__icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(37, 99, 235, 0.05) 100%);
+    border-radius: 20px;
+    font-size: 36px;
+}
+
+.feature-card__title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 12px;
+}
+
+.feature-card__desc {
+    font-size: 15px;
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+/* ===================================
+   5. 프로세스 섹션
+   =================================== */
+
+.service-process {
+    padding: 100px 0;
+    background: var(--white);
+}
+
+.service-process__header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.service-process__title {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 16px;
+}
+
+.process-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.process-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%);
+    transform: translateX(-50%);
+    border-radius: 4px;
+}
+
+.process-step {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.process-step:last-child {
+    margin-bottom: 0;
+}
+
+.process-step:nth-child(odd) {
+    flex-direction: row;
+}
+
+.process-step:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.process-step__number {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    color: var(--white);
+    font-size: 24px;
+    font-weight: 800;
+    border-radius: 50%;
+    z-index: 1;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+}
+
+.process-step__content {
+    width: calc(50% - 60px);
+    padding: 24px;
+    background: var(--light);
+    border-radius: 12px;
+}
+
+.process-step:nth-child(odd) .process-step__content {
+    margin-right: auto;
+    text-align: right;
+}
+
+.process-step:nth-child(even) .process-step__content {
+    margin-left: auto;
+    text-align: left;
+}
+
+.process-step__title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+.process-step__desc {
+    font-size: 15px;
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* ===================================
+   6. 가격/패키지 섹션 (선택적)
+   =================================== */
+
+.service-pricing {
+    padding: 100px 0;
+    background: var(--light);
+}
+
+.service-pricing__header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.service-pricing__title {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 16px;
+}
+
+.service-pricing__desc {
+    font-size: 18px;
+    color: var(--gray);
+}
+
+.pricing-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.pricing-card {
+    padding: 40px 32px;
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+}
+
+.pricing-card--featured {
+    border: 3px solid var(--primary);
+    transform: scale(1.05);
+}
+
+.pricing-card--featured:hover {
+    transform: scale(1.05) translateY(-10px);
+}
+
+.pricing-card__badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 20px;
+    background: var(--primary);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 20px;
+}
+
+.pricing-card__name {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 16px;
+}
+
+.pricing-card__price {
+    margin-bottom: 24px;
+}
+
+.pricing-card__price .amount {
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.pricing-card__price .period {
+    font-size: 16px;
+    color: var(--gray);
+}
+
+.pricing-card__features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+    text-align: left;
+}
+
+.pricing-card__features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    font-size: 15px;
+    color: var(--dark);
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.pricing-card__features li:last-child {
+    border-bottom: none;
+}
+
+.pricing-card__features li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.pricing-card__cta {
+    display: block;
+    width: 100%;
+    padding: 14px 24px;
+    background: var(--primary);
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.pricing-card__cta:hover {
+    background: #1d4ed8;
+}
+
+/* ===================================
+   7. FAQ 섹션
+   =================================== */
+
+.service-faq {
+    padding: 100px 0;
+    background: var(--white);
+}
+
+.service-faq__header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.service-faq__title {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 16px;
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    margin-bottom: 16px;
+    background: var(--light);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.faq-item__question {
+    width: 100%;
+    padding: 24px;
+    background: transparent;
+    border: none;
+    text-align: left;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--dark);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.faq-item__question:hover {
+    background: rgba(37, 99, 235, 0.05);
+}
+
+.faq-item__question::after {
+    content: '+';
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--primary);
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-item__question::after {
+    transform: rotate(45deg);
+}
+
+.faq-item__answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-item.active .faq-item__answer {
+    max-height: 300px;
+}
+
+.faq-item__answer-inner {
+    padding: 0 24px 24px;
+    font-size: 15px;
+    color: var(--gray);
+    line-height: 1.8;
+}
+
+/* ===================================
+   8. CTA 섹션
+   =================================== */
+
+.service-cta {
+    padding: 100px 0;
+    background: linear-gradient(135deg, var(--primary) 0%, #1d4ed8 100%);
+    color: var(--white);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: pulse-bg 4s ease-in-out infinite;
+}
+
+@keyframes pulse-bg {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.service-cta .container {
+    position: relative;
+    z-index: 1;
+}
+
+.service-cta__title {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 16px;
+}
+
+.service-cta__desc {
+    font-size: 18px;
+    opacity: 0.9;
+    margin-bottom: 32px;
+}
+
+.service-cta__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.service-cta__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
+    font-size: 17px;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.service-cta__btn--primary {
+    background: var(--white);
+    color: var(--primary);
+}
+
+.service-cta__btn--primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.service-cta__btn--secondary {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--white);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.service-cta__btn--secondary:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* ===================================
+   9. 관련 서비스 섹션
+   =================================== */
+
+.related-services {
+    padding: 80px 0;
+    background: var(--light);
+}
+
+.related-services__header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.related-services__title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.related-services__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.related-service-card {
+    padding: 24px;
+    background: var(--white);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.related-service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.related-service-card__icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(37, 99, 235, 0.1);
+    border-radius: 12px;
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.related-service-card__title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+.related-service-card__desc {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.5;
+}
+
+/* ===================================
+   10. 반응형 (태블릿)
+   =================================== */
+
+@media (max-width: 1024px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .pricing-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .pricing-card--featured {
+        transform: none;
+    }
+    
+    .pricing-card--featured:hover {
+        transform: translateY(-10px);
+    }
+}
+
+/* ===================================
+   11. 반응형 (모바일)
+   =================================== */
+
+@media (max-width: 768px) {
+    /* 히어로 */
+    .service-hero {
+        padding: 100px 0 60px;
+    }
+    
+    .service-hero__title {
+        font-size: 32px;
+    }
+    
+    .service-hero__subtitle {
+        font-size: 17px;
+    }
+    
+    /* 문제 제기 */
+    .service-problem {
+        padding: 60px 0;
+    }
+    
+    .service-problem__title {
+        font-size: 28px;
+    }
+    
+    .problem-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    /* 솔루션 */
+    .service-solution {
+        padding: 60px 0;
+    }
+    
+    .service-solution__title {
+        font-size: 28px;
+    }
+    
+    .solution-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .solution-image {
+        order: -1;
+    }
+    
+    .solution-image__badge {
+        bottom: -10px;
+        right: 10px;
+        font-size: 14px;
+        padding: 12px 20px;
+    }
+    
+    /* 특장점 */
+    .service-features {
+        padding: 60px 0;
+    }
+    
+    .service-features__title {
+        font-size: 28px;
+    }
+    
+    .features-grid,
+    .features-grid--4 {
+        grid-template-columns: 1fr;
+    }
+    
+    .feature-card {
+        padding: 32px 24px;
+    }
+    
+    /* 프로세스 */
+    .service-process {
+        padding: 60px 0;
+    }
+    
+    .service-process__title {
+        font-size: 28px;
+    }
+    
+    .process-timeline::before {
+        left: 30px;
+    }
+    
+    .process-step,
+    .process-step:nth-child(odd),
+    .process-step:nth-child(even) {
+        flex-direction: row;
+        padding-left: 80px;
+    }
+    
+    .process-step__number {
+        left: 30px;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .process-step__content,
+    .process-step:nth-child(odd) .process-step__content,
+    .process-step:nth-child(even) .process-step__content {
+        width: 100%;
+        margin: 0;
+        text-align: left;
+    }
+    
+    /* 가격 */
+    .service-pricing {
+        padding: 60px 0;
+    }
+    
+    .pricing-cards {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+    
+    /* FAQ */
+    .service-faq {
+        padding: 60px 0;
+    }
+    
+    .service-faq__title {
+        font-size: 28px;
+    }
+    
+    .faq-item__question {
+        font-size: 16px;
+        padding: 20px;
+    }
+    
+    /* CTA */
+    .service-cta {
+        padding: 60px 0;
+    }
+    
+    .service-cta__title {
+        font-size: 28px;
+    }
+    
+    .service-cta__buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .service-cta__btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+    
+    /* 관련 서비스 */
+    .related-services {
+        padding: 60px 0;
+    }
+    
+    .related-services__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===================================
+   12. 유틸리티 클래스 (서비스 전용)
+   =================================== */
+
+.service-section-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--dark);
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.service-section-desc {
+    font-size: 18px;
+    color: var(--gray);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 60px;
+}
+
+/* 하이라이트 박스 */
+.highlight-box {
+    padding: 24px;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(3, 199, 90, 0.05) 100%);
+    border-left: 4px solid var(--primary);
+    border-radius: 0 12px 12px 0;
+    margin: 24px 0;
+}
+
+.highlight-box__title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+.highlight-box__text {
+    font-size: 15px;
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+/* 통계 박스 */
+.stats-inline {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 40px 0;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-item__number {
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1;
+}
+
+.stat-item__label {
+    font-size: 15px;
+    color: var(--gray);
+    margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+    .stats-inline {
+        flex-direction: column;
+        gap: 24px;
+    }
+    
+    .stat-item__number {
+        font-size: 36px;
+    }
+}
