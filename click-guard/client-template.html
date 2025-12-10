@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>잠시만 기다려주세요...</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .loader-container {
+            text-align: center;
+            color: white;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loader-text {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .loader-subtext {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="loader-container">
+        <div class="spinner"></div>
+        <p class="loader-text">페이지로 이동 중입니다...</p>
+        <p class="loader-subtext">잠시만 기다려주세요</p>
+    </div>
+
+    <script>
+    (function() {
+        // ============================================
+        // 🔧 광고주별 설정 (이 부분만 수정)
+        // ============================================
+        const CONFIG = {
+            // 광고주 식별자 (영문, 숫자만)
+            clientId: 'demo_client',
+            
+            // 최종 랜딩 페이지 URL
+            targetUrl: 'https://example.com/landing',
+            
+            // Google Apps Script 웹앱 URL
+            scriptUrl: 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec',
+            
+            // 부정클릭 판단 기준
+            thresholds: {
+                // 같은 IP에서 N회 이상 클릭 시 의심
+                maxClicksPerIp: 3,
+                // 같은 기기에서 N회 이상 클릭 시 의심  
+                maxClicksPerDevice: 5,
+                // 체류시간 N초 미만 시 의심
+                minStaySeconds: 2
+            }
+        };
+        // ============================================
+
+        // 페이지 로드 시간
+        const pageLoadTime = Date.now();
+
+        // 브라우저 핑거프린트 생성
+        function generateFingerprint() {
+            const components = [
+                navigator.userAgent,
+                navigator.language,
+                screen.width + 'x' + screen.height,
+                screen.colorDepth,
+                new Date().getTimezoneOffset(),
+                navigator.hardwareConcurrency || 'unknown',
+                navigator.deviceMemory || 'unknown',
+                navigator.platform
+            ];
+            
+            // 간단한 해시 생성
+            let hash = 0;
+            const str = components.join('|');
+            for (let i = 0; i < str.length; i++) {
+                const char = str.charCodeAt(i);
+                hash = ((hash << 5) - hash) + char;
+                hash = hash & hash;
+            }
+            return Math.abs(hash).toString(16);
+        }
+
+        // URL 파라미터 파싱
+        function getUrlParams() {
+            const params = {};
+            const searchParams = new URLSearchParams(window.location.search);
+            for (const [key, value] of searchParams) {
+                params[key] = value;
+            }
+            return params;
+        }
+
+        // 클릭 데이터 수집
+        function collectClickData() {
+            const urlParams = getUrlParams();
+            
+            return {
+                // 기본 정보
+                clientId: CONFIG.clientId,
+                timestamp: new Date().toISOString(),
+                
+                // 브라우저/기기 정보
+                fingerprint: generateFingerprint(),
+                userAgent: navigator.userAgent,
+                language: navigator.language,
+                platform: navigator.platform,
+                screenResolution: screen.width + 'x' + screen.height,
+                colorDepth: screen.colorDepth,
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                
+                // 방문 정보
+                referrer: document.referrer || 'direct',
+                currentUrl: window.location.href,
+                
+                // 광고 파라미터 (네이버/카카오 등)
+                adParams: {
+                    // 네이버 검색광고
+                    n_media: urlParams.n_media || '',
+                    n_query: urlParams.n_query || '',
+                    n_rank: urlParams.n_rank || '',
+                    n_ad_group: urlParams.n_ad_group || '',
+                    n_ad: urlParams.n_ad || '',
+                    n_keyword_id: urlParams.n_keyword_id || '',
+                    n_keyword: urlParams.n_keyword || '',
+                    n_campaign_type: urlParams.n_campaign_type || '',
+                    n_ad_group_type: urlParams.n_ad_group_type || '',
+                    
+                    // UTM 파라미터
+                    utm_source: urlParams.utm_source || '',
+                    utm_medium: urlParams.utm_medium || '',
+                    utm_campaign: urlParams.utm_campaign || '',
+                    utm_content: urlParams.utm_content || '',
+                    utm_term: urlParams.utm_term || '',
+                    
+                    // 기타 파라미터
+                    gclid: urlParams.gclid || '',  // Google
+                    fbclid: urlParams.fbclid || '', // Facebook
+                    kakao_id: urlParams.kakao_id || '' // Kakao
+                },
+                
+                // 판단 기준
+                thresholds: CONFIG.thresholds
+            };
+        }
+
+        // 데이터 전송
+        function sendData(data) {
+            // Beacon API 사용 (페이지 이동 시에도 전송 보장)
+            const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+            
+            if (navigator.sendBeacon) {
+                navigator.sendBeacon(CONFIG.scriptUrl, blob);
+            } else {
+                // Fallback: fetch
+                fetch(CONFIG.scriptUrl, {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: { 'Content-Type': 'application/json' },
+                    keepalive: true
+                }).catch(() => {});
+            }
+        }
+
+        // 체류시간 측정 후 리다이렉트
+        function redirectWithDelay() {
+            const stayTime = (Date.now() - pageLoadTime) / 1000;
+            const data = collectClickData();
+            data.stayTimeSeconds = stayTime;
+            
+            // 데이터 전송
+            sendData(data);
+            
+            // 최종 페이지로 리다이렉트
+            setTimeout(function() {
+                window.location.href = CONFIG.targetUrl;
+            }, 100);
+        }
+
+        // 최소 체류시간 후 리다이렉트 (너무 빨리 나가면 의심)
+        setTimeout(redirectWithDelay, 1500);
+
+        // 페이지 떠날 때도 데이터 전송 (조기 이탈 감지)
+        window.addEventListener('beforeunload', function() {
+            const stayTime = (Date.now() - pageLoadTime) / 1000;
+            if (stayTime < 1.5) {
+                const data = collectClickData();
+                data.stayTimeSeconds = stayTime;
+                data.earlyExit = true;
+                sendData(data);
+            }
+        });
+
+    })();
+    </script>
+</body>
+</html>
