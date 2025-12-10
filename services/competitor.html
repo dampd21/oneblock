@@ -4,265 +4,277 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>경쟁사 분석 - 원블럭</title>
-    <meta name="description" content="경쟁 업체의 리뷰, 키워드, 전략을 분석해드립니다.">
+    <meta name="description" content="경쟁업체 리뷰와 키워드 전략을 분석해드립니다. 그들의 강점과 약점을 파악하세요.">
     
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-    <link rel="stylesheet" href="/assets/css/common.css">
-    <link rel="stylesheet" href="/assets/css/service.css">
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/service.css">
 </head>
 <body>
-
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
-            <a href="/" class="nav-logo">ONE<span>BLOCK</span></a>
-            <div class="nav-menu">
-                <a href="/services/keyword.html" class="nav-link">서비스</a>
-                <a href="/pricing/" class="nav-link">요금</a>
-                <a href="/ebook/" class="nav-link">전자책</a>
-                <a href="/about/" class="nav-link">소개</a>
-                <a href="https://open.kakao.com/o/sL5miBAg" class="nav-cta" target="_blank">1:1 상담</a>
-            </div>
-            <div class="nav-toggle"><span></span><span></span><span></span></div>
+            <a href="../" class="nav-logo">
+                <span class="logo-one">ONE</span><span class="logo-block">BLOCK</span>
+            </a>
+            
+            <button class="nav-toggle" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-menu">
+                <li class="nav-item has-dropdown">
+                    <a href="keyword.html" class="nav-link active">서비스</a>
+                    <ul class="nav-dropdown">
+                        <li><a href="keyword.html">키워드 분석</a></li>
+                        <li><a href="click-guard.html">부정클릭 방어</a></li>
+                        <li><a href="competitor.html" class="active">경쟁사 분석</a></li>
+                        <li><a href="blog-seo.html">블로그 상위노출</a></li>
+                        <li><a href="place.html">플레이스 관리</a></li>
+                        <li><a href="ads.html">광고 대행</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="../pricing/" class="nav-link">요금</a></li>
+                <li class="nav-item"><a href="../ebook/" class="nav-link">무료 전자책</a></li>
+                <li class="nav-item"><a href="../about/" class="nav-link">소개</a></li>
+            </ul>
+            
+            <a href="../contact/" class="nav-cta btn btn-primary">무료 상담</a>
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- Service Hero -->
     <section class="service-hero">
         <div class="container">
-            <span class="badge badge-primary">📊 경쟁사 분석</span>
-            <h1>잘되는 가게는<br><span>뭐가 다를까?</span></h1>
-            <p>경쟁 업체의 리뷰, 키워드, 전략을<br>한눈에 분석해드립니다</p>
-            <div class="btn-group btn-group-center">
-                <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-primary" target="_blank">
-                    분석 신청하기
-                </a>
-                <a href="/pricing/" class="btn btn-secondary">
-                    요금 확인
-                </a>
+            <div class="service-hero-content fade-in-up">
+                <span class="service-badge">👀 경쟁사 분석</span>
+                <h1>경쟁업체는<br>어떻게 하고 있을까요?</h1>
+                <p>리뷰 분석으로 그들의 강점과 약점을 파악하세요</p>
+                <div class="service-hero-buttons">
+                    <a href="../contact/" class="btn btn-primary btn-lg">분석 신청하기</a>
+                    <a href="../pricing/" class="btn btn-outline btn-lg">요금 보기</a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Problem -->
-    <section class="section bg-white">
-        <div class="container container-narrow">
-            <h2 class="section-title">이런 고민 있으시죠?</h2>
+    <section class="section section-gray">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">이런 것들이 궁금하시죠?</h2>
+            </div>
+            
             <div class="problem-list">
-                <div class="problem-item">
-                    <span>🤔</span>
-                    <p>경쟁사는 어떻게 상위노출 되는 걸까?</p>
+                <div class="problem-item fade-in-up stagger-1">
+                    <span class="problem-icon">🏆</span>
+                    <p>"경쟁사는 왜 손님이 많을까?"</p>
                 </div>
-                <div class="problem-item">
-                    <span>⭐</span>
-                    <p>저 가게 리뷰는 왜 이렇게 많지?</p>
+                <div class="problem-item fade-in-up stagger-2">
+                    <span class="problem-icon">⭐</span>
+                    <p>"경쟁사 리뷰에서 뭘 칭찬받을까?"</p>
                 </div>
-                <div class="problem-item">
-                    <span>🔍</span>
-                    <p>어떤 키워드로 손님이 오는 걸까?</p>
-                </div>
-                <div class="problem-item">
-                    <span>📈</span>
-                    <p>우리 가게랑 뭐가 다른지 모르겠어요</p>
+                <div class="problem-item fade-in-up stagger-3">
+                    <span class="problem-icon">📉</span>
+                    <p>"경쟁사는 어떤 불만을 받을까?"</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features -->
-    <section class="section bg-gray">
+    <section class="section">
         <div class="container">
-            <h2 class="section-title">이렇게 분석해드려요</h2>
-            <p class="section-subtitle">경쟁사의 모든 것을 파악합니다</p>
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">분석 항목</h2>
+                <p class="section-desc">네이버 플레이스 리뷰를 수집하고 AI로 분석합니다</p>
+            </div>
             
             <div class="feature-grid">
-                <div class="feature-card">
+                <div class="feature-card fade-in-up stagger-1">
                     <div class="feature-icon">⭐</div>
-                    <h3>리뷰 분석</h3>
-                    <p>방문자 리뷰, 블로그 리뷰 현황을 분석합니다. 최근 3개월 트렌드도 파악합니다.</p>
+                    <h3>리뷰 수집</h3>
+                    <p>경쟁사 5개 업체의 최근 리뷰를 수집합니다.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🏷️</div>
-                    <h3>테마 키워드</h3>
-                    <p>맛, 서비스, 분위기 등 고객이 언급하는 키워드를 추출합니다.</p>
+                
+                <div class="feature-card fade-in-up stagger-2">
+                    <div class="feature-icon">💚</div>
+                    <h3>긍정 키워드</h3>
+                    <p>고객들이 칭찬하는 포인트를 추출합니다.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔑</div>
-                    <h3>대표 키워드</h3>
-                    <p>경쟁사가 노출되는 핵심 키워드를 파악합니다.</p>
+                
+                <div class="feature-card fade-in-up stagger-3">
+                    <div class="feature-icon">💔</div>
+                    <h3>부정 키워드</h3>
+                    <p>고객 불만사항을 분석해 기회를 찾습니다.</p>
                 </div>
-                <div class="feature-card">
+                
+                <div class="feature-card fade-in-up stagger-4">
                     <div class="feature-icon">📊</div>
-                    <h3>비교 대시보드</h3>
-                    <p>5개 업체를 한눈에 비교할 수 있는 대시보드를 제공합니다.</p>
+                    <h3>별점 분석</h3>
+                    <p>별점 분포와 평균을 비교합니다.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <h3>활동 지수</h3>
-                    <p>최근 3개월 리뷰 비율로 업체의 활성화 정도를 판단합니다.</p>
+                
+                <div class="feature-card fade-in-up stagger-5">
+                    <div class="feature-icon">🔑</div>
+                    <h3>인기 메뉴/서비스</h3>
+                    <p>어떤 메뉴/서비스가 언급되는지 파악합니다.</p>
                 </div>
-                <div class="feature-card">
+                
+                <div class="feature-card fade-in-up stagger-6">
                     <div class="feature-icon">💡</div>
-                    <h3>인사이트</h3>
-                    <p>분석 결과를 바탕으로 개선 방향을 제안해드립니다.</p>
+                    <h3>전략 제안</h3>
+                    <p>분석 결과를 바탕으로 차별화 전략을 제안합니다.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Report Sample -->
-    <section class="section bg-white">
+    <!-- Sample Report -->
+    <section class="section section-gray">
         <div class="container">
-            <h2 class="section-title">리포트 예시</h2>
-            <p class="section-subtitle">이런 정보를 받아보실 수 있어요</p>
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">분석 결과 예시</h2>
+            </div>
             
-            <div class="report-preview">
+            <div class="report-sample fade-in-up">
                 <div class="report-card">
-                    <h4>📋 업체 비교 대시보드</h4>
-                    <ul>
-                        <li>순위 (리뷰 수 기준)</li>
-                        <li>업체명, 총 리뷰, 방문자/블로그 리뷰</li>
-                        <li>최근 3개월 리뷰 비율</li>
-                        <li>활동 지수 (★★★★★)</li>
-                        <li>테마 TOP2, 메뉴 TOP1</li>
-                    </ul>
-                </div>
-                <div class="report-card">
-                    <h4>🔍 상세 분석</h4>
-                    <ul>
-                        <li>업체별 대표 키워드</li>
-                        <li>테마별 언급 횟수</li>
-                        <li>인기 메뉴 분석</li>
-                        <li>블로그 리뷰 목록</li>
-                        <li>개선 포인트 제안</li>
-                    </ul>
+                    <h4>📍 OO 카페 (강남역점)</h4>
+                    <div class="report-row">
+                        <span class="label">평균 별점</span>
+                        <span class="value">4.3 / 5.0</span>
+                    </div>
+                    <div class="report-row">
+                        <span class="label">리뷰 수</span>
+                        <span class="value">234개</span>
+                    </div>
+                    <div class="report-section">
+                        <h5>💚 긍정 키워드 TOP 5</h5>
+                        <div class="keyword-tags">
+                            <span class="tag positive">분위기 좋음</span>
+                            <span class="tag positive">커피 맛있음</span>
+                            <span class="tag positive">친절함</span>
+                            <span class="tag positive">인테리어</span>
+                            <span class="tag positive">디저트</span>
+                        </div>
+                    </div>
+                    <div class="report-section">
+                        <h5>💔 부정 키워드 TOP 3</h5>
+                        <div class="keyword-tags">
+                            <span class="tag negative">주차 어려움</span>
+                            <span class="tag negative">가격 비쌈</span>
+                            <span class="tag negative">웨이팅</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing -->
-    <section class="section bg-gray">
+    <section class="section">
         <div class="container">
-            <h2 class="section-title">요금</h2>
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">요금</h2>
+            </div>
             
-            <div class="pricing-cards">
-                <div class="pricing-card">
-                    <div class="plan-name">1회 분석</div>
-                    <div class="plan-price">
-                        <span class="price-value">33,000</span>
-                        <span class="price-unit">원</span>
-                    </div>
-                    <ul class="plan-features">
-                        <li>경쟁업체 5곳 분석</li>
-                        <li>비교 대시보드</li>
-                        <li>상세 리포트</li>
-                        <li>Google Sheets 제공</li>
+            <div class="pricing-simple">
+                <div class="price-card fade-in-up stagger-1">
+                    <h3>1회 분석</h3>
+                    <div class="price">33,000원</div>
+                    <ul>
+                        <li>✅ 경쟁사 5개 업체 분석</li>
+                        <li>✅ 리뷰 키워드 추출</li>
+                        <li>✅ 비교 분석 리포트</li>
+                        <li>✅ 전략 제안</li>
                     </ul>
-                    <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-secondary" target="_blank">신청하기</a>
+                    <a href="../contact/" class="btn btn-outline btn-block">신청하기</a>
                 </div>
                 
-                <div class="pricing-card popular">
-                    <div class="plan-name">월간 구독</div>
-                    <div class="plan-price">
-                        <span class="price-value">99,000</span>
-                        <span class="price-unit">원/월</span>
-                    </div>
-                    <ul class="plan-features">
-                        <li>주 1회 분석 (월 4회)</li>
-                        <li>트렌드 변화 추적</li>
-                        <li>신규 경쟁사 알림</li>
-                        <li>우선 지원</li>
+                <div class="price-card popular fade-in-up stagger-2">
+                    <div class="popular-badge">추천</div>
+                    <h3>월간 구독</h3>
+                    <div class="price">99,000원<span>/월</span></div>
+                    <ul>
+                        <li>✅ 주 1회 자동 분석</li>
+                        <li>✅ 신규 리뷰 알림</li>
+                        <li>✅ 트렌드 변화 추적</li>
+                        <li>✅ 월간 종합 리포트</li>
+                        <li>✅ 전략 컨설팅</li>
                     </ul>
-                    <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-primary" target="_blank">신청하기</a>
+                    <a href="../contact/" class="btn btn-primary btn-block">신청하기</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA -->
-    <section class="service-cta">
+    <section class="section section-gray">
         <div class="container">
-            <h2>경쟁사를 알아야 이길 수 있습니다</h2>
-            <p>지금 바로 분석을 시작하세요</p>
-            <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-lg" target="_blank">
-                분석 신청하기
-            </a>
-        </div>
-    </section>
-
-    <!-- Other Services -->
-    <section class="section bg-gray">
-        <div class="container">
-            <h2 class="section-title">다른 서비스도 살펴보세요</h2>
-            <div class="other-services">
-                <a href="/services/keyword.html" class="other-service-card">
-                    <span>🔍</span>
-                    <strong>키워드 분석</strong>
-                </a>
-                <a href="/services/place.html" class="other-service-card">
-                    <span>📍</span>
-                    <strong>플레이스 관리</strong>
-                </a>
-                <a href="/services/blog-seo.html" class="other-service-card">
-                    <span>📝</span>
-                    <strong>블로그 상위노출</strong>
-                </a>
+            <div class="cta-box fade-in-up">
+                <h2>경쟁사를 알면 이길 수 있습니다</h2>
+                <p>지금 바로 경쟁사 분석을 시작하세요</p>
+                <div class="cta-buttons">
+                    <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-kakao btn-lg" target="_blank">
+                        카카오톡 상담하기
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer footer-simple">
-        <div class="footer-logo">ONE<span>BLOCK</span></div>
-        <div class="footer-simple-links">
-            <a href="/">홈</a>
-            <a href="/pricing/">요금</a>
-            <a href="/ebook/">전자책</a>
-            <a href="http://pf.kakao.com/_ZGjYn" target="_blank">카카오 채널</a>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../" class="footer-logo">
+                        <span class="logo-one">ONE</span><span class="logo-block">BLOCK</span>
+                    </a>
+                    <p>마케팅의 첫 블럭, 원블럭<br>모든 성공은 첫 번째 블럭부터</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>서비스</h4>
+                    <ul>
+                        <li><a href="keyword.html">키워드 분석</a></li>
+                        <li><a href="click-guard.html">부정클릭 방어</a></li>
+                        <li><a href="competitor.html">경쟁사 분석</a></li>
+                        <li><a href="blog-seo.html">블로그 상위노출</a></li>
+                        <li><a href="place.html">플레이스 관리</a></li>
+                        <li><a href="ads.html">광고 대행</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>정보</h4>
+                    <ul>
+                        <li><a href="../pricing/">요금표</a></li>
+                        <li><a href="../ebook/">무료 전자책</a></li>
+                        <li><a href="../about/">회사 소개</a></li>
+                        <li><a href="../contact/">문의하기</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>문의</h4>
+                    <ul>
+                        <li><a href="http://pf.kakao.com/_ZGjYn" target="_blank">카카오 채널</a></li>
+                        <li><a href="https://open.kakao.com/o/sL5miBAg" target="_blank">1:1 상담</a></li>
+                        <li><a href="https://open.kakao.com/o/g56hVlTh" target="_blank">오픈채팅</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 원블럭. All rights reserved.</p>
+            </div>
         </div>
-        <p class="footer-copy">© <span class="current-year">2024</span> ONEBLOCK. All rights reserved.</p>
     </footer>
 
-    <script src="/assets/js/common.js"></script>
-    
-    <style>
-        .report-preview {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .report-card {
-            background: var(--gray-50);
-            padding: 28px;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--gray-200);
-        }
-        .report-card h4 {
-            font-size: 1.1rem;
-            margin-bottom: 16px;
-            color: var(--gray-900);
-        }
-        .report-card ul {
-            list-style: none;
-        }
-        .report-card li {
-            padding: 8px 0;
-            font-size: 0.95rem;
-            color: var(--gray-600);
-            border-bottom: 1px solid var(--gray-200);
-        }
-        .report-card li:last-child {
-            border-bottom: none;
-        }
-        .report-card li::before {
-            content: "✓ ";
-            color: var(--primary);
-            font-weight: 700;
-        }
-    </style>
+    <script src="../assets/js/common.js"></script>
 </body>
 </html>
