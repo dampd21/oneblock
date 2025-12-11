@@ -8,6 +8,34 @@
     
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="../assets/css/common.css">
+    
+    <style>
+        /* Google Forms 컨테이너 스타일 */
+        .google-form-container {
+            width: 100%;
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .google-form-container iframe {
+            width: 100%;
+            height: 1200px;
+            border: none;
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .google-form-container iframe {
+                height: 1400px;
+            }
+            
+            .contact-wrapper {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- ========== 헤더 ========== -->
@@ -62,112 +90,21 @@
     <section class="section contact-form-section">
         <div class="container">
             <div class="contact-wrapper">
-                <!-- 폼 영역 -->
-                <div class="contact-form-wrapper animate-fade-in">
-                    <h2 class="contact-form-title">무료 플레이스 진단 신청</h2>
-                    <p class="contact-form-desc">아래 정보를 입력해주시면 24시간 내에 연락드립니다.</p>
-                    
-                    <!-- Google Forms iframe 방식 -->
-                    <div class="google-form-container" id="googleFormContainer">
-                        <!--
-                        ⚠️ 아래 iframe의 src를 본인의 Google Form 링크로 교체하세요!
-                        
-                        Google Forms에서:
-                        1. 폼 편집 화면에서 우측 상단 "보내기" 클릭
-                        2. "<>" (HTML 삽입) 탭 클릭
-                        3. iframe 코드 복사
-                        4. 아래 src="..." 부분만 교체
-                        -->
-                        <iframe 
-                            src="https://forms.gle/xHRrZQSC5tGLGpEk6" 
-                            width="100%" 
-                            height="900" 
-                            frameborder="0" 
-                            marginheight="0" 
-                            marginwidth="0"
-                            style="border: none; border-radius: 8px;">
-                            로딩 중...
-                        </iframe>
-                    </div>
-                    
-                    <!-- 또는 직접 입력 폼 (Google Forms에 전송) -->
-                    <!--
-                    <form class="contact-form" id="contactForm" 
-                          action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse" 
-                          method="POST" 
-                          target="hidden_iframe">
-                        
-                        <div class="form-group">
-                            <label for="businessName" class="form-label">상호명 <span class="required">*</span></label>
-                            <input type="text" id="businessName" name="entry.XXXXXX" class="form-input" placeholder="예: 원블럭 카페" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="contact" class="form-label">연락처 <span class="required">*</span></label>
-                            <input type="text" id="contact" name="entry.XXXXXX" class="form-input" placeholder="전화번호 또는 카카오톡 ID" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="industry" class="form-label">업종 <span class="required">*</span></label>
-                            <select id="industry" name="entry.XXXXXX" class="form-select" required>
-                                <option value="">업종을 선택해주세요</option>
-                                <option value="음식점">음식점</option>
-                                <option value="카페/디저트">카페/디저트</option>
-                                <option value="뷰티/미용">뷰티/미용</option>
-                                <option value="병원/의원">병원/의원</option>
-                                <option value="학원/교육">학원/교육</option>
-                                <option value="서비스업">서비스업</option>
-                                <option value="소매/판매">소매/판매</option>
-                                <option value="기타">기타</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="placeUrl" class="form-label">플레이스 URL <span class="required">*</span></label>
-                            <input type="url" id="placeUrl" name="entry.XXXXXX" class="form-input" placeholder="https://naver.me/xxxxx 또는 플레이스 링크" required>
-                            <p class="form-hint">네이버 지도에서 내 업체 검색 → 공유 → 링크 복사</p>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message" class="form-label">문의사항 (선택)</label>
-                            <textarea id="message" name="entry.XXXXXX" class="form-textarea" rows="4" placeholder="현재 고민이나 궁금한 점을 자유롭게 적어주세요."></textarea>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="budget" class="form-label">월 마케팅 예산 (선택)</label>
-                            <select id="budget" name="entry.XXXXXX" class="form-select">
-                                <option value="">선택해주세요</option>
-                                <option value="50만원 미만">50만원 미만</option>
-                                <option value="50~100만원">50~100만원</option>
-                                <option value="100~300만원">100~300만원</option>
-                                <option value="300만원 이상">300만원 이상</option>
-                                <option value="미정">미정 (상담 후 결정)</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group form-checkbox">
-                            <input type="checkbox" id="privacy" required>
-                            <label for="privacy">개인정보 수집 및 이용에 동의합니다. <span class="required">*</span></label>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-accent btn-lg btn-full">무료 진단 신청하기</button>
-                    </form>
-                    
-                    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="formSubmitted()"></iframe>
-                    
-                    <div class="form-success" id="formSuccess" style="display: none;">
-                        <div class="success-icon">✅</div>
-                        <h3 class="success-title">신청이 완료되었습니다!</h3>
-                        <p class="success-message">24시간 내에 연락드리겠습니다.<br>빠른 상담을 원하시면 카카오톡으로 문의해주세요.</p>
-                        <a href="https://open.kakao.com/o/sL5miBAg" target="_blank" class="btn btn-accent">카카오톡 상담</a>
-                    </div>
-                    -->
+                <!-- Google Forms iframe -->
+                <div class="google-form-container animate-fade-in">
+                    <iframe 
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSfsltlCsBV7yo5HLBHuocIhXzSgqEtxJLWx2l0QWw99c_KYNQ/viewform?embedded=true"
+                        frameborder="0" 
+                        marginheight="0" 
+                        marginwidth="0">
+                        로딩 중...
+                    </iframe>
                 </div>
                 
                 <!-- 사이드 정보 -->
                 <div class="contact-info animate-fade-in">
                     <div class="contact-info-card">
-                        <h3 class="contact-info-title">빠른 상담</h3>
+                        <h3 class="contact-info-title">⚡ 빠른 상담</h3>
                         <p class="contact-info-desc">급하시다면 카카오톡으로 바로 연락주세요!</p>
                         <div class="contact-channels">
                             <a href="https://open.kakao.com/o/sL5miBAg" target="_blank" class="contact-channel">
@@ -186,7 +123,7 @@
                     </div>
                     
                     <div class="contact-info-card">
-                        <h3 class="contact-info-title">무료 진단 포함 내용</h3>
+                        <h3 class="contact-info-title">🎯 무료 진단 포함 내용</h3>
                         <ul class="contact-info-list">
                             <li>✓ 현재 플레이스 순위 확인</li>
                             <li>✓ 상위노출 방해 요소 분석</li>
@@ -196,7 +133,7 @@
                     </div>
                     
                     <div class="contact-info-card">
-                        <h3 class="contact-info-title">무료 전자책</h3>
+                        <h3 class="contact-info-title">📚 무료 전자책</h3>
                         <p class="contact-info-desc">130페이지 마케팅 비법서를 무료로 받아보세요!</p>
                         <a href="../ebook/index.html" class="btn btn-outline btn-sm">전자책 받기</a>
                     </div>
