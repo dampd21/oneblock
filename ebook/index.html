@@ -181,31 +181,25 @@
                 <div class="ebook-download-content">
                     <h2 class="ebook-download-title">지금 바로 무료로 받아보세요</h2>
                     <p class="ebook-download-desc">아래 정보를 입력하시면 전자책 링크를 바로 확인할 수 있습니다.</p>
-                    
-                    <form class="ebook-form" id="ebookForm">
-                        <div class="form-group">
-                            <label for="ebookName" class="form-label">이름 <span class="required">*</span></label>
-                            <input type="text" id="ebookName" name="name" class="form-input" placeholder="홍길동" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="ebookContact" class="form-label">연락처 <span class="required">*</span></label>
-                            <input type="text" id="ebookContact" name="contact" class="form-input" placeholder="010-0000-0000" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="ebookIndustry" class="form-label">업종</label>
-                            <input type="text" id="ebookIndustry" name="industry" class="form-input" placeholder="예: 음식점, 카페 등">
-                        </div>
-                        <button type="submit" class="btn btn-accent btn-lg btn-full">전자책 받기</button>
-                    </form>
-                    
-                    <!-- 다운로드 성공 (기본 숨김) -->
-                    <div class="ebook-success" id="ebookSuccess" style="display: none;">
-                        <div class="success-icon">📚</div>
-                        <h3 class="success-title">전자책이 준비되었습니다!</h3>
-                        <p class="success-message">아래 버튼을 클릭하면 전자책을 볼 수 있습니다.</p>
-                        <a href="https://docs.google.com/document/d/1sjJb8PVxoitTny_H2EYbpAK-590hG9_8eJJzpmj5amw/edit?usp=sharing" target="_blank" class="btn btn-accent btn-lg">전자책 열기</a>
-                        <p class="ebook-tip">💡 Tip: 북마크 해두시면 언제든 다시 볼 수 있어요!</p>
+                
+                    <!-- 방법 1: 간단하게 버튼으로 바로 이동 -->
+                    <div class="ebook-direct-download">
+                        <p style="margin-bottom: 24px; color: var(--gray);">바로 다운로드하시려면 아래 버튼을 클릭하세요!</p>
+                        <a href="https://docs.google.com/document/d/1sjJb8PVxoitTny_H2EYbpAK-590hG9_8eJJzpmj5amw/edit?usp=sharing" target="_blank" class="btn btn-accent btn-lg">📚 전자책 바로 받기</a>
                     </div>
+                    
+                    <!-- 구분선 -->
+                    <div style="display: flex; align-items: center; margin: 32px 0; gap: 16px;">
+                        <div style="flex: 1; height: 1px; background: var(--gray-lighter);"></div>
+                        <span style="color: var(--gray); font-size: 14px;">또는</span>
+                        <div style="flex: 1; height: 1px; background: var(--gray-lighter);"></div>
+                    </div>
+                    
+                    <!-- 방법 2: 연락처 남기고 받기 (선택) -->
+                    <p style="margin-bottom: 16px; color: var(--gray); font-size: 14px;">
+                        추가 마케팅 팁을 받아보시려면 연락처를 남겨주세요!
+                    </p>
+                    <a href="https://open.kakao.com/o/sL5miBAg" target="_blank" class="btn btn-outline">카카오톡으로 받기</a>
                 </div>
             </div>
         </div>
