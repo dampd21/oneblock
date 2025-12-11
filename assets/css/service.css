@@ -1,0 +1,708 @@
+/* ============================================
+   ONEBLOCK - Service Page Styles
+   서비스 상세 페이지 전용 스타일시트
+   ============================================ */
+
+/* ============================================
+   1. Service Hero
+   ============================================ */
+.service-hero {
+    padding: calc(var(--header-height) + var(--space-3xl)) 0 var(--space-3xl);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 70%, rgba(234, 179, 8, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(234, 179, 8, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.service-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.service-hero-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: rgba(234, 179, 8, 0.2);
+    color: var(--accent);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-lg);
+    letter-spacing: 1px;
+}
+
+.service-hero-title {
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: var(--space-lg);
+    line-height: 1.2;
+}
+
+.service-hero-subtitle {
+    font-size: 1.375rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-bottom: var(--space-xl);
+}
+
+/* ============================================
+   2. Service Problem Section
+   ============================================ */
+.service-problem {
+    background-color: var(--light);
+}
+
+.problem-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.problem-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    background-color: var(--white);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.problem-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.problem-item .problem-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.problem-item .problem-text {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 0;
+}
+
+/* ============================================
+   3. Service Info Section
+   ============================================ */
+.service-info {
+    background-color: var(--white);
+}
+
+.info-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.info-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    margin-bottom: var(--space-md);
+}
+
+.info-desc {
+    font-size: 1.125rem;
+    color: var(--gray);
+    line-height: 1.8;
+    margin-bottom: var(--space-xl);
+}
+
+.info-stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3xl);
+    margin-bottom: var(--space-lg);
+}
+
+.info-stat {
+    text-align: center;
+}
+
+.info-stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+.info-stat-label {
+    font-size: 0.9375rem;
+    color: var(--gray);
+}
+
+.info-note {
+    font-size: 0.875rem;
+    color: var(--gray);
+    margin-bottom: 0;
+}
+
+/* Compare Grid */
+.info-compare {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    text-align: left;
+}
+
+.compare-item {
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+}
+
+.compare-bad {
+    background-color: #FEF2F2;
+    border: 2px solid #FECACA;
+}
+
+.compare-good {
+    background-color: #F0FDF4;
+    border: 2px solid #BBF7D0;
+}
+
+.compare-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: var(--space-md);
+}
+
+.compare-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.compare-list li {
+    font-size: 0.9375rem;
+    color: var(--dark);
+    padding-left: var(--space-md);
+    position: relative;
+}
+
+.compare-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+}
+
+.compare-bad .compare-list li::before {
+    color: var(--error);
+}
+
+.compare-good .compare-list li::before {
+    color: var(--success);
+}
+
+/* Platform Grid */
+.platform-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-md);
+    text-align: center;
+}
+
+.platform-item {
+    padding: var(--space-lg);
+    background-color: var(--light);
+    border-radius: var(--radius-lg);
+}
+
+.platform-icon {
+    font-size: 2rem;
+    margin-bottom: var(--space-sm);
+}
+
+.platform-item h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+}
+
+.platform-item p {
+    font-size: 0.8125rem;
+    color: var(--gray);
+    margin-bottom: 0;
+}
+
+/* Analysis Grid */
+.analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--space-md);
+    text-align: center;
+}
+
+.analysis-item {
+    padding: var(--space-lg);
+    background-color: var(--light);
+    border-radius: var(--radius);
+}
+
+.analysis-icon {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-sm);
+}
+
+.analysis-item h3 {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+}
+
+.analysis-item p {
+    font-size: 0.75rem;
+    color: var(--gray);
+    margin-bottom: 0;
+}
+
+/* Chatbot Demo */
+.chatbot-demo {
+    max-width: 400px;
+    margin: 0 auto var(--space-xl);
+    background-color: var(--light);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+}
+
+.chatbot-message {
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-sm);
+}
+
+.chatbot-user {
+    background-color: var(--accent);
+    color: var(--dark);
+    margin-left: 20%;
+    text-align: right;
+}
+
+.chatbot-bot {
+    background-color: var(--white);
+    margin-right: 20%;
+    text-align: left;
+    line-height: 1.6;
+    font-size: 0.9375rem;
+}
+
+/* ============================================
+   4. Service Solution Section
+   ============================================ */
+.service-solution {
+    background-color: var(--light);
+}
+
+.solution-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+}
+
+.solution-card {
+    background-color: var(--white);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.solution-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.solution-number {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: var(--space-md);
+}
+
+.solution-title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+}
+
+.solution-desc {
+    font-size: 0.9375rem;
+    color: var(--gray);
+    margin-bottom: var(--space-lg);
+    line-height: 1.6;
+}
+
+.solution-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.solution-list li {
+    font-size: 0.9375rem;
+    color: var(--dark);
+    padding-left: var(--space-lg);
+    position: relative;
+}
+
+.solution-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* ============================================
+   5. Service Features Section
+   ============================================ */
+.service-features {
+    background-color: var(--white);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+}
+
+.feature-card {
+    text-align: center;
+    padding: var(--space-xl);
+    background-color: var(--light);
+    border-radius: var(--radius-lg);
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    background-color: var(--primary);
+    transform: translateY(-4px);
+}
+
+.feature-card:hover .feature-icon {
+    background-color: var(--accent);
+}
+
+.feature-card:hover .feature-title,
+.feature-card:hover .feature-desc {
+    color: var(--white);
+}
+
+.feature-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    border-radius: var(--radius-md);
+    font-size: 1.75rem;
+    margin: 0 auto var(--space-md);
+    transition: var(--transition);
+}
+
+.feature-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+    transition: var(--transition);
+}
+
+.feature-desc {
+    font-size: 0.9375rem;
+    color: var(--gray);
+    margin-bottom: 0;
+    line-height: 1.6;
+    transition: var(--transition);
+}
+
+/* ============================================
+   6. Service Process Section
+   ============================================ */
+.service-process {
+    background-color: var(--light);
+}
+
+.process-steps {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.service-process .process-step {
+    display: flex;
+    gap: var(--space-lg);
+    padding-bottom: var(--space-xl);
+    position: relative;
+}
+
+.service-process .process-step:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 23px;
+    top: 56px;
+    width: 2px;
+    height: calc(100% - 56px);
+    background-color: var(--accent);
+    opacity: 0.3;
+}
+
+.service-process .step-number {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent);
+    color: var(--dark);
+    font-size: 1.25rem;
+    font-weight: 800;
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+}
+
+.service-process .step-content {
+    padding-top: var(--space-sm);
+}
+
+.service-process .step-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+}
+
+.service-process .step-desc {
+    font-size: 0.9375rem;
+    color: var(--gray);
+    margin-bottom: 0;
+}
+
+/* ============================================
+   7. Service FAQ Section
+   ============================================ */
+.service-faq {
+    background-color: var(--white);
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.faq-item {
+    background-color: var(--light);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+}
+
+.faq-question {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.faq-q {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent);
+    color: var(--dark);
+    font-size: 0.875rem;
+    font-weight: 800;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+}
+
+.faq-question h3 {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    margin-bottom: 0;
+    padding-top: 4px;
+}
+
+.faq-answer {
+    display: flex;
+    gap: var(--space-md);
+}
+
+.faq-a {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary);
+    color: var(--white);
+    font-size: 0.875rem;
+    font-weight: 800;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+}
+
+.faq-answer p {
+    font-size: 0.9375rem;
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 0;
+    padding-top: 6px;
+}
+
+/* ============================================
+   8. Service CTA Section
+   ============================================ */
+.service-cta {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    text-align: center;
+}
+
+/* ============================================
+   9. Other Services Section
+   ============================================ */
+.other-services {
+    background-color: var(--light);
+    padding: var(--space-2xl) 0;
+}
+
+.other-services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+}
+
+.other-service-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-xl);
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.other-service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.other-service-icon {
+    font-size: 2rem;
+}
+
+.other-service-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+/* ============================================
+   10. Service Page Responsive
+   ============================================ */
+@media (max-width: 768px) {
+    .service-hero {
+        padding: calc(var(--header-height) + var(--space-xl)) 0 var(--space-xl);
+    }
+    
+    .service-hero-title {
+        font-size: 1.875rem;
+    }
+    
+    .service-hero-subtitle {
+        font-size: 1.0625rem;
+    }
+    
+    .problem-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .info-stats {
+        flex-direction: column;
+        gap: var(--space-lg);
+    }
+    
+    .info-compare {
+        grid-template-columns: 1fr;
+    }
+    
+    .platform-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .analysis-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .solution-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .other-services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-hero-title {
+        font-size: 1.5rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .platform-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .analysis-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .faq-item {
+        padding: var(--space-lg);
+    }
+    
+    .faq-question,
+    .faq-answer {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+    
+    .faq-q,
+    .faq-a {
+        width: fit-content;
+        padding: 4px 12px;
+        height: auto;
+    }
+}
