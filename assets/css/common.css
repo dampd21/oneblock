@@ -859,16 +859,6 @@ strong {
     position: relative;
 }
 
-.process-step:not(:last-child)::before {
-    content: '';
-    position: absolute;
-    left: 24px;
-    top: 56px;
-    width: 2px;
-    height: calc(100% - 56px);
-    background-color: var(--gray-lighter);
-}
-
 .process-number {
     width: 48px;
     height: 48px;
