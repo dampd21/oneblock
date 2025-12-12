@@ -162,7 +162,7 @@
         </div>
     </section>
 
-    <!-- ========== 챗봇 사용법 (NEW) ========== -->
+    <!-- ========== 챗봇 사용법 ========== -->
     <section class="section chatbot-guide" style="background-color: var(--light);">
         <div class="container">
             <div class="section-header">
@@ -271,6 +271,66 @@
                 </p>
                 <a href="http://pf.kakao.com/_ZGjYn" target="_blank" class="btn btn-accent btn-lg">
                     원블럭 키워드 채널 바로가기 →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 데이터 분석 프로그램 (YouTube) ========== -->
+    <section class="section data-analysis-tool">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title animate-fade-in">자체 개발 3개월 키워드 분석 프로그램</h2>
+                <p class="section-subtitle animate-fade-in">
+                    경쟁사가 어떤 키워드로 노출되는지<br>
+                    3개월치 데이터를 한눈에 확인하세요
+                </p>
+            </div>
+            
+            <!-- YouTube 임베드 -->
+            <div class="tool-video-wrapper animate-fade-in">
+                <iframe 
+                    class="tool-video-iframe"
+                    src="https://www.youtube.com/embed/P_ksNzyje0A?rel=0&modestbranding=1&playsinline=1" 
+                    title="원블럭 키워드 분석 프로그램 - 3개월 데이터 분석" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen
+                    loading="lazy">
+                </iframe>
+            </div>
+            
+            <!-- 특징 4개 -->
+            <div class="tool-features">
+                <div class="tool-feature-item animate-fade-in">
+                    <span class="tool-icon">📊</span>
+                    <h3>3개월 검색량 추이</h3>
+                    <p>월별 검색량 변화를 그래프로 확인</p>
+                </div>
+                <div class="tool-feature-item animate-fade-in">
+                    <span class="tool-icon">🔍</span>
+                    <h3>경쟁사 키워드 비교</h3>
+                    <p>상위 업체들의 노출 키워드 분석</p>
+                </div>
+                <div class="tool-feature-item animate-fade-in">
+                    <span class="tool-icon">💰</span>
+                    <h3>광고 입찰가 분석</h3>
+                    <p>키워드별 실시간 광고 단가</p>
+                </div>
+                <div class="tool-feature-item animate-fade-in">
+                    <span class="tool-icon">📈</span>
+                    <h3>Google Sheets 제공</h3>
+                    <p>데이터 다운로드 및 공유 가능</p>
+                </div>
+            </div>
+            
+            <!-- CTA -->
+            <div class="tool-cta animate-fade-in">
+                <p class="tool-cta-text">
+                    💡 이 모든 데이터를 분석 리포트로 제공합니다
+                </p>
+                <a href="../contact/index.html" class="btn btn-accent btn-lg">
+                    상세 분석 신청하기
                 </a>
             </div>
         </div>
@@ -479,7 +539,7 @@
         </svg>
     </a>
 
-    <!-- 라이트박스 모달 (동적 생성) -->
+    <!-- 라이트박스 모달 -->
     <div id="lightbox" class="lightbox" style="display: none;">
         <span class="lightbox-close">&times;</span>
         <img class="lightbox-content" id="lightbox-img">
@@ -494,23 +554,20 @@
             const lightboxClose = document.querySelector('.lightbox-close');
             const screenshots = document.querySelectorAll('.screenshot-img');
             
-            // 스크린샷 클릭 시 라이트박스 열기
             screenshots.forEach(img => {
                 img.style.cursor = 'pointer';
                 img.addEventListener('click', function() {
                     lightbox.style.display = 'flex';
                     lightboxImg.src = this.src;
-                    document.body.style.overflow = 'hidden'; // 스크롤 방지
+                    document.body.style.overflow = 'hidden';
                 });
             });
             
-            // 닫기 버튼 클릭
             lightboxClose.addEventListener('click', function() {
                 lightbox.style.display = 'none';
                 document.body.style.overflow = 'auto';
             });
             
-            // 배경 클릭 시 닫기
             lightbox.addEventListener('click', function(e) {
                 if (e.target === lightbox) {
                     lightbox.style.display = 'none';
@@ -518,7 +575,6 @@
                 }
             });
             
-            // ESC 키로 닫기
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && lightbox.style.display === 'flex') {
                     lightbox.style.display = 'none';
