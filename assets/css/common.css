@@ -973,17 +973,25 @@ strong {
    ============================================ */
 .ebook {
     background-color: var(--light);
+    display: flex;
+    justify-content: center;
+}
+
+.ebook .container {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .ebook-content {
     display: flex;
     align-items: center;
-    justify-content: center; /* ← 추가! */
+    justify-content: center;
     gap: var(--space-3xl);
+    width: 100%;
     max-width: 1000px;
     margin: 0 auto;
-    padding: 0 var(--container-padding); /* ← 추가! */
 }
+
 
 /* 왼쪽: 전자책 표지 */
 .ebook-image {
@@ -1027,7 +1035,9 @@ strong {
 /* 오른쪽: 텍스트 */
 .ebook-text {
     flex: 1;
+    min-width: 350px;
 }
+
 
 .ebook-badge {
     display: inline-block;
