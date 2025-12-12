@@ -62,6 +62,100 @@
 }
 
 /* ============================================
+   Data Analysis Tool Section (YouTube)
+   ============================================ */
+.data-analysis-tool {
+    background-color: var(--white);
+}
+
+.tool-video-wrapper {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto var(--space-3xl);
+    padding-bottom: 56.25%; /* 16:9 비율 */
+    height: 0;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+}
+
+.tool-video-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: var(--radius-lg);
+}
+
+.tool-features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+}
+
+.tool-feature-item {
+    text-align: center;
+    padding: var(--space-lg);
+    background-color: var(--light);
+    border-radius: var(--radius-lg);
+    transition: var(--transition);
+}
+
+.tool-feature-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.tool-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: var(--space-md);
+}
+
+.tool-feature-item h3 {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+    color: var(--dark);
+}
+
+.tool-feature-item p {
+    font-size: 0.875rem;
+    color: var(--gray);
+    margin-bottom: 0;
+}
+
+.tool-cta {
+    text-align: center;
+    padding: var(--space-2xl);
+    background-color: var(--light);
+    border-radius: var(--radius-lg);
+}
+
+.tool-cta-text {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: var(--space-lg);
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .tool-features {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .tool-features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ============================================
    Chatbot Guide Section
    ============================================ */
 .chatbot-screenshots {
