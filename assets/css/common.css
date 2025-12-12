@@ -976,9 +976,10 @@ strong {
     padding: 140px 20px;
 }
 
-.ebook > .container {
-    max-width: none !important;
-    padding: 0 !important;
+.ebook-wrapper {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0;
 }
 
 .ebook-content {
@@ -986,25 +987,61 @@ strong {
     align-items: center;
     justify-content: center;
     gap: 120px;
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 0;
+    animation: fadeInUp 0.8s ease forwards;
 }
 
-.ebook-image,
-.ebook-text {
-    flex: 0 0 auto;     /* 이게 핵심이다 형 */
+.ebook-image {
+    flex: 0 0 340px;
 }
 
 .ebook-mockup {
     width: 340px;
     height: 460px;
-    transform: rotate(-5deg);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    border-radius: var(--radius-lg);
     box-shadow: var(--shadow-xl);
+    transform: rotate(-5deg);
+    transition: all 0.4s ease;
+    overflow: hidden;
 }
 
 .ebook-mockup:hover {
     transform: rotate(-2deg) scale(1.05);
+}
+
+.ebook-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.ebook-text {
+    flex: 1;
+    max-width: 520px;
+}
+
+.ebook-title {
+    font-size: 2.375rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+.ebook-subtitle {
+    font-size: 1.25rem;
+    color: var(--gray);
+    margin-bottom: 32px;
+}
+
+.ebook-features {
+    margin-bottom: 40px;
+}
+
+.ebook-features li {
+    font-size: 1.125rem;
+    padding: 8px 0;
+    color: var(--dark);
 }
 
 /* 모바일 */
@@ -1015,14 +1052,22 @@ strong {
         gap: 60px;
     }
     
+    .ebook-image {
+        flex: none;
+    }
+    
     .ebook-mockup {
-        transform: none;
         width: 280px;
         height: 380px;
+        transform: none !important;
     }
     
     .ebook-mockup:hover {
-        transform: scale(1.08);
+        transform: scale(1.08) !important;
+    }
+    
+    .ebook-title {
+        font-size: 2rem;
     }
 }
 /* ============================================
