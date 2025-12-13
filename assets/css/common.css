@@ -3005,6 +3005,80 @@ strong {
 }
 
 /* ============================================
+   CEO Section - 15% Compact
+   ============================================ */
+.ceo-compact .ceo-content{
+  gap: 102px; /* 120px * 0.85 */
+}
+
+.ceo-compact .ceo-text{
+  max-width: 500px; /* 580px -> 약 15% 축소 */
+}
+
+.ceo-compact .ceo-image{
+  flex: 0 0 340px; /* 400px * 0.85 */
+}
+
+.ceo-compact .ceo-photo{
+  width: 340px;   /* 400px * 0.85 */
+  height: 459px;  /* 540px * 0.85 */
+}
+
+.ceo-compact .ceo-photo:hover{
+  transform: translateY(-10px); /* -12px -> 약 15% 축소 */
+}
+
+.ceo-compact .ceo-real-tag{
+  font-size: 0.875rem; /* 1rem * 0.85 */
+  padding: 8px 20px;   /* 10/24 -> 약 15% 축소 */
+}
+
+.ceo-compact .ceo-name{
+  font-size: 2.125rem; /* 2.5rem * 0.85 */
+}
+
+.ceo-compact .ceo-intro-text{
+  font-size: 1.0625rem; /* 1.25rem * 0.85 */
+}
+
+.ceo-compact .ceo-career-title,
+.ceo-compact .ceo-achievements-title{
+  font-size: 0.875rem; /* 1rem * 0.85 */
+}
+
+.ceo-compact .ceo-career-list li{
+  font-size: 0.9375rem; /* 1rem * 0.85 */
+}
+
+.ceo-compact .ceo-stat-number{
+  font-size: 1.7rem; /* 2rem * 0.85 */
+}
+
+.ceo-compact .ceo-stat-label{
+  font-size: 0.75rem; /* 0.875rem * 0.85 */
+}
+
+.ceo-compact .ceo-quote{
+  font-size: 0.95rem; /* 1.125rem * 0.85 */
+  padding: 20px;      /* 24px -> 약 15% 축소 */
+}
+
+/* (선택) quote 안의 서명 스타일: 현재 common.css에 .ceo-sign 정의가 없어서 추가 추천 */
+.ceo-compact .ceo-sign{
+  display: block;
+  margin-top: 8px;
+  font-size: 0.875rem;
+  color: var(--gray);
+}
+
+/* 992px 이하(태블릿/모바일)도 함께 15% 축소 */
+@media (max-width: 992px){
+  .ceo-compact .ceo-content{ gap: 51px; } /* 60px * 0.85 */
+  .ceo-compact .ceo-photo{ width: 272px; height: 366px; } /* 320x430 * 0.85 */
+  .ceo-compact .ceo-signature{ font-size: 1.5rem; } /* 1.75rem -> 약 15% */
+}
+
+/* ============================================
    메인 페이지 프로세스 연결선 제거
    ============================================ */
 .process .process-step:not(:last-child)::before {
