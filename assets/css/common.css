@@ -3079,6 +3079,42 @@ strong {
 }
 
 /* ============================================
+   CEO: 모바일에서 '데스크톱 사이트'로 볼 때 2컬럼 유지
+   (대개 980px 근처라서 992 규칙에 걸리는 문제 해결)
+   ============================================ */
+@media (max-width: 992px) and (min-width: 769px) {
+  .ceo-content{
+    flex-direction: row !important;
+    text-align: left !important;
+    gap: 60px !important; /* 필요시 80px 등으로 조절 */
+    align-items: flex-start !important;
+  }
+
+  .ceo-image{
+    flex: 0 0 360px !important;
+    text-align: center !important;
+  }
+
+  .ceo-photo{
+    width: 360px !important;
+    height: 486px !important;
+    object-fit: cover !important;
+  }
+
+  .ceo-text{
+    max-width: 520px !important;
+  }
+
+  .ceo-stats{
+    justify-content: flex-start !important;
+  }
+
+  .ceo-quote{
+    text-align: left !important;
+  }
+}
+
+/* ============================================
    메인 페이지 프로세스 연결선 제거
    ============================================ */
 .process .process-step:not(:last-child)::before {
