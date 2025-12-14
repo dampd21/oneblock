@@ -1291,3 +1291,511 @@
         font-size: 1.5rem;
     }
 }
+
+/* ============================================
+   Checklist Preview (미리보기 스크롤)
+   ============================================ */
+.checklist-preview {
+    background-color: var(--white);
+}
+
+.checklist-preview-wrapper {
+    display: block;
+    max-width: 800px;
+    margin: 0 auto;
+    text-decoration: none;
+    color: inherit;
+}
+
+.checklist-preview-container {
+    background-color: var(--primary);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.checklist-preview-wrapper:hover .checklist-preview-container {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.3);
+}
+
+.checklist-preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md) var(--space-lg);
+    background-color: var(--primary-dark);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.checklist-preview-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+}
+
+.checklist-preview-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--dark);
+    background-color: var(--accent);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+}
+
+.checklist-preview-scroll {
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+.checklist-preview-content {
+    animation: scrollUpChecklist 20s linear infinite;
+}
+
+.preview-category {
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.preview-category-header {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: var(--space-sm);
+}
+
+.preview-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 6px 0;
+    line-height: 1.5;
+}
+
+.preview-checkbox {
+    color: var(--gray-light);
+    font-size: 1rem;
+}
+
+.checklist-preview-footer {
+    padding: var(--space-md) var(--space-lg);
+    background-color: var(--primary-dark);
+    text-align: center;
+    color: var(--accent);
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.checklist-cta-button {
+    text-align: center;
+    margin-top: var(--space-xl);
+}
+
+@keyframes scrollUpChecklist {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+
+/* ============================================
+   Checklist Page Styles
+   ============================================ */
+.checklist-hero {
+    padding-bottom: var(--space-xl);
+}
+
+/* 점수 고정 바 */
+.score-sticky {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    background-color: var(--white);
+    box-shadow: var(--shadow-md);
+    z-index: 100;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+}
+
+.score-sticky.visible {
+    transform: translateY(0);
+}
+
+.score-sticky-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+    padding: var(--space-md) 0;
+}
+
+.score-display {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-xs);
+}
+
+.score-label {
+    font-size: 0.875rem;
+    color: var(--gray);
+}
+
+.score-number {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+.score-total {
+    font-size: 0.875rem;
+    color: var(--gray);
+}
+
+.score-progress {
+    flex: 1;
+    height: 8px;
+    background-color: var(--gray-lighter);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.score-progress-bar {
+    height: 100%;
+    background-color: var(--accent);
+    border-radius: var(--radius-full);
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.score-checked {
+    font-size: 0.875rem;
+    color: var(--gray);
+    white-space: nowrap;
+}
+
+/* 체크리스트 폼 */
+.checklist-section {
+    background-color: var(--light);
+    padding-top: var(--space-xl);
+}
+
+.checklist-form {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.checklist-category {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    background-color: var(--light);
+    border-bottom: 2px solid var(--gray-lighter);
+    transition: background-color 0.3s ease;
+}
+
+.category-header.complete {
+    background-color: rgba(34, 197, 94, 0.1);
+    border-bottom-color: var(--success);
+}
+
+.category-header.incomplete {
+    background-color: rgba(239, 68, 68, 0.05);
+}
+
+.category-number {
+    font-size: 0.875rem;
+    font-weight: 800;
+    color: var(--white);
+    background-color: var(--primary);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+}
+
+.category-title {
+    flex: 1;
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.category-score {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--gray);
+}
+
+.category-items {
+    padding: var(--space-md) var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+/* 체크박스 아이템 */
+.checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    background-color: var(--light);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.checklist-item:hover {
+    background-color: var(--gray-lighter);
+}
+
+.checklist-item input {
+    display: none;
+}
+
+.checkmark {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--gray-light);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.checkmark::after {
+    content: '✓';
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.checklist-item input:checked + .checkmark {
+    background-color: var(--accent);
+    border-color: var(--accent);
+}
+
+.checklist-item input:checked + .checkmark::after {
+    opacity: 1;
+}
+
+.item-text {
+    font-size: 0.9375rem;
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+/* 결과 섹션 */
+.result-section {
+    background-color: var(--white);
+}
+
+.result-card {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.result-header {
+    margin-bottom: var(--space-xl);
+}
+
+.result-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+}
+
+.result-score-display {
+    margin-bottom: var(--space-xl);
+}
+
+.result-score-circle {
+    width: 180px;
+    height: 180px;
+    border: 8px solid var(--gray-lighter);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-lg);
+    transition: border-color 0.3s ease;
+}
+
+.result-score-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--dark);
+    line-height: 1;
+}
+
+.result-score-unit {
+    font-size: 1.25rem;
+    color: var(--gray);
+}
+
+.result-grade {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+}
+
+.grade-emoji {
+    font-size: 2rem;
+}
+
+.grade-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.result-summary {
+    font-size: 1.0625rem;
+    color: var(--gray);
+    margin-bottom: var(--space-xl);
+}
+
+.result-categories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
+    margin-bottom: var(--space-2xl);
+    text-align: left;
+}
+
+.result-category-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    background-color: var(--light);
+    border-radius: var(--radius);
+    font-size: 0.8125rem;
+}
+
+.result-category-item.status-good {
+    background-color: rgba(34, 197, 94, 0.1);
+}
+
+.result-category-item.status-warn {
+    background-color: rgba(234, 179, 8, 0.1);
+}
+
+.result-category-item.status-bad {
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+.result-cat-icon {
+    font-size: 1rem;
+}
+
+.result-cat-title {
+    flex: 1;
+    font-weight: 500;
+    color: var(--dark);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.result-cat-score {
+    font-weight: 700;
+    color: var(--gray);
+}
+
+.result-cta {
+    background-color: var(--light);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.result-cta-text {
+    font-size: 1.0625rem;
+    color: var(--dark);
+    margin-bottom: var(--space-lg);
+}
+
+.result-cta-buttons {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.result-actions {
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--gray-lighter);
+}
+
+/* 체크리스트 반응형 */
+@media (max-width: 768px) {
+    .score-sticky-content {
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+    }
+    
+    .score-progress {
+        order: 3;
+        width: 100%;
+    }
+    
+    .result-categories {
+        grid-template-columns: 1fr;
+    }
+    
+    .result-score-circle {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .result-score-number {
+        font-size: 2.5rem;
+    }
+    
+    .checklist-preview-scroll {
+        height: 250px;
+    }
+    
+    .result-cta-buttons {
+        flex-direction: column;
+    }
+    
+    .result-cta-buttons .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-header {
+        flex-wrap: wrap;
+    }
+    
+    .category-title {
+        order: 2;
+        width: 100%;
+        margin-top: var(--space-sm);
+    }
+    
+    .category-score {
+        order: 1;
+    }
+}
