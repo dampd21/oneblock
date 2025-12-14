@@ -4,29 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- 기본 SEO -->
     <title>플레이스 자가진단 체크리스트 - 원블럭(ONEBLOCK)</title>
     <meta name="description" content="내 플레이스는 몇 점? 36개 체크리스트로 네이버 플레이스 최적화 상태를 무료로 자가진단 해보세요.">
-    <meta name="keywords" content="플레이스 체크리스트, 플레이스 진단, 플레이스 점수, 네이버 플레이스 최적화">
-    <meta name="author" content="원블럭(ONEBLOCK)">
     <meta name="robots" content="index, follow">
     
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="플레이스 자가진단 체크리스트 - 원블럭">
-    <meta property="og:description" content="36개 체크리스트로 내 플레이스 점수 확인하기">
-    <meta property="og:image" content="../assets/images/og-image.png">
-    <meta property="og:url" content="https://oneblock.co.kr/services/place-checklist.html">
-    
-    <!-- 파비콘 -->
     <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
-    <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
-    
-    <!-- 폰트 -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-    
-    <!-- 스타일 -->
     <link rel="stylesheet" href="../assets/css/common.css">
     <link rel="stylesheet" href="../assets/css/service.css">
 </head>
@@ -39,27 +22,14 @@
                     <span class="logo-text">ONEBLOCK</span>
                     <span class="logo-sub">원블럭</span>
                 </a>
-                
                 <ul class="nav-menu" id="navMenu">
-                    <li class="nav-item">
-                        <a href="../about/index.html" class="nav-link">회사소개</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../portfolio/index.html" class="nav-link">포트폴리오</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../services/index.html" class="nav-link active">서비스</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../blog/index.html" class="nav-link">블로그</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../contact/index.html" class="nav-link">문의하기</a>
-                    </li>
+                    <li class="nav-item"><a href="../about/index.html" class="nav-link">회사소개</a></li>
+                    <li class="nav-item"><a href="../portfolio/index.html" class="nav-link">포트폴리오</a></li>
+                    <li class="nav-item"><a href="../services/index.html" class="nav-link active">서비스</a></li>
+                    <li class="nav-item"><a href="../blog/index.html" class="nav-link">블로그</a></li>
+                    <li class="nav-item"><a href="../contact/index.html" class="nav-link">문의하기</a></li>
                 </ul>
-                
                 <a href="../contact/index.html" class="btn btn-primary nav-cta">무료 진단 신청</a>
-                
                 <button class="hamburger" id="hamburger" aria-label="메뉴 열기">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
@@ -70,358 +40,271 @@
     </header>
 
     <!-- ========== 히어로 ========== -->
-    <section class="service-hero checklist-hero">
+    <section class="service-hero">
         <div class="container">
             <div class="service-hero-content animate-fade-in">
                 <span class="service-hero-badge">무료 자가진단</span>
-                <h1 class="service-hero-title">
-                    내 플레이스는 몇 점?
-                </h1>
-                <p class="service-hero-subtitle">
-                    36개 체크리스트로 현재 최적화 상태를 확인하세요
-                </p>
+                <h1 class="service-hero-title">내 플레이스는 몇 점?</h1>
+                <p class="service-hero-subtitle">36개 항목을 체크하고 점수를 확인하세요</p>
             </div>
         </div>
     </section>
 
-    <!-- ========== 점수 표시 (고정) ========== -->
-    <div class="score-sticky" id="scoreSticky">
+    <!-- ========== 점수 고정 바 ========== -->
+    <div class="score-bar" id="scoreBar">
         <div class="container">
-            <div class="score-sticky-content">
-                <div class="score-display">
+            <div class="score-bar-inner">
+                <div class="score-info">
                     <span class="score-label">현재 점수</span>
-                    <span class="score-number" id="currentScore">0</span>
-                    <span class="score-total">/ 100점</span>
+                    <span class="score-value" id="scoreValue">0</span>
+                    <span class="score-max">/ 100점</span>
                 </div>
-                <div class="score-progress">
-                    <div class="score-progress-bar" id="scoreProgressBar" style="width: 0%"></div>
+                <div class="score-progress-wrap">
+                    <div class="score-progress-bar" id="scoreProgressBar"></div>
                 </div>
-                <div class="score-checked">
-                    <span id="checkedCount">0</span> / 36 체크
+                <div class="score-count">
+                    <span id="checkedCount">0</span> / 36
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ========== 체크리스트 ========== -->
-    <section class="section checklist-section">
+    <!-- ========== 체크리스트 테이블 ========== -->
+    <section class="section checklist-table-section">
         <div class="container">
-            <form id="checklistForm" class="checklist-form">
-                
-                <!-- 카테고리 1: 플레이스명 최적화 -->
-                <div class="checklist-category" data-category="1">
-                    <div class="category-header">
-                        <span class="category-number">01</span>
-                        <h2 class="category-title">플레이스명 최적화</h2>
-                        <span class="category-score"><span class="category-checked">0</span>/2</span>
-                    </div>
-                    <div class="category-items">
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="1-1">
-                            <span class="checkmark"></span>
-                            <span class="item-text">플레이스명에 지역명과 주요 메뉴명(예: OO동 가나다 식당)을 추가하여 검색 유사도를 높였나요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="1-2">
-                            <span class="checkmark"></span>
-                            <span class="item-text">플레이스명이 자연스럽고, 어뷰징(과도한 키워드 삽입)을 피하도록 간결하게 최적화되었나요?</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- 카테고리 2: 업종(카테고리) 설정 -->
-                <div class="checklist-category" data-category="2">
-                    <div class="category-header">
-                        <span class="category-number">02</span>
-                        <h2 class="category-title">업종(카테고리) 설정</h2>
-                        <span class="category-score"><span class="category-checked">0</span>/2</span>
-                    </div>
-                    <div class="category-items">
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="2-1">
-                            <span class="checkmark"></span>
-                            <span class="item-text">노출하고 싶은 키워드의 상위 페이지 업체들과 업종(카테고리)이 동일하게 설정되었나요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="2-2">
-                            <span class="checkmark"></span>
-                            <span class="item-text">업종 설정 시 네이버의 카테고라이징(예: 숙박 업종의 테마 필터)을 고려하여 세부 카테고리를 선택했나요?</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- 카테고리 3: 지역(매장 위치) 확인 -->
-                <div class="checklist-category" data-category="3">
-                    <div class="category-header">
-                        <span class="category-number">03</span>
-                        <h2 class="category-title">지역(매장 위치) 확인</h2>
-                        <span class="category-score"><span class="category-checked">0</span>/2</span>
-                    </div>
-                    <div class="category-items">
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="3-1">
-                            <span class="checkmark"></span>
-                            <span class="item-text">노출하고 싶은 키워드의 1~2페이지 내 업체 위치를 분석하고, 노출 가능한 지역 키워드를 확인했나요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="3-2">
-                            <span class="checkmark"></span>
-                            <span class="item-text">거리 기반 랭킹을 고려해 위치 정보를 정확히 업데이트했나요?</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- 카테고리 4: 대표키워드 설정 -->
-                <div class="checklist-category" data-category="4">
-                    <div class="category-header">
-                        <span class="category-number">04</span>
-                        <h2 class="category-title">대표키워드 설정</h2>
-                        <span class="category-score"><span class="category-checked">0</span>/5</span>
-                    </div>
-                    <div class="category-items">
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="4-1">
-                            <span class="checkmark"></span>
-                            <span class="item-text">대표 키워드에 대표 음식명, 랜드마크, 소비 상황(예: '보쌈' 대신 '가족 모임 보쌈')을 포함했나요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="4-2">
-                            <span class="checkmark"></span>
-                            <span class="item-text">대표 키워드에서 지역명을 제외하고(예: '광진구 보쌈' 대신 '보쌈'), 직접/간접 키워드를 균형 있게 설정했나요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="4-3">
-                            <span class="checkmark"></span>
-                            <span class="item-text">키워드 그물망 전략(숏테일: '보쌈', 롱테일: '서울 저녁 보쌈 맛집')을 활용해 노출 범위를 확대했나요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="4-4">
-                            <span class="checkmark"></span>
-                            <span class="item-text">합성어(예: '카페+디저트')와 네이버 카테고라이징을 고려하여 키워드를 선별했나요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="4-5">
-                            <span class="checkmark"></span>
-                            <span class="item-text">키워드에 사용자 경험을 반영했나요? (예: 테마 필터 연계)</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- 카테고리 5: 플레이스 노출 환경 -->
-                <div class="checklist-category" data-category="5">
-                    <div class="category-header">
-                        <span class="category-number">05</span>
-                        <h2 class="category-title">플레이스 노출 환경</h2>
-                        <span class="category-score"><span class="category-checked">0</span>/5</span>
-                    </div>
-                    <div class="category-items">
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="5-1">
-                            <span class="checkmark"></span>
-                            <span class="item-text">설정한 키워드가 검색 시 플레이스가 최상단에 노출되는 키워드인지 확인했나요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="5-2">
-                            <span class="checkmark"></span>
-                            <span class="item-text">대표 키워드의 경쟁 강도와 월 검색량을 분석했나요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="5-3">
-                            <span class="checkmark"></span>
-                            <span class="item-text">플레이스 썸네일 앞 두 장 사진에 매장 정체성(메뉴 비주얼, 인테리어)이 명확히 담겼나요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="5-4">
-                            <span class="checkmark"></span>
-                            <span class="item-text">썸네일 사진이 경쟁 업체보다 시각적으로 매력적(고해상도, 독특한 앵글)인가요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="5-5">
-                            <span class="checkmark"></span>
-                            <span class="item-text">모바일 최적화를 고려해 썸네일과 키워드가 모바일 환경에 적합한지 테스트했나요?</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- 카테고리 6: 플레이스 정보 -->
-                <div class="checklist-category" data-category="6">
-                    <div class="category-header">
-                        <span class="category-number">06</span>
-                        <h2 class="category-title">플레이스 정보</h2>
-                        <span class="category-score"><span class="category-checked">0</span>/5</span>
-                    </div>
-                    <div class="category-items">
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="6-1">
-                            <span class="checkmark"></span>
-                            <span class="item-text">찾아오는 길이 고객이 문의 없이 쉽게 이해할 수 있도록 상세히 작성되었나요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="6-2">
-                            <span class="checkmark"></span>
-                            <span class="item-text">주차 정보, 콜키지, 기타 편의사항(반려동물 동반 가능 등)이 충분히 기입되었나요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="6-3">
-                            <span class="checkmark"></span>
-                            <span class="item-text">메뉴 및 상품을 매력적으로 구성했나요? (저가 상품 강조, 비주얼 좋은 사진, 끌리는 메뉴명)</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="6-4">
-                            <span class="checkmark"></span>
-                            <span class="item-text">쿠폰 설정 시 고객 혜택(할인율, 기간)을 고객 관점에서 최적화했나요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="6-5">
-                            <span class="checkmark"></span>
-                            <span class="item-text">영업시간, 가격대, 추가 설명을 최신으로 업데이트했나요?</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- 카테고리 7: 트래픽 점검 -->
-                <div class="checklist-category" data-category="7">
-                    <div class="category-header">
-                        <span class="category-number">07</span>
-                        <h2 class="category-title">트래픽 점검</h2>
-                        <span class="category-score"><span class="category-checked">0</span>/8</span>
-                    </div>
-                    <div class="category-items">
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="7-1">
-                            <span class="checkmark"></span>
-                            <span class="item-text">플레이스 통계에서 매일 유입 키워드를 확인하고, 이를 바탕으로 키워드 조정 중인가요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="7-2">
-                            <span class="checkmark"></span>
-                            <span class="item-text">블로그, 인스타그램, 당근, 유튜브 등을 활용해 자연 트래픽을 유도하고 있나요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="7-3">
-                            <span class="checkmark"></span>
-                            <span class="item-text">네이버 플레이스 광고를 통해 노출 효율과 효과 키워드를 파악했나요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="7-4">
-                            <span class="checkmark"></span>
-                            <span class="item-text">광고 집행 시 성과 분석으로 불필요 키워드를 제외했나요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="7-5">
-                            <span class="checkmark"></span>
-                            <span class="item-text">인스타그램, 당근 등에서 매력적인 콘텐츠로 홍보 중인가요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="7-6">
-                            <span class="checkmark"></span>
-                            <span class="item-text">리워드 앱 유입과 네이버 플레이스 광고의 효과를 비교 분석했나요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="7-7">
-                            <span class="checkmark"></span>
-                            <span class="item-text">블로그/인스타/유튜브 체험단을 운영해 트래픽을 증대하고 있나요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="7-8">
-                            <span class="checkmark"></span>
-                            <span class="item-text">네이버 클립(숏폼) 콘텐츠를 연계해 플레이스 유입을 늘리는 전략을 적용했나요?</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- 카테고리 8: 플레이스 운영 점검 -->
-                <div class="checklist-category" data-category="8">
-                    <div class="category-header">
-                        <span class="category-number">08</span>
-                        <h2 class="category-title">플레이스 운영 점검</h2>
-                        <span class="category-score"><span class="category-checked">0</span>/4</span>
-                    </div>
-                    <div class="category-items">
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="8-1">
-                            <span class="checkmark"></span>
-                            <span class="item-text">리뷰를 통해 고객 재구매 주기와 선호도를 파악하고 있나요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="8-2">
-                            <span class="checkmark"></span>
-                            <span class="item-text">리뷰 관리를 체계적으로 하고 있나요? (긍정 리뷰 유도, 부정 리뷰 대응)</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="8-3">
-                            <span class="checkmark"></span>
-                            <span class="item-text">모든 리뷰에 답글을 달아 고객 참여도를 높이고 있나요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="8-4">
-                            <span class="checkmark"></span>
-                            <span class="item-text">리뷰 외 방문 수, 저장 수 등 사용자 경험 지표를 모니터링 중인가요?</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- 카테고리 9: 어뷰징 방지 및 지속 관리 -->
-                <div class="checklist-category" data-category="9">
-                    <div class="category-header">
-                        <span class="category-number">09</span>
-                        <h2 class="category-title">어뷰징 방지 및 지속 관리</h2>
-                        <span class="category-score"><span class="category-checked">0</span>/3</span>
-                    </div>
-                    <div class="category-items">
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="9-1">
-                            <span class="checkmark"></span>
-                            <span class="item-text">과도한 키워드 삽입이나 가짜 리뷰를 피하고, 네이버 운영원칙을 준수하고 있나요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="9-2">
-                            <span class="checkmark"></span>
-                            <span class="item-text">정기적으로 플레이스 정보를 업데이트하며, 순위 변동을 모니터링하고 있나요?</span>
-                        </label>
-                        <label class="checklist-item">
-                            <input type="checkbox" name="item" value="9-3">
-                            <span class="checkmark"></span>
-                            <span class="item-text">전문가의 도움을 받아 지속적인 최적화를 계획하고 있나요?</span>
-                        </label>
-                    </div>
-                </div>
-                
-            </form>
+            <div class="checklist-table-wrapper">
+                <table class="checklist-table" id="checklistTable">
+                    <thead>
+                        <tr>
+                            <th class="col-category">카테고리</th>
+                            <th class="col-question">체크 항목</th>
+                            <th class="col-check">체크</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 1. 플레이스명 최적화 -->
+                        <tr data-category="1">
+                            <td><span class="cat-badge cat-1">플레이스명</span></td>
+                            <td>플레이스명에 지역명과 주요 메뉴명을 추가하여 검색 유사도를 높였나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="1-1"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="1">
+                            <td><span class="cat-badge cat-1">플레이스명</span></td>
+                            <td>플레이스명이 자연스럽고, 어뷰징(과도한 키워드 삽입)을 피하도록 간결하게 최적화되었나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="1-2"><span class="check-mark"></span></label></td>
+                        </tr>
+                        
+                        <!-- 2. 업종 설정 -->
+                        <tr data-category="2">
+                            <td><span class="cat-badge cat-2">업종 설정</span></td>
+                            <td>노출하고 싶은 키워드의 상위 페이지 업체들과 업종(카테고리)이 동일하게 설정되었나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="2-1"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="2">
+                            <td><span class="cat-badge cat-2">업종 설정</span></td>
+                            <td>네이버의 카테고라이징(예: 테마 필터)을 고려하여 세부 카테고리를 선택했나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="2-2"><span class="check-mark"></span></label></td>
+                        </tr>
+                        
+                        <!-- 3. 지역 확인 -->
+                        <tr data-category="3">
+                            <td><span class="cat-badge cat-3">지역 확인</span></td>
+                            <td>노출하고 싶은 키워드의 1~2페이지 내 업체 위치를 분석하고, 노출 가능한 지역 키워드를 확인했나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="3-1"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="3">
+                            <td><span class="cat-badge cat-3">지역 확인</span></td>
+                            <td>거리 기반 랭킹을 고려해 위치 정보를 정확히 업데이트했나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="3-2"><span class="check-mark"></span></label></td>
+                        </tr>
+                        
+                        <!-- 4. 대표키워드 설정 -->
+                        <tr data-category="4">
+                            <td><span class="cat-badge cat-4">키워드</span></td>
+                            <td>대표 키워드에 대표 음식명, 랜드마크, 소비 상황(예: '가족 모임 보쌈')을 포함했나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="4-1"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="4">
+                            <td><span class="cat-badge cat-4">키워드</span></td>
+                            <td>대표 키워드에서 지역명을 제외하고, 직접/간접 키워드를 균형 있게 설정했나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="4-2"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="4">
+                            <td><span class="cat-badge cat-4">키워드</span></td>
+                            <td>키워드 그물망 전략(숏테일 + 롱테일)을 활용해 노출 범위를 확대했나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="4-3"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="4">
+                            <td><span class="cat-badge cat-4">키워드</span></td>
+                            <td>합성어(예: '카페+디저트')와 네이버 카테고라이징을 고려하여 키워드를 선별했나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="4-4"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="4">
+                            <td><span class="cat-badge cat-4">키워드</span></td>
+                            <td>키워드에 사용자 경험을 반영했나요? (예: 테마 필터 연계)</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="4-5"><span class="check-mark"></span></label></td>
+                        </tr>
+                        
+                        <!-- 5. 플레이스 노출 환경 -->
+                        <tr data-category="5">
+                            <td><span class="cat-badge cat-5">노출 환경</span></td>
+                            <td>설정한 키워드가 검색 시 플레이스가 최상단에 노출되는 키워드인지 확인했나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="5-1"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="5">
+                            <td><span class="cat-badge cat-5">노출 환경</span></td>
+                            <td>대표 키워드의 경쟁 강도와 월 검색량을 분석했나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="5-2"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="5">
+                            <td><span class="cat-badge cat-5">노출 환경</span></td>
+                            <td>플레이스 썸네일 앞 두 장 사진에 매장 정체성(메뉴 비주얼, 인테리어)이 명확히 담겼나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="5-3"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="5">
+                            <td><span class="cat-badge cat-5">노출 환경</span></td>
+                            <td>썸네일 사진이 경쟁 업체보다 시각적으로 매력적(고해상도, 독특한 앵글)인가요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="5-4"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="5">
+                            <td><span class="cat-badge cat-5">노출 환경</span></td>
+                            <td>모바일 환경에서 썸네일과 키워드가 적합한지 테스트했나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="5-5"><span class="check-mark"></span></label></td>
+                        </tr>
+                        
+                        <!-- 6. 플레이스 정보 -->
+                        <tr data-category="6">
+                            <td><span class="cat-badge cat-6">플레이스 정보</span></td>
+                            <td>찾아오는 길이 고객이 문의 없이 쉽게 이해할 수 있도록 상세히 작성되었나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="6-1"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="6">
+                            <td><span class="cat-badge cat-6">플레이스 정보</span></td>
+                            <td>주차 정보, 콜키지, 기타 편의사항(반려동물 동반 등)이 충분히 기입되었나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="6-2"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="6">
+                            <td><span class="cat-badge cat-6">플레이스 정보</span></td>
+                            <td>메뉴 및 상품을 매력적으로 구성했나요? (비주얼 좋은 사진, 끌리는 메뉴명)</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="6-3"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="6">
+                            <td><span class="cat-badge cat-6">플레이스 정보</span></td>
+                            <td>쿠폰 설정 시 고객 혜택(할인율, 기간)을 고객 관점에서 최적화했나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="6-4"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="6">
+                            <td><span class="cat-badge cat-6">플레이스 정보</span></td>
+                            <td>영업시간, 가격대, 추가 설명을 최신으로 업데이트했나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="6-5"><span class="check-mark"></span></label></td>
+                        </tr>
+                        
+                        <!-- 7. 트래픽 점검 -->
+                        <tr data-category="7">
+                            <td><span class="cat-badge cat-7">트래픽</span></td>
+                            <td>플레이스 통계에서 매일 유입 키워드를 확인하고 키워드 조정을 하고 있나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="7-1"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="7">
+                            <td><span class="cat-badge cat-7">트래픽</span></td>
+                            <td>블로그, 인스타그램, 당근, 유튜브 등으로 자연 트래픽을 유도하고 있나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="7-2"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="7">
+                            <td><span class="cat-badge cat-7">트래픽</span></td>
+                            <td>네이버 플레이스 광고를 통해 노출 효율과 효과 키워드를 파악했나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="7-3"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="7">
+                            <td><span class="cat-badge cat-7">트래픽</span></td>
+                            <td>광고 집행 시 성과 분석으로 불필요 키워드를 제외했나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="7-4"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="7">
+                            <td><span class="cat-badge cat-7">트래픽</span></td>
+                            <td>인스타그램, 당근 등에서 매력적인 콘텐츠로 홍보 중인가요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="7-5"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="7">
+                            <td><span class="cat-badge cat-7">트래픽</span></td>
+                            <td>리워드 앱 유입과 플레이스 광고의 효과를 비교 분석했나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="7-6"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="7">
+                            <td><span class="cat-badge cat-7">트래픽</span></td>
+                            <td>블로그/인스타/유튜브 체험단을 운영해 트래픽을 증대하고 있나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="7-7"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="7">
+                            <td><span class="cat-badge cat-7">트래픽</span></td>
+                            <td>네이버 클립(숏폼) 콘텐츠를 연계해 플레이스 유입을 늘리고 있나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="7-8"><span class="check-mark"></span></label></td>
+                        </tr>
+                        
+                        <!-- 8. 운영 점검 -->
+                        <tr data-category="8">
+                            <td><span class="cat-badge cat-8">운영</span></td>
+                            <td>리뷰를 통해 고객 재구매 주기와 선호도를 파악하고 있나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="8-1"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="8">
+                            <td><span class="cat-badge cat-8">운영</span></td>
+                            <td>리뷰 관리를 체계적으로 하고 있나요? (긍정 유도, 부정 대응)</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="8-2"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="8">
+                            <td><span class="cat-badge cat-8">운영</span></td>
+                            <td>모든 리뷰에 답글을 달아 고객 참여도를 높이고 있나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="8-3"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="8">
+                            <td><span class="cat-badge cat-8">운영</span></td>
+                            <td>리뷰 외 방문 수, 저장 수 등 사용자 경험 지표를 모니터링 중인가요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="8-4"><span class="check-mark"></span></label></td>
+                        </tr>
+                        
+                        <!-- 9. 어뷰징 방지 -->
+                        <tr data-category="9">
+                            <td><span class="cat-badge cat-9">지속 관리</span></td>
+                            <td>과도한 키워드 삽입이나 가짜 리뷰를 피하고 네이버 운영원칙을 준수하고 있나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="9-1"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="9">
+                            <td><span class="cat-badge cat-9">지속 관리</span></td>
+                            <td>정기적으로 플레이스 정보를 업데이트하며 순위 변동을 모니터링하고 있나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="9-2"><span class="check-mark"></span></label></td>
+                        </tr>
+                        <tr data-category="9">
+                            <td><span class="cat-badge cat-9">지속 관리</span></td>
+                            <td>전문가의 도움을 받아 지속적인 최적화를 계획하고 있나요?</td>
+                            <td><label class="check-box"><input type="checkbox" name="q" value="9-3"><span class="check-mark"></span></label></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </section>
 
-    <!-- ========== 결과 표시 ========== -->
-    <section class="section result-section" id="resultSection">
+    <!-- ========== 결과 ========== -->
+    <section class="section result-section">
         <div class="container">
-            <div class="result-card">
-                <div class="result-header">
-                    <h2 class="result-title">📊 진단 결과</h2>
-                </div>
-                
-                <div class="result-score-display">
-                    <div class="result-score-circle" id="resultScoreCircle">
-                        <span class="result-score-number" id="resultScore">0</span>
-                        <span class="result-score-unit">점</span>
+            <div class="result-box">
+                <div class="result-score-area">
+                    <div class="result-circle" id="resultCircle">
+                        <span class="result-number" id="resultNumber">0</span>
+                        <span class="result-unit">점</span>
                     </div>
                     <div class="result-grade" id="resultGrade">
-                        <span class="grade-emoji">📝</span>
+                        <span class="grade-icon">📝</span>
                         <span class="grade-text">체크해주세요</span>
                     </div>
+                    <p class="result-desc" id="resultDesc">위 항목들을 체크하면 실시간으로 점수가 계산됩니다.</p>
                 </div>
                 
-                <div class="result-summary" id="resultSummary">
-                    <p>위 체크리스트를 체크하면 실시간으로 점수가 계산됩니다.</p>
-                </div>
-                
-                <div class="result-categories" id="resultCategories">
-                    <!-- JS로 채워짐 -->
-                </div>
-                
-                <div class="result-cta">
+                <div class="result-cta-area">
                     <p class="result-cta-text">
-                        점수가 낮은 항목, 어떻게 개선해야 할지 모르시겠다면?<br>
-                        <strong>원블럭이 무료로 상세 진단해드립니다</strong>
+                        <strong>점수가 낮은 항목, 어떻게 개선해야 할지 모르시겠다면?</strong><br>
+                        원블럭이 무료로 상세 진단해드립니다
                     </p>
                     <div class="result-cta-buttons">
                         <a href="../contact/index.html" class="btn btn-accent btn-lg">무료 상세 진단 받기</a>
@@ -429,9 +312,7 @@
                     </div>
                 </div>
                 
-                <div class="result-actions">
-                    <button type="button" class="btn btn-outline" id="resetBtn">다시 하기</button>
-                </div>
+                <button type="button" class="btn-reset" id="resetBtn">🔄 다시 하기</button>
             </div>
         </div>
     </section>
@@ -484,7 +365,6 @@
         </div>
     </footer>
 
-    <!-- 카카오톡 플로팅 버튼 -->
     <a href="https://open.kakao.com/o/sL5miBAg" target="_blank" class="kakao-float" aria-label="카카오톡 상담">
         <svg viewBox="0 0 24 24" fill="currentColor" class="kakao-icon">
             <path d="M12 3C6.48 3 2 6.58 2 11c0 2.8 1.8 5.27 4.5 6.73-.14.52-.9 3.27-.93 3.48 0 0-.02.16.08.22.1.06.22.02.22.02.29-.04 3.37-2.2 3.9-2.57.73.1 1.48.15 2.23.15 5.52 0 10-3.58 10-8 0-4.42-4.48-8-10-8z"/>
@@ -493,145 +373,72 @@
 
     <script src="../assets/js/common.js"></script>
     <script>
-        // ========== 체크리스트 점수 계산 ==========
-        const checkboxes = document.querySelectorAll('input[name="item"]');
+        const checkboxes = document.querySelectorAll('input[name="q"]');
         const totalItems = 36;
         
-        const currentScoreEl = document.getElementById('currentScore');
-        const checkedCountEl = document.getElementById('checkedCount');
+        const scoreValue = document.getElementById('scoreValue');
         const scoreProgressBar = document.getElementById('scoreProgressBar');
-        const resultScore = document.getElementById('resultScore');
+        const checkedCount = document.getElementById('checkedCount');
+        const resultNumber = document.getElementById('resultNumber');
+        const resultCircle = document.getElementById('resultCircle');
         const resultGrade = document.getElementById('resultGrade');
-        const resultSummary = document.getElementById('resultSummary');
-        const resultCategories = document.getElementById('resultCategories');
-        const resultScoreCircle = document.getElementById('resultScoreCircle');
+        const resultDesc = document.getElementById('resultDesc');
         
-        // 등급 정의
         const grades = [
-            { min: 90, emoji: '🏆', text: '최적화 수준 우수!', color: '#22C55E', desc: '상위 노출 가능성이 매우 높습니다. 현재 상태를 유지하세요!' },
-            { min: 70, emoji: '👍', text: '양호', color: '#EAB308', desc: '대체로 잘 되어 있습니다. 일부 항목만 보완하면 더 좋아집니다.' },
-            { min: 50, emoji: '⚠️', text: '개선 필요', color: '#F97316', desc: '주요 항목들의 최적화가 필요합니다. 체크 안 된 항목을 확인하세요.' },
-            { min: 0, emoji: '🚨', text: '최적화 미흡', color: '#EF4444', desc: '전반적인 플레이스 설정 재검토가 필요합니다. 전문가 상담을 권장합니다.' }
+            { min: 90, icon: '🏆', text: '최적화 우수!', color: '#22C55E', desc: '상위 노출 가능성이 매우 높습니다. 현재 상태를 유지하세요!' },
+            { min: 70, icon: '👍', text: '양호', color: '#EAB308', desc: '대체로 잘 되어 있습니다. 일부 항목만 보완하면 됩니다.' },
+            { min: 50, icon: '⚠️', text: '개선 필요', color: '#F97316', desc: '주요 항목들의 최적화가 필요합니다.' },
+            { min: 0, icon: '🚨', text: '최적화 미흡', color: '#EF4444', desc: '전반적인 재검토가 필요합니다. 전문가 상담을 권장합니다.' }
         ];
         
-        // 카테고리별 항목 수
-        const categoryItemCounts = {
-            1: 2, 2: 2, 3: 2, 4: 5, 5: 5, 6: 5, 7: 8, 8: 4, 9: 3
-        };
-        
-        function calculateScore() {
-            const checked = document.querySelectorAll('input[name="item"]:checked').length;
+        function calculate() {
+            const checked = document.querySelectorAll('input[name="q"]:checked').length;
             const score = Math.round((checked / totalItems) * 100);
             
-            // 상단 고정 바 업데이트
-            currentScoreEl.textContent = score;
-            checkedCountEl.textContent = checked;
+            // 상단 바
+            scoreValue.textContent = score;
+            checkedCount.textContent = checked;
             scoreProgressBar.style.width = score + '%';
             
-            // 프로그레스 바 색상
-            if (score >= 90) {
-                scoreProgressBar.style.backgroundColor = '#22C55E';
-            } else if (score >= 70) {
-                scoreProgressBar.style.backgroundColor = '#EAB308';
-            } else if (score >= 50) {
-                scoreProgressBar.style.backgroundColor = '#F97316';
-            } else {
-                scoreProgressBar.style.backgroundColor = '#EF4444';
-            }
+            // 결과 영역
+            resultNumber.textContent = score;
             
-            // 결과 섹션 업데이트
-            resultScore.textContent = score;
-            
-            // 등급 찾기
             const grade = grades.find(g => score >= g.min);
-            resultGrade.innerHTML = `
-                <span class="grade-emoji">${grade.emoji}</span>
-                <span class="grade-text">${grade.text}</span>
-            `;
-            resultScoreCircle.style.borderColor = grade.color;
-            resultSummary.innerHTML = `<p>${grade.desc}</p>`;
+            scoreProgressBar.style.backgroundColor = grade.color;
+            resultCircle.style.borderColor = grade.color;
+            resultGrade.innerHTML = `<span class="grade-icon">${grade.icon}</span><span class="grade-text">${grade.text}</span>`;
+            resultDesc.textContent = grade.desc;
             
-            // 카테고리별 점수
-            updateCategoryScores();
-        }
-        
-        function updateCategoryScores() {
-            // 각 카테고리별 체크 수 계산
-            document.querySelectorAll('.checklist-category').forEach(cat => {
-                const catNum = cat.dataset.category;
-                const checkedInCat = cat.querySelectorAll('input:checked').length;
-                const totalInCat = categoryItemCounts[catNum];
-                cat.querySelector('.category-checked').textContent = checkedInCat;
-                
-                // 카테고리 헤더 색상
-                const header = cat.querySelector('.category-header');
-                if (checkedInCat === totalInCat) {
-                    header.classList.add('complete');
-                    header.classList.remove('incomplete');
-                } else if (checkedInCat === 0) {
-                    header.classList.add('incomplete');
-                    header.classList.remove('complete');
+            // 체크된 행 스타일
+            document.querySelectorAll('.checklist-table tbody tr').forEach(row => {
+                const cb = row.querySelector('input[type="checkbox"]');
+                if (cb && cb.checked) {
+                    row.classList.add('checked');
                 } else {
-                    header.classList.remove('complete', 'incomplete');
+                    row.classList.remove('checked');
                 }
             });
-            
-            // 결과 섹션 카테고리별 요약
-            let categorySummaryHTML = '';
-            document.querySelectorAll('.checklist-category').forEach(cat => {
-                const catNum = cat.dataset.category;
-                const title = cat.querySelector('.category-title').textContent;
-                const checkedInCat = cat.querySelectorAll('input:checked').length;
-                const totalInCat = categoryItemCounts[catNum];
-                const percent = Math.round((checkedInCat / totalInCat) * 100);
-                
-                let statusClass = 'status-good';
-                let statusIcon = '✅';
-                if (percent < 50) {
-                    statusClass = 'status-bad';
-                    statusIcon = '❌';
-                } else if (percent < 100) {
-                    statusClass = 'status-warn';
-                    statusIcon = '⚠️';
-                }
-                
-                categorySummaryHTML += `
-                    <div class="result-category-item ${statusClass}">
-                        <span class="result-cat-icon">${statusIcon}</span>
-                        <span class="result-cat-title">${title}</span>
-                        <span class="result-cat-score">${checkedInCat}/${totalInCat}</span>
-                    </div>
-                `;
-            });
-            resultCategories.innerHTML = categorySummaryHTML;
         }
         
-        // 이벤트 리스너
-        checkboxes.forEach(cb => {
-            cb.addEventListener('change', calculateScore);
-        });
+        checkboxes.forEach(cb => cb.addEventListener('change', calculate));
         
-        // 다시 하기 버튼
         document.getElementById('resetBtn').addEventListener('click', () => {
             checkboxes.forEach(cb => cb.checked = false);
-            calculateScore();
+            calculate();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
         
-        // 초기 계산
-        calculateScore();
-        
         // 스크롤 시 점수 바 표시
-        const scoreSticky = document.getElementById('scoreSticky');
-        const heroSection = document.querySelector('.checklist-hero');
-        
+        const scoreBar = document.getElementById('scoreBar');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > heroSection.offsetHeight) {
-                scoreSticky.classList.add('visible');
+            if (window.scrollY > 300) {
+                scoreBar.classList.add('visible');
             } else {
-                scoreSticky.classList.remove('visible');
+                scoreBar.classList.remove('visible');
             }
         });
+        
+        calculate();
     </script>
 </body>
 </html>
