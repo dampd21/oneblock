@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>플레이스 분석 도구 | ONEBLOCK</title>
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../assets/css/common.css">
+    
+    <style>
+        /* 비밀번호 화면 */
+        .password-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        
+        .password-screen.hidden {
+            display: none;
+        }
+        
+        .password-box {
+            background: var(--white);
+            padding: var(--space-2xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .password-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+        }
+        
+        .password-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+            color: var(--dark);
+        }
+        
+        .password-desc {
+            font-size: 0.9375rem;
+            color: var(--gray);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .password-input {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 1rem;
+            border: 2px solid var(--gray-lighter);
+            border-radius: var(--radius);
+            text-align: center;
+            letter-spacing: 4px;
+            margin-bottom: var(--space-md);
+        }
+        
+        .password-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        .password-error {
+            color: var(--error);
+            font-size: 0.875rem;
+            margin-bottom: var(--space-md);
+            display: none;
+        }
+        
+        .password-error.show {
+            display: block;
+        }
+        
+        /* 메인 콘텐츠 (숨김) */
+        .main-content {
+            display: none;
+        }
+        
+        .main-content.visible {
+            display: block;
+        }
+        
+        /* 크롤러 폼 스타일 */
+        .crawler-section {
+            padding: calc(var(--header-height) + var(--space-2xl)) 0 var(--space-4xl);
+            min-height: 100vh;
+            background: var(--light);
+        }
+        
+        .crawler-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .crawler-card {
+            background: var(--white);
+            padding: var(--space-2xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .crawler-header {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+        
+        .crawler-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+        }
+        
+        .crawler-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .crawler-subtitle {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .info-box-title {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .info-box ul {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+        }
+        
+        .info-box li {
+            font-size: 0.9375rem;
+            color: rgba(255, 255, 255, 0.9);
+            padding-left: var(--space-md);
+            position: relative;
+        }
+        
+        .info-box li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        /* 결과 메시지 */
+        .result-message {
+            margin-top: var(--space-lg);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            display: none;
+        }
+        
+        .result-message.show {
+            display: block;
+        }
+        
+        .result-message.success {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid var(--success);
+            color: var(--success);
+        }
+        
+        .result-message.error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid var(--error);
+            color: var(--error);
+        }
+        
+        .result-message.loading {
+            background: rgba(234, 179, 8, 0.1);
+            border: 1px solid var(--accent);
+            color: var(--accent-dark);
+        }
+        
+        .result-title {
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .result-details {
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+        
+        /* 스피너 */
+        .spinner {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--accent-light);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: var(--space-sm);
+            vertical-align: middle;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* 시트 링크 */
+        .sheets-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-top: var(--space-xl);
+            padding: var(--space-md) var(--space-lg);
+            background: var(--success);
+            color: var(--white);
+            font-weight: 600;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+        
+        .sheets-link:hover {
+            background: #1ea34d;
+            transform: translateY(-2px);
+        }
+        
+        /* 로그아웃 버튼 */
+        .logout-btn {
+            position: fixed;
+            top: calc(var(--header-height) + var(--space-md));
+            right: var(--space-lg);
+            padding: var(--space-sm) var(--space-md);
+            background: var(--gray-lighter);
+            color: var(--gray);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 100;
+        }
+        
+        .logout-btn:hover {
+            background: var(--error);
+            color: var(--white);
+        }
+        
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .crawler-section {
+                padding: calc(var(--header-height) + var(--space-lg)) var(--space-md) var(--space-2xl);
+            }
+            
+            .crawler-card {
+                padding: var(--space-xl);
+            }
+            
+            .crawler-title {
+                font-size: 1.5rem;
+            }
+            
+            .logout-btn {
+                top: auto;
+                bottom: var(--space-lg);
+                right: var(--space-md);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 비밀번호 화면 -->
+    <div id="passwordScreen" class="password-screen">
+        <div class="password-box">
+            <div class="password-icon">🔐</div>
+            <h1 class="password-title">접근 제한</h1>
+            <p class="password-desc">이 페이지는 관리자 전용입니다.<br>비밀번호를 입력해주세요.</p>
+            
+            <input 
+                type="password" 
+                id="passwordInput" 
+                class="password-input" 
+                placeholder="••••••"
+                maxlength="20"
+                autofocus
+            >
+            <p id="passwordError" class="password-error">비밀번호가 틀렸습니다.</p>
+            <button onclick="checkPassword()" class="btn btn-accent btn-full">확인</button>
+        </div>
+    </div>
+
+    <!-- 메인 콘텐츠 -->
+    <div id="mainContent" class="main-content">
+        <!-- 헤더 -->
+        <header class="header">
+            <nav class="nav container">
+                <a href="../index.html" class="logo">
+                    <span class="logo-text">ONEBLOCK</span>
+                    <span class="logo-sub">마케팅의 첫 블럭</span>
+                </a>
+                <div class="nav-menu">
+                    <a href="../index.html" class="nav-link">홈으로</a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- 로그아웃 버튼 -->
+        <button class="logout-btn" onclick="logout()">🚪 로그아웃</button>
+
+        <!-- 크롤러 섹션 -->
+        <section class="crawler-section">
+            <div class="container">
+                <div class="crawler-wrapper">
+                    <div class="crawler-card">
+                        <div class="crawler-header">
+                            <div class="crawler-icon">🔍</div>
+                            <h1 class="crawler-title">플레이스 분석 도구</h1>
+                            <p class="crawler-subtitle">키워드로 상위 업체 리뷰 데이터 수집</p>
+                        </div>
+                        
+                        <div class="info-box">
+                            <p class="info-box-title">📌 사용 방법</p>
+                            <ul>
+                                <li>검색 키워드 입력 (예: 강남 미용실)</li>
+                                <li>수집 개수 선택 후 실행</li>
+                                <li>약 15-20분 후 Google Sheets 확인</li>
+                            </ul>
+                        </div>
+                        
+                        <form id="crawlerForm">
+                            <div class="form-group">
+                                <label class="form-label" for="keyword">
+                                    🔎 검색 키워드 <span class="required">*</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="keyword" 
+                                    class="form-input"
+                                    placeholder="예: 강남 미용실, 홍대 카페, 부평 맛집"
+                                    required
+                                >
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="maxCount">
+                                    📊 수집 개수
+                                </label>
+                                <select id="maxCount" class="form-select">
+                                    <option value="5">5개 업체 (약 15분)</option>
+                                    <option value="10">10개 업체 (약 25분)</option>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" id="submitBtn" class="btn btn-accent btn-lg btn-full">
+                                🚀 크롤링 시작
+                            </button>
+                        </form>
+                        
+                        <div id="resultMessage" class="result-message">
+                            <p class="result-title"></p>
+                            <p class="result-details"></p>
+                        </div>
+                        
+                        <a href="https://docs.google.com/spreadsheets/d/17mERwFzSJgnK6h61Ryh8uT3f496NR9ZO2nyGow4J_to" 
+                           target="_blank" 
+                           class="sheets-link">
+                            📊 Google Sheets 결과 보기
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // ============================================
+        // 비밀번호 설정 (여기서 변경 가능)
+        // ============================================
+        const CORRECT_PASSWORD = 'dnjsqmffjr1819';
+        const STORAGE_KEY = 'oneblock_crawler_auth';
+        
+        // ============================================
+        // 인증 체크
+        // ============================================
+        function checkAuth() {
+            const isAuth = localStorage.getItem(STORAGE_KEY);
+            if (isAuth === 'true') {
+                showMainContent();
+            }
+        }
+        
+        function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            const error = document.getElementById('passwordError');
+            
+            if (input.value === CORRECT_PASSWORD) {
+                localStorage.setItem(STORAGE_KEY, 'true');
+                showMainContent();
+            } else {
+                error.classList.add('show');
+                input.value = '';
+                input.focus();
+            }
+        }
+        
+        function showMainContent() {
+            document.getElementById('passwordScreen').classList.add('hidden');
+            document.getElementById('mainContent').classList.add('visible');
+        }
+        
+        function logout() {
+            localStorage.removeItem(STORAGE_KEY);
+            location.reload();
+        }
+        
+        // 엔터키로 비밀번호 확인
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+        
+        // 페이지 로드 시 인증 체크
+        checkAuth();
+        
+        // ============================================
+        // 크롤러 폼 제출
+        // ============================================
+        const WORKER_URL = 'https://crawler-trigger.dampd21.workers.dev';
+        
+        document.getElementById('crawlerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const keyword = document.getElementById('keyword').value.trim();
+            const maxCount = document.getElementById('maxCount').value;
+            const submitBtn = document.getElementById('submitBtn');
+            const resultDiv = document.getElementById('resultMessage');
+            const resultTitle = resultDiv.querySelector('.result-title');
+            const resultDetails = resultDiv.querySelector('.result-details');
+            
+            if (!keyword) {
+                resultDiv.className = 'result-message show error';
+                resultTitle.textContent = '❌ 오류';
+                resultDetails.textContent = '키워드를 입력해주세요.';
+                return;
+            }
+            
+            // 로딩 상태
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner"></span> 요청 중...';
+            resultDiv.className = 'result-message show loading';
+            resultTitle.textContent = '⏳ 처리 중';
+            resultDetails.textContent = 'GitHub Actions에 요청을 보내고 있습니다...';
+            
+            try {
+                const response = await fetch(WORKER_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        keyword: keyword,
+                        max_count: maxCount
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    resultDiv.className = 'result-message show success';
+                    resultTitle.textContent = '✅ 크롤링 시작됨!';
+                    resultDetails.innerHTML = `
+                        <strong>키워드:</strong> ${keyword}<br>
+                        <strong>수집 개수:</strong> ${maxCount}개<br><br>
+                        약 15-20분 후 아래 Google Sheets에서 결과를 확인하세요.
+                    `;
+                } else {
+                    resultDiv.className = 'result-message show error';
+                    resultTitle.textContent = '❌ 오류 발생';
+                    resultDetails.textContent = data.error || '알 수 없는 오류가 발생했습니다.';
+                }
+                
+            } catch (error) {
+                resultDiv.className = 'result-message show error';
+                resultTitle.textContent = '❌ 네트워크 오류';
+                resultDetails.textContent = error.message;
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '🚀 크롤링 시작';
+            }
+        });
+    </script>
+</body>
+</html>
