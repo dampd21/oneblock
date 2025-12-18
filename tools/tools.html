@@ -55,7 +55,7 @@
             min-height: 100vh;
             background: var(--light);
         }
-        .crawler-wrapper { max-width: 900px; margin: 0 auto; }
+        .crawler-wrapper { max-width: 1000px; margin: 0 auto; }
         .crawler-card {
             background: var(--white);
             border-radius: var(--radius-lg);
@@ -130,14 +130,14 @@
         }
         .id-input-wrapper .form-input { padding-left: 48px; }
         
-        .mixer-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: var(--space-md); margin-bottom: var(--space-lg); }
+        .mixer-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-md); margin-bottom: var(--space-lg); }
         .mixer-group { background: var(--light); border-radius: var(--radius-md); padding: var(--space-md); }
         .mixer-group-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-sm); }
         .mixer-group-title { font-size: 0.875rem; font-weight: 700; color: var(--dark); }
         .mixer-group-count { font-size: 0.75rem; color: var(--gray); background: var(--white); padding: 2px 8px; border-radius: var(--radius-full); }
         .mixer-textarea {
             width: 100%;
-            height: 100px;
+            height: 120px;
             padding: var(--space-sm);
             font-size: 0.875rem;
             border: 2px solid var(--gray-lighter);
@@ -184,21 +184,57 @@
             font-weight: 700;
         }
         
+        /* 조합 규칙 섹션 */
         .rules-section { margin-bottom: var(--space-lg); }
-        .rules-title { font-size: 0.875rem; font-weight: 700; margin-bottom: var(--space-sm); }
-        .rules-grid { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
-        .rule-chip {
-            padding: 6px 12px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            background: var(--light);
-            border: 1px solid var(--gray-lighter);
-            border-radius: var(--radius-full);
+        .rules-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: var(--space-sm);
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+        .rules-title { font-size: 0.875rem; font-weight: 700; }
+        .rules-actions { display: flex; gap: var(--space-xs); }
+        .rules-action-btn {
+            padding: 4px 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            background: var(--gray-lighter);
+            border: none;
+            border-radius: var(--radius);
             cursor: pointer;
             transition: var(--transition);
         }
-        .rule-chip:hover { border-color: var(--accent); }
-        .rule-chip.active { background: var(--accent); border-color: var(--accent); color: var(--dark); }
+        .rules-action-btn:hover { background: var(--accent); }
+        .rules-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); 
+            gap: 6px; 
+        }
+        .rule-chip {
+            padding: 6px 8px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            background: var(--light);
+            border: 1px solid var(--gray-lighter);
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+        .rule-chip:hover { border-color: var(--accent); background: rgba(234,179,8,0.1); }
+        .rule-chip.active { background: var(--accent); border-color: var(--accent); color: var(--dark); font-weight: 700; }
+        
+        /* 규칙 카테고리 */
+        .rules-category { margin-bottom: var(--space-md); }
+        .rules-category-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--gray);
+            margin-bottom: var(--space-xs);
+            padding-left: 4px;
+        }
         
         .mixer-options { display: flex; gap: var(--space-lg); margin-bottom: var(--space-lg); flex-wrap: wrap; }
         .mixer-option { display: flex; align-items: center; gap: var(--space-sm); font-size: 0.875rem; cursor: pointer; }
@@ -225,18 +261,60 @@
         .mixer-result-btn:hover { background: var(--accent); border-color: var(--accent); }
         .mixer-result-btn.primary { background: var(--primary); color: var(--white); border-color: var(--primary); }
         .mixer-result-btn.primary:hover { background: var(--primary-light); }
-        .mixer-result-output {
-            width: 100%;
-            height: 150px;
-            padding: var(--space-sm);
-            font-size: 0.8125rem;
-            font-family: monospace;
-            background: var(--white);
+        
+        /* 조합 결과 테이블 */
+        .keyword-result-wrapper {
+            max-height: 400px;
+            overflow-y: auto;
             border: 1px solid var(--gray-lighter);
             border-radius: var(--radius);
-            resize: vertical;
             margin-bottom: var(--space-md);
+            background: var(--white);
         }
+        .keyword-result-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8125rem;
+        }
+        .keyword-result-table th {
+            background: var(--primary);
+            color: var(--white);
+            font-weight: 600;
+            padding: 10px 12px;
+            text-align: left;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+        .keyword-result-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--gray-lighter);
+        }
+        .keyword-result-table tr:hover { background: var(--light); }
+        .keyword-result-table .num { 
+            width: 50px; 
+            text-align: center; 
+            color: var(--gray); 
+            font-size: 0.75rem;
+        }
+        .keyword-result-table .keyword { font-weight: 500; }
+        .keyword-result-table .rule { 
+            font-size: 0.7rem; 
+            color: var(--gray);
+            background: var(--light);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        .keyword-result-table .copy-btn {
+            padding: 4px 8px;
+            font-size: 0.7rem;
+            background: var(--gray-lighter);
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .keyword-result-table .copy-btn:hover { background: var(--accent); }
         
         .volume-table-wrapper {
             max-height: 400px;
@@ -373,13 +451,20 @@
             .tab-content { padding: var(--space-lg); }
             .tab-btn { padding: var(--space-sm); font-size: 0.65rem; min-width: 60px; }
             .tab-btn-icon { font-size: 1rem; }
-            .id-grid, .mixer-grid { grid-template-columns: 1fr; }
+            .id-grid { grid-template-columns: 1fr; }
+            .mixer-grid { grid-template-columns: repeat(2, 1fr); }
             .id-grid .form-group:last-child:nth-child(odd) { grid-column: span 1; }
             .mixer-options, .bulk-options { flex-direction: column; gap: var(--space-sm); }
             .bottom-links { flex-direction: column; }
             .logout-btn { top: auto; bottom: var(--space-lg); right: var(--space-md); }
             .volume-table { font-size: 0.7rem; }
             .volume-table th, .volume-table td { padding: 8px 6px; }
+            .rules-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+        
+        @media (max-width: 480px) {
+            .mixer-grid { grid-template-columns: 1fr; }
+            .rules-grid { grid-template-columns: repeat(3, 1fr); }
         }
     </style>
 </head>
@@ -549,18 +634,93 @@
                             </div>
 
                             <div class="rules-section">
-                                <p class="rules-title">조합 규칙</p>
-                                <div class="rules-grid">
-                                    <span class="rule-chip active" data-rule="1+2">1+2</span>
-                                    <span class="rule-chip" data-rule="2+1">2+1</span>
-                                    <span class="rule-chip" data-rule="1+3">1+3</span>
-                                    <span class="rule-chip" data-rule="1+4">1+4</span>
-                                    <span class="rule-chip active" data-rule="1+2+3">1+2+3</span>
-                                    <span class="rule-chip" data-rule="1+3+2">1+3+2</span>
-                                    <span class="rule-chip" data-rule="2+1+3">2+1+3</span>
-                                    <span class="rule-chip" data-rule="1+2+4">1+2+4</span>
-                                    <span class="rule-chip active" data-rule="1+2+3+4">1+2+3+4</span>
-                                    <span class="rule-chip" data-rule="2+1+3+4">2+1+3+4</span>
+                                <div class="rules-header">
+                                    <span class="rules-title">🔀 조합 규칙 선택</span>
+                                    <div class="rules-actions">
+                                        <button type="button" class="rules-action-btn" onclick="selectAllRules()">전체 선택</button>
+                                        <button type="button" class="rules-action-btn" onclick="deselectAllRules()">전체 해제</button>
+                                    </div>
+                                </div>
+                                
+                                <!-- 2개 조합 (12개) -->
+                                <div class="rules-category">
+                                    <p class="rules-category-title">2개 조합 (12개)</p>
+                                    <div class="rules-grid">
+                                        <span class="rule-chip active" data-rule="1+2">1+2</span>
+                                        <span class="rule-chip" data-rule="1+3">1+3</span>
+                                        <span class="rule-chip" data-rule="1+4">1+4</span>
+                                        <span class="rule-chip" data-rule="2+1">2+1</span>
+                                        <span class="rule-chip" data-rule="2+3">2+3</span>
+                                        <span class="rule-chip" data-rule="2+4">2+4</span>
+                                        <span class="rule-chip" data-rule="3+1">3+1</span>
+                                        <span class="rule-chip" data-rule="3+2">3+2</span>
+                                        <span class="rule-chip" data-rule="3+4">3+4</span>
+                                        <span class="rule-chip" data-rule="4+1">4+1</span>
+                                        <span class="rule-chip" data-rule="4+2">4+2</span>
+                                        <span class="rule-chip" data-rule="4+3">4+3</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- 3개 조합 (24개) -->
+                                <div class="rules-category">
+                                    <p class="rules-category-title">3개 조합 (24개)</p>
+                                    <div class="rules-grid">
+                                        <span class="rule-chip active" data-rule="1+2+3">1+2+3</span>
+                                        <span class="rule-chip" data-rule="1+2+4">1+2+4</span>
+                                        <span class="rule-chip" data-rule="1+3+2">1+3+2</span>
+                                        <span class="rule-chip" data-rule="1+3+4">1+3+4</span>
+                                        <span class="rule-chip" data-rule="1+4+2">1+4+2</span>
+                                        <span class="rule-chip" data-rule="1+4+3">1+4+3</span>
+                                        <span class="rule-chip" data-rule="2+1+3">2+1+3</span>
+                                        <span class="rule-chip" data-rule="2+1+4">2+1+4</span>
+                                        <span class="rule-chip" data-rule="2+3+1">2+3+1</span>
+                                        <span class="rule-chip" data-rule="2+3+4">2+3+4</span>
+                                        <span class="rule-chip" data-rule="2+4+1">2+4+1</span>
+                                        <span class="rule-chip" data-rule="2+4+3">2+4+3</span>
+                                        <span class="rule-chip" data-rule="3+1+2">3+1+2</span>
+                                        <span class="rule-chip" data-rule="3+1+4">3+1+4</span>
+                                        <span class="rule-chip" data-rule="3+2+1">3+2+1</span>
+                                        <span class="rule-chip" data-rule="3+2+4">3+2+4</span>
+                                        <span class="rule-chip" data-rule="3+4+1">3+4+1</span>
+                                        <span class="rule-chip" data-rule="3+4+2">3+4+2</span>
+                                        <span class="rule-chip" data-rule="4+1+2">4+1+2</span>
+                                        <span class="rule-chip" data-rule="4+1+3">4+1+3</span>
+                                        <span class="rule-chip" data-rule="4+2+1">4+2+1</span>
+                                        <span class="rule-chip" data-rule="4+2+3">4+2+3</span>
+                                        <span class="rule-chip" data-rule="4+3+1">4+3+1</span>
+                                        <span class="rule-chip" data-rule="4+3+2">4+3+2</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- 4개 조합 (24개) -->
+                                <div class="rules-category">
+                                    <p class="rules-category-title">4개 조합 (24개)</p>
+                                    <div class="rules-grid">
+                                        <span class="rule-chip active" data-rule="1+2+3+4">1+2+3+4</span>
+                                        <span class="rule-chip" data-rule="1+2+4+3">1+2+4+3</span>
+                                        <span class="rule-chip" data-rule="1+3+2+4">1+3+2+4</span>
+                                        <span class="rule-chip" data-rule="1+3+4+2">1+3+4+2</span>
+                                        <span class="rule-chip" data-rule="1+4+2+3">1+4+2+3</span>
+                                        <span class="rule-chip" data-rule="1+4+3+2">1+4+3+2</span>
+                                        <span class="rule-chip" data-rule="2+1+3+4">2+1+3+4</span>
+                                        <span class="rule-chip" data-rule="2+1+4+3">2+1+4+3</span>
+                                        <span class="rule-chip" data-rule="2+3+1+4">2+3+1+4</span>
+                                        <span class="rule-chip" data-rule="2+3+4+1">2+3+4+1</span>
+                                        <span class="rule-chip" data-rule="2+4+1+3">2+4+1+3</span>
+                                        <span class="rule-chip" data-rule="2+4+3+1">2+4+3+1</span>
+                                        <span class="rule-chip" data-rule="3+1+2+4">3+1+2+4</span>
+                                        <span class="rule-chip" data-rule="3+1+4+2">3+1+4+2</span>
+                                        <span class="rule-chip" data-rule="3+2+1+4">3+2+1+4</span>
+                                        <span class="rule-chip" data-rule="3+2+4+1">3+2+4+1</span>
+                                        <span class="rule-chip" data-rule="3+4+1+2">3+4+1+2</span>
+                                        <span class="rule-chip" data-rule="3+4+2+1">3+4+2+1</span>
+                                        <span class="rule-chip" data-rule="4+1+2+3">4+1+2+3</span>
+                                        <span class="rule-chip" data-rule="4+1+3+2">4+1+3+2</span>
+                                        <span class="rule-chip" data-rule="4+2+1+3">4+2+1+3</span>
+                                        <span class="rule-chip" data-rule="4+2+3+1">4+2+3+1</span>
+                                        <span class="rule-chip" data-rule="4+3+1+2">4+3+1+2</span>
+                                        <span class="rule-chip" data-rule="4+3+2+1">4+3+2+1</span>
+                                    </div>
                                 </div>
                             </div>
                             
@@ -574,24 +734,24 @@
                                 <button type="button" onclick="resetMixer()" class="btn btn-outline btn-lg">🔄 초기화</button>
                             </div>
                             
-                            <div class="mixer-result" style="position:relative;">
+                            <div class="mixer-result" id="mixerResultArea" style="position:relative; display:none;">
                                 <div class="loading-overlay" id="volumeLoading">
                                     <span class="spinner" style="width:32px;height:32px;border-width:3px;"></span>
                                     <span class="loading-text" id="loadingText">검색량 조회 중...</span>
                                 </div>
                                 
                                 <div class="mixer-result-header">
-                                    <span class="mixer-result-title">조합 결과</span>
+                                    <span class="mixer-result-title">📋 조합 결과</span>
                                     <span class="mixer-result-count" id="resultCount">총 0개</span>
                                 </div>
                                 <div class="mixer-result-actions">
-                                    <button class="mixer-result-btn" onclick="copyResult()">📋 복사</button>
-                                    <button class="mixer-result-btn" onclick="downloadCSV()">📄 CSV</button>
-                                    <button class="mixer-result-btn" onclick="downloadTXT()">📝 TXT</button>
+                                    <button class="mixer-result-btn" onclick="copyAllKeywords()">📋 전체 복사</button>
+                                    <button class="mixer-result-btn" onclick="downloadKeywordCSV()">📄 CSV</button>
+                                    <button class="mixer-result-btn" onclick="downloadKeywordTXT()">📝 TXT</button>
                                     <button class="mixer-result-btn primary" onclick="getSearchVolume()" id="volumeBtn">📊 검색량 조회</button>
                                 </div>
-                                <textarea id="resultOutput" class="mixer-result-output" readonly placeholder="조합된 키워드가 여기에 표시됩니다..."></textarea>
                                 
+                                <div id="keywordResultTable"></div>
                                 <div id="volumeResult"></div>
                             </div>
                         </div>
@@ -802,36 +962,114 @@
             });
         });
         
+        // 규칙 칩 클릭 이벤트
         document.querySelectorAll('.rule-chip').forEach(chip => {
             chip.addEventListener('click', () => chip.classList.toggle('active'));
         });
         
+        // 전체 선택/해제
+        function selectAllRules() {
+            document.querySelectorAll('.rule-chip').forEach(chip => chip.classList.add('active'));
+        }
+        
+        function deselectAllRules() {
+            document.querySelectorAll('.rule-chip').forEach(chip => chip.classList.remove('active'));
+        }
+        
         let currentKeywords = [];
+        let keywordRuleMap = []; // 키워드와 규칙 매핑
         
         function generateKeywords() {
-            const groups = [1,2,3,4].map(i => document.getElementById(`keywords${i}`).value.split('\n').filter(k=>k.trim()).map(k=>k.trim()));
+            const groups = [1,2,3,4].map(i => 
+                document.getElementById(`keywords${i}`).value.split('\n').filter(k=>k.trim()).map(k=>k.trim())
+            );
             const addSpace = document.getElementById('addSpace').checked;
             const removeDuplicates = document.getElementById('removeDuplicates').checked;
             const sep = addSpace ? ' ' : '';
             const activeRules = [...document.querySelectorAll('.rule-chip.active')].map(c => c.dataset.rule);
             
-            if (!activeRules.length) { alert('조합 규칙을 선택해주세요.'); return; }
+            if (!activeRules.length) { 
+                alert('조합 규칙을 선택해주세요.'); 
+                return; 
+            }
             
             let results = [];
+            keywordRuleMap = [];
+            
             activeRules.forEach(rule => {
                 const indices = rule.split('+').map(n => parseInt(n) - 1);
-                const selected = indices.map(i => groups[i]).filter(g => g.length > 0);
-                if (selected.length === indices.length) {
-                    cartesian(...selected).forEach(combo => results.push(combo.join(sep)));
+                const selected = indices.map(i => groups[i]);
+                
+                // 모든 그룹에 키워드가 있는지 확인
+                if (selected.every(g => g.length > 0)) {
+                    cartesian(...selected).forEach(combo => {
+                        const keyword = combo.join(sep);
+                        if (!removeDuplicates || !results.includes(keyword)) {
+                            results.push(keyword);
+                            keywordRuleMap.push({ keyword, rule });
+                        }
+                    });
                 }
             });
             
-            if (removeDuplicates) results = [...new Set(results)];
+            // 중복 제거 시 keywordRuleMap도 정리
+            if (removeDuplicates) {
+                const seen = new Set();
+                const uniqueMap = [];
+                keywordRuleMap.forEach(item => {
+                    if (!seen.has(item.keyword)) {
+                        seen.add(item.keyword);
+                        uniqueMap.push(item);
+                    }
+                });
+                keywordRuleMap = uniqueMap;
+                results = [...new Set(results)];
+            }
+            
             currentKeywords = results;
             
-            document.getElementById('resultOutput').value = results.join('\n');
+            // 결과 영역 표시
+            document.getElementById('mixerResultArea').style.display = 'block';
             document.getElementById('resultCount').textContent = `총 ${results.length}개`;
             document.getElementById('volumeResult').innerHTML = '';
+            
+            // 테이블 렌더링
+            renderKeywordTable();
+        }
+        
+        function renderKeywordTable() {
+            if (!keywordRuleMap.length) {
+                document.getElementById('keywordResultTable').innerHTML = '<p style="text-align:center;color:var(--gray);padding:var(--space-lg);">조합된 키워드가 없습니다.</p>';
+                return;
+            }
+            
+            let html = `
+                <div class="keyword-result-wrapper">
+                    <table class="keyword-result-table">
+                        <thead>
+                            <tr>
+                                <th class="num">No.</th>
+                                <th>키워드</th>
+                                <th>조합 규칙</th>
+                                <th style="width:60px;">복사</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+            
+            keywordRuleMap.forEach((item, idx) => {
+                html += `
+                    <tr>
+                        <td class="num">${idx + 1}</td>
+                        <td class="keyword">${item.keyword}</td>
+                        <td><span class="rule">${item.rule}</span></td>
+                        <td><button class="copy-btn" onclick="copySingleKeyword('${item.keyword.replace(/'/g, "\\'")}')">📋</button></td>
+                    </tr>
+                `;
+            });
+            
+            html += '</tbody></table></div>';
+            document.getElementById('keywordResultTable').innerHTML = html;
         }
         
         function cartesian(...arrays) {
@@ -839,30 +1077,76 @@
         }
         
         function resetMixer() {
-            [1,2,3,4].forEach(i => { document.getElementById(`keywords${i}`).value = ''; document.getElementById(`count${i}`).textContent = '0개'; });
-            document.getElementById('resultOutput').value = '';
+            [1,2,3,4].forEach(i => { 
+                document.getElementById(`keywords${i}`).value = ''; 
+                document.getElementById(`count${i}`).textContent = '0개'; 
+            });
+            document.getElementById('mixerResultArea').style.display = 'none';
+            document.getElementById('keywordResultTable').innerHTML = '';
             document.getElementById('resultCount').textContent = '총 0개';
             document.getElementById('volumeResult').innerHTML = '';
             currentKeywords = [];
+            keywordRuleMap = [];
+            
+            // 기본 규칙만 선택
+            deselectAllRules();
+            ['1+2', '1+2+3', '1+2+3+4'].forEach(rule => {
+                const chip = document.querySelector(`.rule-chip[data-rule="${rule}"]`);
+                if (chip) chip.classList.add('active');
+            });
         }
         
-        function copyResult() {
-            const output = document.getElementById('resultOutput');
-            output.select();
-            document.execCommand('copy');
-            alert('복사되었습니다!');
+        function copySingleKeyword(keyword) {
+            navigator.clipboard.writeText(keyword).then(() => {
+                // 간단한 피드백
+            }).catch(() => {
+                // fallback
+                const textarea = document.createElement('textarea');
+                textarea.value = keyword;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+            });
         }
         
-        function downloadCSV() {
-            const content = document.getElementById('resultOutput').value;
-            if (!content) { alert('조합된 키워드가 없습니다.'); return; }
-            downloadFile(new Blob([content.split('\n').join(',')], {type:'text/csv;charset=utf-8;'}), 'keywords.csv');
+        function copyAllKeywords() {
+            if (!currentKeywords.length) {
+                alert('복사할 키워드가 없습니다.');
+                return;
+            }
+            const text = currentKeywords.join('\n');
+            navigator.clipboard.writeText(text).then(() => {
+                alert(`${currentKeywords.length}개 키워드가 복사되었습니다!`);
+            }).catch(() => {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                alert(`${currentKeywords.length}개 키워드가 복사되었습니다!`);
+            });
         }
         
-        function downloadTXT() {
-            const content = document.getElementById('resultOutput').value;
-            if (!content) { alert('조합된 키워드가 없습니다.'); return; }
-            downloadFile(new Blob([content], {type:'text/plain;charset=utf-8;'}), 'keywords.txt');
+        function downloadKeywordCSV() {
+            if (!keywordRuleMap.length) { 
+                alert('다운로드할 키워드가 없습니다.'); 
+                return; 
+            }
+            let csv = 'No,키워드,조합규칙\n';
+            keywordRuleMap.forEach((item, idx) => {
+                csv += `${idx + 1},"${item.keyword}","${item.rule}"\n`;
+            });
+            downloadFile(new Blob(['\uFEFF' + csv], {type:'text/csv;charset=utf-8;'}), 'keywords.csv');
+        }
+        
+        function downloadKeywordTXT() {
+            if (!currentKeywords.length) { 
+                alert('다운로드할 키워드가 없습니다.'); 
+                return; 
+            }
+            downloadFile(new Blob([currentKeywords.join('\n')], {type:'text/plain;charset=utf-8;'}), 'keywords.txt');
         }
         
         function downloadFile(blob, filename) {
@@ -876,8 +1160,14 @@
         // 키워드 조합기 검색량 조회
         // ============================================
         async function getSearchVolume() {
-            if (!currentKeywords.length) { alert('먼저 키워드를 조합해주세요.'); return; }
-            if (currentKeywords.length > 100) { alert(`최대 100개까지 조회 가능합니다. (현재 ${currentKeywords.length}개)`); return; }
+            if (!currentKeywords.length) { 
+                alert('먼저 키워드를 조합해주세요.'); 
+                return; 
+            }
+            if (currentKeywords.length > 100) { 
+                alert(`최대 100개까지 조회 가능합니다. (현재 ${currentKeywords.length}개)`); 
+                return; 
+            }
             
             const loading = document.getElementById('volumeLoading');
             const loadingText = document.getElementById('loadingText');
@@ -1103,7 +1393,7 @@
         // 기존 키워드 조합기용 테이블 렌더링 (호환성 유지)
         function renderVolumeTable(data, container) {
             const html = `
-                <div style="margin-top:var(--space-md);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-sm);">
+                <div style="margin-top:var(--space-lg);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-sm);">
                     <span style="font-weight:700;">📊 검색량 결과 (${data.length}개)</span>
                     <button class="mixer-result-btn" onclick="downloadVolumeCSV()">📄 CSV 다운로드</button>
                 </div>
